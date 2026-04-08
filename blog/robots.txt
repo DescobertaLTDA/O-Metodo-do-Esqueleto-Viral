@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /blog/
+Disallow: /blog/template.html
+
+Sitemap: https://esqueletoviral.com.br/blog/sitemap.xml

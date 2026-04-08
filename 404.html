@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Esqueleto Viral</title>
+<script>
+(function(){
+  var l = window.location;
+  var path = l.pathname;
+
+  // Se for rota do blog (/blog/slug-do-artigo)
+  if(path.match(/^\/blog\/.+/)){
+    var slug = path.replace('/blog/', '').replace(/\/$/, '');
+    l.replace('/blog.html?slug=' + encodeURIComponent(slug));
+    return;
+  }
+
+  // Se for /blog sem slug
+  if(path === '/blog' || path === '/blog/'){
+    l.replace('/blog.html');
+    return;
+  }
+
+  // Todas as outras rotas — comportamento original do GitHub Pages SPA
+  var pathSegmentsToKeep = 0;
+  l.replace(
+    l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+    l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+    l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g,'~and~') +
+    (l.search ? '&' + l.search.slice(1).replace(/&/g,'~and~') : '') +
+    l.hash
+  );
+})();
+</script>
+</head>
+<body></body>
+</html>

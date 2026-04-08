@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<script src="/config.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidade — Esqueleto Viral</title>
+<meta name="description" content="Política de Privacidade do Esqueleto Viral. Saiba como coletamos, usamos e protegemos seus dados pessoais.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://esqueletoviral.com.br/privacidade">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dxzgkrshw/image/upload/v1774790204/logo_roxa_g81slp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --o1: #A855F7;
+  --o2: #C084FC;
+  --o3: #FFFFFF;
+  --dark: #000000;
+  --dark2: #0A0A0A;
+  --dark3: #0A0A0A;
+  --dark4: #111111;
+  --text: #FFFFFF;
+  --muted: rgba(255,255,255,0.45);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.8;
+}
+
+/* NAV */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:500;
+  padding: 0 60px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(4,0,8,0.97);
+  border-bottom: 1px solid rgba(255,255,255,0.04);}
+nav::before { content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent 0%,rgba(168,85,247,0.6) 30%,rgba(233,213,255,0.9) 50%,rgba(168,85,247,0.6) 70%,transparent 100%); pointer-events:none; }
+nav { box-shadow: 0 1px 0 rgba(168,85,247,0.12), 0 8px 32px rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px);
+}
+.nav-logo {
+  font-weight: 900; font-size: 16px;
+  letter-spacing: 3px; text-transform: uppercase;
+  text-decoration: none; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo span { color: var(--o1); }
+.nav-back {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(240,232,216,0.35);
+  text-decoration: none; transition: color .2s;
+}
+.nav-back:hover { color: var(--o1); }
+
+/* HERO */
+.page-hero {
+  padding: 120px 60px 60px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.page-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--o1);
+  margin-bottom: 16px;
+}
+.page-tag::before { content:''; width:20px; height:2px; background:var(--o2); }
+.page-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900; letter-spacing: -2px;
+  text-transform: uppercase; line-height: 1;
+  margin-bottom: 16px;
+}
+.page-title span { color: var(--o1); }
+.page-date {
+  font-size: 12px; color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* CONTENT */
+.page-content {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 60px 100px;
+}
+.page-content h2 {
+  font-size: 18px; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--text); margin: 48px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(168,85,247,0.15);
+}
+.page-content h2::before {
+  content: '';
+  display: inline-block; width: 4px; height: 16px;
+  background: var(--o1); margin-right: 10px;
+  vertical-align: middle;
+}
+.page-content p {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.9; margin-bottom: 16px;
+}
+.page-content ul, .page-content ol {
+  margin: 0 0 16px 20px;
+}
+.page-content li {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.9; margin-bottom: 8px;
+}
+.page-content a {
+  color: var(--o1); text-decoration: none;
+  border-bottom: 1px solid rgba(192,132,252,0.3);
+  transition: color .2s;
+}
+.page-content a:hover { color: var(--o3); }
+.page-content strong { color: var(--text); }
+
+.info-box {
+  background: rgba(168,85,247,0.06);
+  border: 1px solid rgba(168,85,247,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 13px;
+  color: rgba(240,232,216,0.65);
+  line-height: 1.8;
+}
+.info-box strong { color: var(--o1); }
+
+/* FOOTER */
+footer {
+  background: var(--dark2);
+  border-top: 1px solid rgba(168,85,247,0.08);
+  padding: 28px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.foot-copy { font-size: 11px; color: rgba(240,232,216,0.15); }
+.foot-links { display: flex; gap: 24px; }
+.foot-links a {
+  font-size: 11px; color: rgba(240,232,216,0.25);
+  text-decoration: none; transition: color .2s;
+}
+.foot-links a:hover { color: rgba(240,232,216,0.6); }
+
+@media(max-width:768px){
+  nav { padding: 0 16px; height: 56px; }
+  .nav-logo { font-size: 12px; letter-spacing: 1.5px; }
+  .nav-back { font-size: 9px; letter-spacing: 0.5px; white-space: nowrap; }
+
+  .page-hero { padding: 84px 20px 32px; max-width: 100%; }
+  .page-title { font-size: clamp(26px, 8vw, 38px); letter-spacing: -1px; }
+  .page-tag { font-size: 9px; letter-spacing: 3px; }
+  .page-date { font-size: 11px; }
+
+  .page-content { max-width: 100%; padding: 0 20px 80px; }
+  .page-content h2 { font-size: 14px; letter-spacing: 0.5px; margin: 36px 0 12px; }
+  .page-content p,
+  .page-content li { font-size: 13px; line-height: 1.8; }
+  .page-content ul,
+  .page-content ol { margin-left: 16px; }
+
+  .info-box { padding: 16px 16px; font-size: 12px; border-radius: 10px; }
+
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; gap: 16px; }
+  .foot-copy { font-size: 10px; }
+  .foot-links { justify-content: center; flex-wrap: wrap; gap: 16px; }
+  .foot-links a { font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">☠️ Esqueleto<span>Viral</span></a>
+  <a href="/" class="nav-back">← Voltar ao site</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-tag">Legal</div>
+  <h1 class="page-title">Política de<br><span>Privacidade</span></h1>
+  <p class="page-date">Última atualização: 21 de março de 2026</p>
+</div>
+
+<div class="page-content">
+
+  <div class="info-box">
+    <strong>Resumo:</strong> Respeitamos sua privacidade. Coletamos apenas os dados necessários para operar o site, processar compras e melhorar sua experiência. Nunca vendemos seus dados para terceiros.
+  </div>
+
+  <h2>1. Quem Somos</h2>
+  <p>Este site é operado por <strong>L.G.S Descoberta Mental LTDA</strong>, inscrita no CNPJ sob o nº <strong>56.027.103/0001-08</strong>, responsável pela plataforma <strong>Esqueleto Viral</strong>, acessível em <a href="https://esqueletoviral.com.br">esqueletoviral.com.br</a>.</p>
+  <p>Para dúvidas sobre esta política ou sobre o tratamento dos seus dados, entre em contato pelo e-mail: <a href="mailto:descobertamental@gmail.com">descobertamental@gmail.com</a></p>
+
+  <h2>2. Quais Dados Coletamos</h2>
+  <p>Podemos coletar os seguintes tipos de dados pessoais:</p>
+  <ul>
+    <li><strong>Dados de cadastro:</strong> nome e endereço de e-mail, quando você preenche um formulário de interesse ou contato.</li>
+    <li><strong>Dados de compra:</strong> nome, e-mail e informações de pagamento, processados pela plataforma Kiwify no momento da aquisição de produtos.</li>
+    <li><strong>Dados de navegação:</strong> endereço IP, tipo de navegador, páginas visitadas, tempo de permanência e origem do acesso, coletados automaticamente via Google Analytics.</li>
+    <li><strong>Dados de interação:</strong> cliques em botões, rolagem de página e eventos de engajamento, coletados via Google Analytics 4 e Meta Pixel.</li>
+  </ul>
+
+  <h2>3. Como Usamos Seus Dados</h2>
+  <p>Os dados coletados são utilizados para:</p>
+  <ul>
+    <li>Processar e entregar os produtos adquiridos;</li>
+    <li>Enviar comunicações relacionadas à sua compra;</li>
+    <li>Melhorar o conteúdo e a experiência do site;</li>
+    <li>Exibir anúncios relevantes em plataformas parceiras (Meta Ads, Google Ads);</li>
+    <li>Cumprir obrigações legais e regulatórias;</li>
+    <li>Prevenir fraudes e garantir a segurança da plataforma.</li>
+  </ul>
+
+  <h2>4. Cookies e Tecnologias de Rastreamento</h2>
+  <p>Utilizamos cookies e tecnologias similares para melhorar sua experiência de navegação. Os principais são:</p>
+  <ul>
+    <li><strong>Google Analytics (GA4):</strong> análise de tráfego e comportamento dos usuários.</li>
+    <li><strong>Meta Pixel:</strong> rastreamento de conversões e exibição de anúncios personalizados no Facebook e Instagram.</li>
+    <li><strong>Cookies de sessão:</strong> para manter preferências temporárias durante a navegação.</li>
+  </ul>
+  <p>Você pode desativar os cookies nas configurações do seu navegador, mas isso pode afetar algumas funcionalidades do site.</p>
+
+  <h2>5. Compartilhamento de Dados</h2>
+  <p>Não vendemos seus dados pessoais. Podemos compartilhá-los apenas com:</p>
+  <ul>
+    <li><strong>Kiwify:</strong> plataforma de processamento de pagamentos e entrega de produtos digitais;</li>
+    <li><strong>Google:</strong> para análise de tráfego (Google Analytics) e publicidade (Google Ads);</li>
+    <li><strong>Meta (Facebook/Instagram):</strong> para rastreamento de conversões e publicidade;</li>
+    <li><strong>Autoridades legais:</strong> quando exigido por lei ou decisão judicial.</li>
+  </ul>
+
+  <h2>6. Retenção de Dados</h2>
+  <p>Mantemos seus dados pelo tempo necessário para cumprir as finalidades descritas nesta política, respeitando os prazos legais aplicáveis. Dados de compra são mantidos por no mínimo 5 anos, conforme exigência fiscal.</p>
+
+  <h2>7. Seus Direitos (LGPD)</h2>
+  <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você tem direito a:</p>
+  <ul>
+    <li>Confirmar a existência de tratamento dos seus dados;</li>
+    <li>Acessar os dados que temos sobre você;</li>
+    <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
+    <li>Solicitar a anonimização, bloqueio ou eliminação dos seus dados;</li>
+    <li>Revogar o consentimento a qualquer momento;</li>
+    <li>Solicitar a portabilidade dos seus dados.</li>
+  </ul>
+  <p>Para exercer qualquer um desses direitos, entre em contato pelo e-mail: <a href="mailto:descobertamental@gmail.com">descobertamental@gmail.com</a></p>
+
+  <h2>8. Segurança dos Dados</h2>
+  <p>Adotamos medidas técnicas e administrativas adequadas para proteger seus dados contra acesso não autorizado, perda, alteração ou divulgação. O site utiliza protocolo HTTPS para criptografar todas as comunicações.</p>
+
+  <h2>9. Links Externos</h2>
+  <p>Nosso site pode conter links para sites de terceiros, como a plataforma Kiwify. Não nos responsabilizamos pelas práticas de privacidade desses sites. Recomendamos que você leia as políticas de privacidade de cada plataforma que acessar.</p>
+
+  <h2>10. Alterações nesta Política</h2>
+  <p>Podemos atualizar esta Política de Privacidade periodicamente. Em caso de alterações relevantes, notificaremos os usuários por e-mail ou por aviso destacado no site. A data da última atualização está sempre indicada no topo desta página.</p>
+
+  <h2>11. Contato</h2>
+  <p>Para dúvidas, solicitações ou reclamações relacionadas à privacidade dos seus dados:</p>
+  <div class="info-box">
+    <strong>L.G.S Descoberta Mental LTDA</strong><br>
+    CNPJ: 56.027.103/0001-08<br>
+    E-mail: <a href="mailto:descobertamental@gmail.com">descobertamental@gmail.com</a>
+
+
+

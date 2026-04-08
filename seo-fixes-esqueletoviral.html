@@ -1,0 +1,216 @@
+<!--
+  ================================================================
+  ESQUELETO VIRAL — CORREÇÕES DE SEO
+  Cole os blocos abaixo no lugar indicado no index.html
+  ================================================================
+-->
+
+
+<!-- ════════════════════════════════════════════════════════════
+     BLOCO 1 — Cole DENTRO do <head>, logo antes de </head>
+     Inclui: canonical, og:url, sitemap, Schema JSON-LD
+     ════════════════════════════════════════════════════════════ -->
+
+<!-- Canonical: evita duplicate content com /pontomisterioso etc. -->
+<link rel="canonical" href="https://esqueletoviral.com.br/">
+
+<!-- Sitemap apontado no HTML -->
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+<!-- og:url ausente -->
+<meta property="og:url" content="https://esqueletoviral.com.br/">
+
+<!-- Schema JSON-LD: Course + Organization + AggregateRating -->
+<!-- O Google usa isso para exibir rich snippets nos resultados  -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Esqueleto Viral — Crie Vídeos Virais com IA",
+  "description": "Aprenda o método que gerou 100 milhões de visualizações com o personagem esqueleto. Sem câmera, sem rosto, 100% com IA. ChatGPT, Flow AI, ElevenLabs e CapCut.",
+  "url": "https://esqueletoviral.com.br/",
+  "image": "https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_1200/v1773239895/Skeleton_gladiator_fights_trex_e2665aab2e_dngr6u.jpg",
+  "inLanguage": "pt-BR",
+  "provider": {
+    "@type": "Organization",
+    "name": "L.G.S Descoberta Mental LTDA",
+    "url": "https://esqueletoviral.com.br/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "97.00",
+    "priceCurrency": "BRL",
+    "availability": "https://schema.org/InStock",
+    "url": "https://pay.kiwify.com.br/HM1g0Nv",
+    "validFrom": "2025-01-01"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "reviewCount": "3"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Marcos V." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Na primeira semana já publiquei 3 vídeos e um deles viralizou com 400K views."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Ana C." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Segui o método do zero, sem saber nada de IA, e já recuperei o investimento no segundo mês."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Rafael T." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" },
+      "reviewBody": "Meu canal chegou a 50K inscritos em 45 dias seguindo exatamente o que o curso ensina."
+    }
+  ],
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT7H"
+  }
+}
+</script>
+
+<!-- Schema FAQPage — aparece como FAQ expandido no Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Preciso ter experiência com IA ou edição?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não! O curso começa do absoluto zero. Mostramos cada ferramenta passo a passo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso aparecer na câmera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Em hipótese alguma. Esse é o ponto central do método — tudo é criado com IA, do personagem à narração."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "As ferramentas são pagas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A maioria tem plano gratuito suficiente para começar. No curso indicamos as versões ideais e as alternativas gratuitas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Em quanto tempo vejo resultado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Alunos publicaram o primeiro vídeo ainda na primeira semana. Viral depende de consistência, mas o método está testado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por quanto tempo tenho acesso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Acesso vitalício, incluindo todas as atualizações futuras do curso sem custo adicional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "E se eu não gostar? Tem garantia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeito, basta pedir o reembolso — sem perguntas, sem burocracia."
+      }
+    }
+  ]
+}
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     BLOCO 2 — H1 corrigido
+     Substitua o <h1> atual (que tem linhas vazias) por este:
+     ════════════════════════════════════════════════════════════ -->
+
+<h1 class="hero-title">
+  <span style="color:#fff; display:block; filter:drop-shadow(0 2px 20px rgba(255,255,255,0.15));">O MÉTODO DOS</span>
+  <span class="line-fire" style="white-space:nowrap;">100 MILHÕES.</span>
+</h1>
+
+
+<!-- ════════════════════════════════════════════════════════════
+     BLOCO 3 — Imagens com alt text
+     Substitua os 10 <img> do carrossel hero (#heroCfDesktop)
+     pelos itens abaixo (só muda o atributo alt):
+     ════════════════════════════════════════════════════════════ -->
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_800/v1773239895/Skeleton_gladiator_fights_trex_e2665aab2e_dngr6u.jpg"
+       alt="Esqueleto gladiador luta com T-Rex — vídeo viral com 10M de views feito com IA" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>10M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239473/Skeleton_gladiator_facing_lion_3ff9df0268_arfznu.jpg"
+       alt="Esqueleto gladiador enfrenta leão — vídeo viral com 7.8M de views criado com IA" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>7.8M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239417/Skeleton_fighting_tiger_in_arena_60b1495361_oaneao.jpg"
+       alt="Esqueleto luta com tigre na arena — 5M de views sem aparecer na câmera" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>5M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239470/Skeleton_fighting_crocodile_arena_3f79033286_oxq4vs.jpg"
+       alt="Esqueleto luta com crocodilo na arena — vídeo viral 9.2M de views com IA" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>9.2M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773096323/Skeleton_holding_soda_can_8f4f359f62_ro1vq8.jpg"
+       alt="Esqueleto segurando lata de refrigerante — personagem viral do YouTube com 8.1M views" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>8.1M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239470/Skeleton_gladiator_facing_lion_a6a725e9f2_qoyv1v.jpg"
+       alt="Esqueleto gladiador vs leão — criado com Flow AI e ChatGPT, 6.4M de views" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>6.4M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773112517/Skeleton_behind_tribal_elder_76853a5816_rpoxya.jpg"
+       alt="Esqueleto atrás de ancião tribal — vídeo viral 11M de views feito com IA sem câmera" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>11M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239402/Skeleton_fighting_tiger_in_arena_5ce90e67ff_jhtvcp.jpg"
+       alt="Esqueleto na arena lutando contra tigre — 4.5M de views gerados com IA" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>4.5M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773239470/Skeleton_fighting_crocodile_arena_3f79033286_oxq4vs.jpg"
+       alt="Personagem esqueleto viral — método de criação com IA, 3.9M de views" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>3.9M</span></div>
+</div>
+
+<div class="hcf-item">
+  <img src="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_600/v1773096319/Select__prompt_must_remain_exact_do_not_summarize__802a0afd03_ws9osx.jpg"
+       alt="Cena gerada com prompt de IA — vídeo viral com 13M de views no YouTube" loading="lazy">
+  <div class="cf-badge"><span>&#9654;</span><span>13M</span></div>
+</div>

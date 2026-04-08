@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<script src="/components.js"></script>
+<script src="/config.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Esqueleto Viral</title>
+<meta name="description" content="Entre em contato com o Esqueleto Viral. Suporte para alunos, duvidas sobre o curso e parcerias.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://esqueletoviral.com.br/contato">
+<link rel="icon" type="image/png" href="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_64/v1773113249/SIM_1_mppu0c.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--o1:#A855F7;--o2:#C084FC;--o3:#FFFFFF;--dark:#000000;--dark2:#0a0a0a;--dark3:#0A0A0A;--dark4:#111111;--text:#FFFFFF;--muted:rgba(255,255,255,0.45);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'Montserrat',sans-serif;min-height:100vh;}
+
+.page-hero{padding:120px 60px 60px;max-width:900px;margin:0 auto;text-align:center;}
+.page-tag{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--o2);margin-bottom:16px;}
+.page-tag::before,.page-tag::after{content:'';width:20px;height:2px;background:var(--o2);}
+.page-title{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-2px;text-transform:uppercase;line-height:1;margin-bottom:16px;}
+.page-title span{color:var(--o1);}
+.page-sub{font-size:14px;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto;}
+.contact-grid{max-width:900px;margin:0 auto;padding:0 60px 80px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.contact-card{background:var(--dark3);padding:40px 32px;text-align:center;position:relative;overflow:hidden;transition:background .25s;}
+.contact-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--o1),var(--o3));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.contact-card:hover{background:var(--dark4);}
+.contact-card:hover::before{transform:scaleX(1);}
+.contact-icon{font-size:36px;margin-bottom:16px;display:block;}
+.contact-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--o2);margin-bottom:10px;}
+.contact-title{font-size:16px;font-weight:900;color:var(--text);margin-bottom:8px;}
+.contact-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.contact-btn{display:inline-block;background:transparent;border:1px solid rgba(168,85,247,0.35);color:var(--o2);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;border-radius:8px;transition:background .2s,border-color .2s,color .2s;cursor:pointer;}
+.contact-btn:hover{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.6);color:var(--o3);}
+.contact-btn.primary{background:linear-gradient(135deg,#7C3AED,#A855F7,#C084FC);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(168,85,247,0.35);}
+.contact-btn.primary:hover{box-shadow:0 8px 28px rgba(168,85,247,0.5);background:linear-gradient(135deg,#A855F7,#C084FC);}
+.form-section{max-width:640px;margin:0 auto;padding:0 60px 100px;}
+.form-title{font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:8px;}
+.form-title span{color:var(--o1);}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,216,0.4);margin-bottom:8px;}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:border-color .2s,background .2s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(168,85,247,0.5);background:rgba(255,255,255,0.06);}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.18);}
+.form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(192,132,252,0.7)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.form-select option{background:#161616;color:var(--text);}
+.form-textarea{resize:vertical;min-height:120px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-btn{width:100%;background:linear-gradient(135deg,#7C3AED,#A855F7,#C084FC);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:18px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 8px 32px rgba(168,85,247,0.4);transition:transform .2s,box-shadow .2s;margin-top:8px;}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(168,85,247,0.55);}
+.form-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.form-success{display:none;text-align:center;padding:48px 24px;background:rgba(0,200,80,0.06);border:1px solid rgba(0,200,80,0.2);border-radius:16px;margin-top:16px;}
+.form-success-icon{font-size:56px;margin-bottom:16px;}
+.form-success-title{font-size:20px;font-weight:900;color:#4ade80;margin-bottom:8px;}
+.form-success-sub{font-size:13px;color:var(--muted);line-height:1.7;}
+
+/* MODAIS */
+.modal-overlay{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{background:var(--dark3);border:1px solid rgba(168,85,247,0.15);border-radius:20px;width:100%;max-width:480px;padding:40px 36px;position:relative;transform:translateY(20px);transition:transform .35s ease;max-height:90vh;overflow-y:auto;}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(240,232,216,0.3);font-size:22px;cursor:pointer;line-height:1;transition:color .2s;}
+.modal-close:hover{color:var(--o2);}
+.modal-tag{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--o2);margin-bottom:12px;}
+.modal-title{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:4px;}
+.modal-title span{color:var(--o1);}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:24px;line-height:1.7;}
+.modal-success{display:none;text-align:center;padding:32px 0;}
+.modal-success-icon{font-size:48px;margin-bottom:12px;}
+.modal-success-title{font-size:18px;font-weight:900;color:#4ade80;margin-bottom:6px;}
+.modal-success-sub{font-size:12px;color:var(--muted);line-height:1.7;}
+
+@media(max-width:768px){
+  
+  
+  
+  .page-hero{padding:80px 20px 32px;}
+  .contact-grid{grid-template-columns:1fr;padding:0 20px 48px;}
+  .form-section{padding:0 20px 80px;}
+  .form-row{grid-template-columns:1fr;}
+  
+  
+  .modal-box{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div id="ev-header"></div>
+
+<div class="page-hero">
+  <div class="page-tag">Fale Conosco</div>
+  <h1 class="page-title">Entre em<br><span>Contato</span></h1>
+  <p class="page-sub">Suporte para alunos, duvidas sobre o curso ou parcerias &mdash; estamos aqui para ajudar.</p>
+</div>
+
+<div class="contact-grid">
+  <div class="contact-card">
+    <span class="contact-icon">&#129460;</span>
+    <div class="contact-label">Suporte</div>
+    <div class="contact-title">Alunos</div>
+    <p class="contact-desc">Acesso ao curso, duvidas tecnicas ou problemas com sua compra.</p>
+    <button onclick="abrirModal('aluno')" class="contact-btn primary">Enviar mensagem</button>
+  </div>
+  <div class="contact-card">
+    <span class="contact-icon">&#128188;</span>
+    <div class="contact-label">Negocios</div>
+    <div class="contact-title">Parcerias</div>
+    <p class="contact-desc">Afiliados, patrocinios, colaboracoes e oportunidades comerciais.</p>
+    <button onclick="abrirModal('parceria')" class="contact-btn">Falar sobre parceria</button>
+  </div>
+  <div class="contact-card">
+    <span class="contact-icon">&#128172;</span>
+    <div class="contact-label">Comunidade</div>
+    <div class="contact-title">WhatsApp</div>
+    <p class="contact-desc">Entre no canal oficial para novidades, dicas e conteudos exclusivos.</p>
+    <a href="https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09" target="_blank" rel="noopener" class="contact-btn">Entrar no canal</a>
+  </div>
+</div>
+
+<div class="form-section">
+  <h2 class="form-title">Manda sua<br><span>mensagem</span></h2>
+  <p class="form-sub">Respondemos em ate 48 horas uteis. Para urgencias, prefira o e-mail direto.</p>
+
+  <form id="contactForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="nome">Seu nome</label>
+        <input class="form-input" id="nome" type="text" name="nome" placeholder="Como voce se chama?" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Seu e-mail</label>
+        <input class="form-input" id="email" type="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="assunto">Assunto</label>
+      <select class="form-select" id="assunto" name="assunto" required>
+        <option value="" disabled selected>Selecione o assunto</option>
+        <option value="suporte-curso">Suporte - problema com o curso</option>
+        <option value="suporte-acesso">Suporte - problema de acesso</option>
+        <option value="duvida-curso">Duvida sobre o curso</option>
+        <option value="reembolso">Solicitar reembolso</option>
+        <option value="parceria">Parceria ou afiliacao</option>
+        <option value="imprensa">Imprensa ou midia</option>
+        <option value="outro">Outro assunto</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="mensagem">Mensagem</label>
+      <textarea class="form-textarea" id="mensagem" name="mensagem" placeholder="Descreva sua duvida ou solicitacao com o maximo de detalhes possivel..." required></textarea>
+    </div>
+    <button class="form-btn" id="submitBtn" type="submit">&#129460; Enviar mensagem</button>
+  </form>
+
+  <div class="form-success" id="formSuccess">
+    <div class="form-success-icon">&#9989;</div>
+    <div class="form-success-title">Mensagem enviada!</div>
+    <p class="form-success-sub">Recebemos sua mensagem e responderemos em ate 48 horas uteis no e-mail informado.</p>
+  </div>
+</div>
+
+<div id="ev-footer"></div>
+
+<!-- MODAL ALUNO -->
+<div class="modal-overlay" id="modalAluno">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('aluno')">&#10005;</button>
+    <div class="modal-tag">&#129460; Suporte para Alunos</div>
+    <div class="modal-title">Manda sua<br><span>duvida</span></div>
+    <p class="modal-sub">Acesso ao curso, problemas tecnicos ou duvidas sobre o conteudo. Respondemos em ate 48h uteis.</p>
+    <form id="alunoForm">
+      <div class="form-group">
+        <label class="form-label" for="aNome">Seu nome</label>
+        <input class="form-input" id="aNome" type="text" name="nome" placeholder="Como voce se chama?" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="aEmail">Seu e-mail</label>
+        <input class="form-input" id="aEmail" type="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="aAssunto">Tipo de problema</label>
+        <select class="form-select" id="aAssunto" name="assunto" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="acesso-curso">Nao consigo acessar o curso</option>
+          <option value="acesso-conta">Problema com minha conta</option>
+          <option value="duvida-conteudo">Duvida sobre o conteudo</option>
+          <option value="reembolso">Solicitar reembolso</option>
+          <option value="outro">Outro problema</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="aMensagem">Descreva o problema</label>
+        <textarea class="form-textarea" id="aMensagem" name="mensagem" placeholder="Descreva com detalhes para agilizarmos o atendimento..." required style="min-height:100px;"></textarea>
+      </div>
+      <button class="form-btn" id="alunoBtn" type="submit">&#129460; Enviar para suporte</button>
+    </form>
+    <div class="modal-success" id="alunoSuccess">
+      <div class="modal-success-icon">&#9989;</div>
+      <div class="modal-success-title">Mensagem enviada!</div>
+      <p class="modal-success-sub">Recebemos seu chamado e responderemos em ate 48 horas uteis no e-mail informado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARCERIA -->
+<div class="modal-overlay" id="modalParceria">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal('parceria')">&#10005;</button>
+    <div class="modal-tag">&#128188; Parcerias e Negocios</div>
+    <div class="modal-title">Vamos<br><span>conversar</span></div>
+    <p class="modal-sub">Afiliados, patrocinios, colaboracoes e oportunidades comerciais. Conta o que voce tem em mente.</p>
+    <form id="parceriaForm">
+      <div class="form-group">
+        <label class="form-label" for="pNome">Seu nome</label>
+        <input class="form-input" id="pNome" type="text" name="nome" placeholder="Como voce se chama?" required autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="pEmail">Seu e-mail</label>
+        <input class="form-input" id="pEmail" type="email" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="pTipo">Tipo de parceria</label>
+        <select class="form-select" id="pTipo" name="tipo" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="afiliado">Quero ser afiliado</option>
+          <option value="patrocinio">Patrocinio ou publi</option>
+          <option value="colaboracao">Colaboracao de conteudo</option>
+          <option value="licenciamento">Licenciamento / white-label</option>
+          <option value="outro">Outra proposta</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="pMensagem">Sua proposta</label>
+        <textarea class="form-textarea" id="pMensagem" name="mensagem" placeholder="Descreva sua ideia ou proposta com detalhes..." required style="min-height:100px;"></textarea>
+      </div>
+      <button class="form-btn" id="parceriaBtn" type="submit">&#128188; Enviar proposta</button>
+    </form>
+    <div class="modal-success" id="parceriaSuccess">
+      <div class="modal-success-icon">&#9989;</div>
+      <div class="modal-success-title">Proposta enviada!</div>
+      <p class="modal-success-sub">Recebemos sua proposta e entraremos em contato em breve pelo e-mail informado.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── UTILITARIOS MODAL ───
+function abrirModal(id){
+  document.getElementById('modal' + id.charAt(0).toUpperCase() + id.slice(1)).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal(id){
+  document.getElementById('modal' + id.charAt(0).toUpperCase() + id.slice(1)).classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(function(el){
+  el.addEventListener('click', function(e){ if(e.target === el) el.classList.remove('open'), document.body.style.overflow = ''; });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(function(el){ el.classList.remove('open'); }), document.body.style.overflow = '';
+});
+
+// ─── ENVIO GENERICO ───
+function enviarForm(formId, btnId, successId, endpoint, subject, fecharId){
+  var form = document.getElementById(formId);
+  var btn  = document.getElementById(btnId);
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    btn.disabled    = true;
+    btn.textContent = 'Enviando...';
+    var fd = new FormData(form);
+    fd.append('_subject', subject);
+    fd.append('_replyto', form.querySelector('[type=email]').value);
+    fetch(endpoint, { method:'POST', body:fd, headers:{'Accept':'application/json'} })
+    .then(function(r){
+      if(r.ok){
+        form.style.display = 'none';
+        document.getElementById(successId).style.display = 'block';
+        if(fecharId) setTimeout(function(){ fecharModal(fecharId); }, 3000);
+      } else {
+        r.json().then(function(d){ alert('Erro: '+(d.error||'tente novamente.')); btn.disabled=false; btn.textContent=btn.dataset.label; });
+      }
+    })
+    .catch(function(){ alert('Erro de conexao. Tente novamente.'); btn.disabled=false; btn.textContent=btn.dataset.label; });
+  });
+}
+
+// Inicializar forms
+document.getElementById('alunoBtn').dataset.label    = 'Enviar para suporte';
+document.getElementById('parceriaBtn').dataset.label = 'Enviar proposta';
+document.getElementById('submitBtn').dataset.label   = 'Enviar mensagem';
+
+enviarForm('alunoForm',    'alunoBtn',    'alunoSuccess',    'https://formspree.io/f/xnjgynge',  'Suporte Aluno',   'aluno');
+enviarForm('parceriaForm', 'parceriaBtn', 'parceriaSuccess', 'https://formspree.io/f/myknazbw',  'Parceria',        'parceria');
+enviarForm('contactForm',  'submitBtn',   'formSuccess',     'https://formspree.io/f/mlgpkdnj',  'Contato Geral',   null);
+</script>
+
+</body>
+</html>
+
+
+
