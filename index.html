@@ -1,20 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transparência Total</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(ellipse at top, #141414 0%, #070707 55%, #020202 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px 56px;
+    }
+
+    .video-section {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #facc15;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 0.98;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .title .accent { color: #facc15; }
+
+    .subtitle {
+      font-size: clamp(16px, 2vw, 28px);
+      color: rgba(255, 255, 255, 0.66);
+      margin-bottom: 26px;
+    }
+
+    .video-frame {
+      background: #050505;
+      border-radius: 20px;
+      border: 1px solid rgba(250, 204, 21, 0.55);
+      padding: 10px;
+      box-shadow: 0 0 35px rgba(250, 204, 21, 0.18);
+    }
+
+    .video-player {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      background: #000;
+    }
+  </style>
 </head>
 <body>
-    <h1>Bem-vindo ao nosso site!</h1>
-    <p>Estamos felizes em te ver aqui.</p>
-    <script>
-        const produto = {
-            preco: 'R$19,90',
-            precoNumero: 19.90,
-            ctaTextoCurto: 'Acessar por R$19,90 →',
-            // outras propriedades...
-        };
-    </script>
+  <section class="video-section">
+    <div class="eyebrow">TRANSPARÊNCIA TOTAL</div>
+    <h1 class="title">ABRINDO MEUS GANHOS<br><span class="accent">SEM ESCONDER NADA.</span></h1>
+    <p class="subtitle">Receita real dos canais - gravado ao vivo, sem edição.</p>
+    <div class="video-frame">
+      <video class="video-player" controls preload="metadata">
+        <source src="assets/videos/meus_ganhos.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo HTML5.
+      </video>
+    </div>
+  </section>
 </body>
 </html>
