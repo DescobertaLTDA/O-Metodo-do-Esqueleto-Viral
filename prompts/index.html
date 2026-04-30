@@ -153,36 +153,46 @@ body::after {
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
-/* NAV */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:500; height:64px;
-  padding:0 180px;
-  display:flex; align-items:center; justify-content:space-between;
-  background:rgba(4,0,8,0.97); backdrop-filter:blur(24px);
-  border-bottom:1px solid rgba(168,85,247,0.12);
+/* urgency strip below header */
+.urgency-banner {
+  background: linear-gradient(90deg, #000000, #000000, #000000);
+  border-bottom: 1px solid rgba(168,85,247,0.15);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(245,240,255,0.55);
+  margin-top: 72px;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 38px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
 }
-/* Linha roxa fina no topo da nav */
-nav::before {
+.urgency-banner::before {
   content:'';
-  position:absolute; top:0; left:0; right:0; height:2px;
-  background: linear-gradient(90deg, transparent 0%, rgba(168,85,247,0.6) 30%, rgba(233,213,255,0.9) 50%, rgba(168,85,247,0.6) 70%, transparent 100%);
+  position:absolute;
+  inset:0;
+  background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(168,85,247,0.04) 0%, transparent 70%);
   pointer-events:none;
 }
-.nav-logo {
-  font-weight:900; font-size:16px; letter-spacing:2px; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
+.urg-dot {
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--o1);
+  opacity:0.6;
+  display:inline-block;
+  animation:pulse 2s ease-in-out infinite;
 }
-.nav-logo img { height:30px; }
-.nav-logo span { color:var(--o1); text-shadow: 0 0 20px rgba(168,85,247,0.5); }
-.nav-cta {
-  background:linear-gradient(135deg, #5B21B6 0%, #A855F7 50%, #C084FC 100%);
-  color:#fff; font-family:'Montserrat',sans-serif; font-weight:700;
-  font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
-  padding:10px 22px; border:none; cursor:pointer; text-decoration:none;
-  border-radius:8px; transition:opacity .2s, transform .2s; white-space:nowrap;
-  box-shadow: 0 4px 24px rgba(91,33,182,0.45);
-}
-.nav-cta:hover { opacity:.85; transform:translateY(-1px); box-shadow:0 8px 32px rgba(168,85,247,0.55); }
+.urg-mobile { display:none; }
+
+/* Header comes from /components.js to stay consistent with home */
 
 /* HERO */
 .hero {
@@ -512,13 +522,22 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
 
 /* RESPONSIVE */
 @media(max-width:1100px) {
-  nav { padding:0 40px; }
   .hero { padding:80px 40px 80px; gap:40px; }
   .wrap { padding:0 40px; }
   .soon-grid { grid-template-columns:repeat(4,1fr); }
 }
 @media(max-width:900px) {
-  nav { padding:0 24px; }
+  .urgency-banner {
+    white-space: normal;
+    font-size: 10.5px;
+    letter-spacing: 0.3px;
+    padding: 7px 14px;
+    line-height: 1.5;
+    margin-top: 58px;
+    gap: 6px;
+  }
+  .urg-desktop { display:none !important; }
+  .urg-mobile { display:inline-flex; align-items:center; gap:6px; }
   .hero {
     flex-direction:column; align-items:stretch;
     padding:0; gap:0; min-height:100vh; justify-content:flex-end;
@@ -547,10 +566,6 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
 @media(max-width:600px) {
   .steps::before { left:19px; }
   .product-card img { object-position:center 20%; transform:scale(.78); transform-origin:center top; }
-  nav { padding:0 16px; height:56px; }
-  .nav-logo { font-size:13px; letter-spacing:1px; gap:7px; }
-  .nav-logo img { height:26px; }
-  .nav-cta { font-size:10px; padding:8px 14px; }
   .hero { min-height:100svh; }
   .hero-content { padding:0 20px 44px; margin-top:42vh; }
   .hero-tag { margin-bottom:14px; font-size:9px; }
@@ -571,6 +586,15 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
 </head>
 <body>
 <div id="ev-header"></div>
+<div class="urgency-banner">
+  <span class="urg-desktop" style="display:inline-flex;align-items:center;gap:12px;">
+    <span class="urg-dot"></span>
+    <strong><span id="vagasRestantesMob">13</span> vagas restantes</strong> neste preço
+    <span style="color:rgba(168,85,247,0.3);">·</span>
+    acesso por <strong>R$9,90</strong>
+  </span>
+  <span class="urg-mobile"><span class="urg-dot"></span> <strong>13</strong> vagas restantes · <strong>R$9,90</strong></span>
+</div>
 
 
 <!-- HERO -->
@@ -863,7 +887,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
 
   // ── 5. CLIQUE NA NAV CTA ──
-  var navCta = document.querySelector('.nav-cta');
+  var navCta = document.querySelector('.nav-btn');
   if(navCta){
     navCta.addEventListener('click', function(){
       gtag('event', 'clique_nav_comprar', { event_category: 'Engajamento' });
