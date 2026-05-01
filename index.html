@@ -4432,88 +4432,15 @@ footer { background:var(--dark2); border-top:1px solid rgba(168,85,247,0.08); pa
 
     <!-- Respostas personalizadas -->
     <div class="survey-response" id="survey-preco">
-      <div class="survey-response-title">💸 Temos um presente pra você</div>
+      <div class="survey-response-title">💸 Sobre o preço</div>
       <div class="survey-response-text">
-        Entendemos. Por isso separamos um cupom exclusivo só para quem chegou até aqui:<br><br>
-        <div style="background:rgba(168,85,247,0.12);border:1.5px dashed rgba(168,85,247,0.5);border-radius:10px;padding:14px 18px;margin:4px 0 10px;text-align:center;">
-          <span style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(192,132,252,0.8);display:block;margin-bottom:6px;">Cupom de 30% de desconto</span>
-          <span style="font-size:22px;font-weight:900;letter-spacing:3px;color:#fff;"></span>
-          <span style="display:block;margin-top:6px;font-size:11px;color:rgba(255,255,255,0.45);">de <s>R$35,00</s> por apenas <strong style="color:#C084FC;">R$35,00</strong></span>
-        </div>
-        <!-- Countdown timer -->
-        <div id="cupom-countdown-wrap" style="display:flex;align-items:center;gap:8px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.35);border-radius:8px;padding:8px 14px;margin-bottom:12px;">
-          <span style="font-size:13px;">⏳</span>
-          <span style="font-size:11px;font-weight:600;color:rgba(255,180,180,0.85);letter-spacing:.3px;">Cupom expira em:</span>
-          <span id="cupom-timer" style="font-size:15px;font-weight:900;color:#ff6b6b;letter-spacing:2px;font-variant-numeric:tabular-nums;">00:10:00</span>
-        </div>
-        Cole o cupom na página de pagamento e garanta o acesso por <strong>R$35,00</strong> — ou parcele em <strong>12x de R$9,18</strong> no cartão. Menos que um café por mês.
+        Entendo totalmente. Se fizer sentido pra você, pode entrar agora por <strong>R$35,00</strong> e começar no seu ritmo, com acesso vitalício.
       </div>
-      <div style="display:flex;flex-direction:column;align-items:stretch;gap:10px;margin-top:18px;">
-        <a href="https://pay.kiwify.com.br/HM1g0Nv" target="_blank" rel="noopener" class="kiwify-link" style="display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#00b894 0%,#00a381 100%) !important;color:#fff !important;font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;padding:14px 20px;border-radius:12px;text-decoration:none;box-shadow:0 6px 28px rgba(0,184,148,0.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 36px rgba(0,184,148,0.6)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 6px 28px rgba(0,184,148,0.4)'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-          <span style="display:flex;flex-direction:column;align-items:center;gap:2px;">
-            <span>Usar cupom e garantir acesso</span>
-            <span style="font-size:9px;font-weight:600;letter-spacing:.8px;opacity:0.75;">DE R$35 POR R$35,00 · </span>
-          </span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="#" onclick="if(window.$crisp){$crisp.push(['set','session:segments',[['suporte-site']]]);$crisp.push(['do','chat:open']);$crisp.push(['do','message:send',['text','Olá! Quero usar o cupom. Pode me ajudar?']]);}return false;" style="display:flex;align-items:center;justify-content:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.5px;padding:6px;transition:color .2s;" onmouseover="this.style.color='rgba(255,255,255,0.65)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          Preciso de ajuda para aplicar o cupom
-        </a>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:18px;">
+        <a href="https://pay.kiwify.com.br/HM1g0Nv" target="_blank" rel="noopener" class="survey-response-cta kiwify-link">Garantir acesso por R$35,00 →</a>
+        <a href="#" onclick="if(window.$crisp){$crisp.push(['set','session:segments',[['suporte-site']]]);$crisp.push(['do','chat:open']);$crisp.push(['do','message:send',['text','Olá! Tenho interesse no curso mas preciso de ajuda para decidir.']]);}return false;" class="survey-response-cta-alt">💬 Falar com suporte antes de comprar</a>
       </div>
     </div>
-
-    <script>
-    (function(){
-      var _cupomInterval = null;
-      var _cupomStarted = false;
-
-      function startCupomTimer() {
-        if (_cupomStarted) return;
-        _cupomStarted = true;
-        var seconds = 600;
-        var timerEl = document.getElementById('cupom-timer');
-        var wrapEl  = document.getElementById('cupom-countdown-wrap');
-        if (!timerEl) return;
-
-        _cupomInterval = setInterval(function(){
-          seconds--;
-          if (seconds <= 0) {
-            clearInterval(_cupomInterval);
-            timerEl.textContent = '00:00:00';
-            timerEl.style.color = '#ff3333';
-            if (wrapEl) {
-              wrapEl.style.background = 'rgba(220,38,38,0.2)';
-              wrapEl.style.borderColor = 'rgba(220,38,38,0.6)';
-            }
-            return;
-          }
-          var m = Math.floor(seconds / 60);
-          var s = seconds % 60;
-          timerEl.textContent =
-            '00:' +
-            (m < 10 ?'0' : '') + m + ':' +
-            (s < 10 ?'0' : '') + s;
-
-          // pulsa vermelho nos últimos 30s
-          if (seconds <= 30) {
-            timerEl.style.color = seconds % 2 === 0 ?'#ff3333' : '#ff8080';
-          }
-        }, 1000);
-      }
-
-      // Inicia quando o bloco de preço fica visível
-      var _obs = new MutationObserver(function(){
-        var el = document.getElementById('survey-preco');
-        if (el && el.classList.contains('ativo')) {
-          startCupomTimer();
-        }
-      });
-      var surveySection = document.querySelector('.survey-wrap') || document.body;
-      _obs.observe(surveySection, { attributes: true, subtree: true, attributeFilter: ['class'] });
-    })();
-    </script>
 
     <div class="survey-response" id="survey-tempo">
       <div class="survey-response-title">⏰ Sobre o tempo</div>
@@ -5624,7 +5551,7 @@ window.CRISP_WEBSITE_ID = "";
 </style>
 <a href="https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09" data-whatsapp id="whatsappBtn" target="_blank" rel="noopener" class="wa-btn" title="Canal do WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
   <span id="waBadge" class="wa-badge">23</span>
 </a>
