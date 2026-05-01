@@ -2159,7 +2159,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(168,85,247,0.08); pa
 
   <div class="hero-cf-desktop" id="heroCfDesktop" style="display:flex;position:relative;z-index:2;flex:1;min-height:520px;padding:0;gap:0;overflow:hidden;align-items:center;justify-content:center;">
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 58% 58%, rgba(168,85,247,0.26) 0%, rgba(25,10,46,0.42) 45%, rgba(0,0,0,0) 80%);"></div>
-    <div style="position:relative;z-index:8;width:min(620px,92%);display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:4px 4px 10px;scrollbar-width:thin;scrollbar-color:rgba(168,85,247,0.45) rgba(255,255,255,0.08);">
+    <div id="heroAutoCarousel" style="position:relative;z-index:8;width:min(620px,92%);display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding:4px 4px 10px;-ms-overflow-style:none;scrollbar-width:none;">
       <div style="flex:0 0 170px;scroll-snap-align:start;position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(168,85,247,0.35);box-shadow:0 18px 44px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.04);background:#0d0d0d;"><img src="/prompts/assets/img/img1.jpeg" alt="Card 1" loading="lazy" style="display:block;width:100%;aspect-ratio:2/3;object-fit:cover;"></div>
       <div style="flex:0 0 170px;scroll-snap-align:start;position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(168,85,247,0.35);box-shadow:0 18px 44px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.04);background:#0d0d0d;"><img src="/prompts/assets/img/img2.jpeg" alt="Card 2" loading="lazy" style="display:block;width:100%;aspect-ratio:2/3;object-fit:cover;"></div>
       <div style="flex:0 0 170px;scroll-snap-align:start;position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(168,85,247,0.35);box-shadow:0 18px 44px rgba(0,0,0,0.45),0 0 0 1px rgba(255,255,255,0.04);background:#0d0d0d;"><img src="/prompts/assets/img/img3.jpeg" alt="Card 3" loading="lazy" style="display:block;width:100%;aspect-ratio:2/3;object-fit:cover;"></div>
@@ -5627,6 +5627,32 @@ window.CRISP_WEBSITE_ID = "";
   </svg>
   <span id="waBadge" class="wa-badge">23</span>
 </a>
+<style>
+#heroAutoCarousel::-webkit-scrollbar { display: none; }
+</style>
+<script>
+(function () {
+  var el = document.getElementById('heroAutoCarousel');
+  if (!el) return;
+  var step = 184;
+  var delay = 2200;
+  var timer;
+  function tick() {
+    var max = el.scrollWidth - el.clientWidth;
+    if (max <= 0) return;
+    if (el.scrollLeft + step >= max - 4) {
+      el.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      el.scrollBy({ left: step, behavior: 'smooth' });
+    }
+  }
+  function start() { timer = setInterval(tick, delay); }
+  function stop() { clearInterval(timer); }
+  start();
+  el.addEventListener('mouseenter', stop);
+  el.addEventListener('mouseleave', start);
+})();
+</script>
 
 </body>
 </html>
