@@ -4,58 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frutinhas Virais | Esqueleto Viral</title>
-<meta name="description" content="Aprenda a criar vídeos de frutinhas virais com IA, sem aparecer e sem editar do zero.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="components.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#05000b;--bg2:#0b0614;--t:#f5f0ff;--m:rgba(245,240,255,.65);--p:#a855f7;--p2:#c084fc}
-body{font-family:'Montserrat',sans-serif;background:radial-gradient(ellipse at 70% 20%,rgba(168,85,247,.25),transparent 50%),var(--bg);color:var(--t)}
-.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
-.hero{padding:130px 0 70px}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border:1px solid rgba(168,85,247,.35);background:rgba(168,85,247,.08);border-radius:8px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--p2)}
-h1{margin-top:18px;font-size:clamp(32px,6vw,68px);line-height:.95;letter-spacing:-2px;text-transform:uppercase}
+:root{--bg:#05000b;--text:#f5f0ff;--muted:rgba(245,240,255,.6);--p:#a855f7;--p2:#c084fc}
+body{font-family:'Montserrat',sans-serif;background:radial-gradient(ellipse at 70% 20%,rgba(168,85,247,.25),transparent 50%),var(--bg);color:var(--text)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:44px 120px 80px;gap:60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 65% 55%,rgba(168,85,247,.38) 0%,rgba(91,33,182,.18) 35%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;flex:0 0 48%;max-width:520px}
+.hero-tag{display:inline-flex;gap:8px;align-items:center;padding:7px 16px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.25);border-radius:6px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--p2)}
+h1{margin-top:18px;font-size:clamp(40px,5.5vw,78px);line-height:.95;letter-spacing:-2px;text-transform:uppercase}
 h1 span{display:block;background:linear-gradient(90deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sub{margin-top:18px;max-width:700px;color:var(--m);font-size:18px;line-height:1.6}
-.cta{margin-top:28px;display:inline-flex;align-items:center;justify-content:center;padding:18px 30px;border-radius:12px;text-decoration:none;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-size:14px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 16px 44px rgba(168,85,247,.35)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
-.card{padding:18px;border:1px solid rgba(168,85,247,.2);background:rgba(12,7,24,.8);border-radius:14px}
-.card h3{font-size:14px;margin-bottom:8px}
-.card p{font-size:13px;color:var(--m);line-height:1.6}
-.section{padding:10px 0 70px}
-.tt{font-size:clamp(24px,4vw,42px);text-transform:uppercase;letter-spacing:-1px}
-.faq{margin-top:20px;border-top:1px solid rgba(255,255,255,.08)}
-.faq details{border-bottom:1px solid rgba(255,255,255,.08);padding:14px 0}
-.faq summary{cursor:pointer;font-weight:700}
-.faq p{margin-top:8px;color:var(--m);font-size:14px;line-height:1.7}
-@media(max-width:900px){.grid{grid-template-columns:1fr}.hero{padding:110px 0 60px}.sub{font-size:15px}}
+.hero-sub{margin-top:18px;font-size:16px;line-height:1.7;color:var(--muted)}
+.btn{margin-top:30px;display:inline-flex;padding:18px 34px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;text-decoration:none;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;box-shadow:0 12px 34px rgba(168,85,247,.45)}
+.cards{position:relative;z-index:2;flex:1;min-height:500px}
+.card{position:absolute;width:280px;border-radius:20px;overflow:hidden;border:1px solid rgba(168,85,247,.35);box-shadow:0 26px 60px rgba(0,0,0,.52)}
+.card img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
+.c1{left:8%;top:54px;transform:rotate(-12deg);animation:f1 4.6s ease-in-out infinite}
+.c2{left:34%;top:10px;transform:rotate(0deg);z-index:2;animation:f2 4.2s ease-in-out infinite}
+.c3{left:60%;top:54px;transform:rotate(12deg);animation:f3 4.8s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-12px)}}
+@keyframes f2{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(0) translateY(-16px)}}
+@keyframes f3{0%,100%{transform:rotate(12deg) translateY(0)}50%{transform:rotate(12deg) translateY(-10px)}}
+@media(max-width:960px){.hero{padding:110px 22px 50px;display:block}.cards{display:none}}
 </style>
-<script src="components.js" defer></script>
 </head>
 <body>
 <div id="ev-header"></div>
 <section class="hero">
-  <div class="wrap">
-    <div class="badge">🍓 Frutinhas Virais</div>
-    <h1>Crie vídeos de frutas <span>que viralizam todo dia</span></h1>
-    <p class="sub">Método simples para criar conteúdo no estilo “frutinhas” usando IA. Sem aparecer, sem equipe e com passo a passo direto para publicar rápido.</p>
-    <a class="cta kiwify-link" data-kiwify-curso href="https://pay.kiwify.com.br/HM1g0Nv" target="_blank" rel="noopener">Quero começar agora</a>
-    <div class="grid">
-      <div class="card"><h3>Formato validado</h3><p>Estrutura pronta de roteiro, cena e edição para manter retenção alta.</p></div>
-      <div class="card"><h3>Sem complicação</h3><p>Ferramentas acessíveis e execução rápida para quem está começando.</p></div>
-      <div class="card"><h3>Aplicação imediata</h3><p>Você sai com processo claro para produzir e postar no mesmo dia.</p></div>
-    </div>
+  <div class="hero-content">
+    <div class="hero-tag">🍓 Frutinhas Virais · Entrega Imediata</div>
+    <h1>Crie vídeos de <span>frutinhas virais</span></h1>
+    <p class="hero-sub">Método direto para criar conteúdo que prende atenção e escala visualizações com IA, sem aparecer e sem edição complexa.</p>
+    <a class="btn kiwify-link" data-kiwify-curso href="https://pay.kiwify.com.br/HM1g0Nv" target="_blank" rel="noopener">Quero começar agora</a>
   </div>
-</section>
-<section class="section">
-  <div class="wrap">
-    <h2 class="tt">Perguntas frequentes</h2>
-    <div class="faq">
-      <details><summary>Preciso aparecer nos vídeos?</summary><p>Não. O foco é produção com IA e edição guiada, sem precisar gravar sua imagem.</p></details>
-      <details><summary>Serve para iniciante?</summary><p>Sim. O conteúdo é pensado para quem quer começar do zero, com fluxo simples.</p></details>
-      <details><summary>Quanto tempo para publicar o primeiro?</summary><p>A maioria consegue publicar o primeiro conteúdo no mesmo dia de aplicação.</p></details>
-    </div>
+  <div class="cards">
+    <div class="card c1"><img src="/prompts/assets/img/img1.jpeg" alt="Frutinhas 1"></div>
+    <div class="card c2"><img src="/prompts/assets/img/img2.jpeg" alt="Frutinhas 2"></div>
+    <div class="card c3"><img src="/prompts/assets/img/img3.jpeg" alt="Frutinhas 3"></div>
   </div>
 </section>
 <div id="ev-footer"></div>
