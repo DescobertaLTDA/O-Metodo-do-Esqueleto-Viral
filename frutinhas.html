@@ -11,7 +11,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#05000b;--text:#f5f0ff;--muted:rgba(245,240,255,.6);--p:#a855f7;--p2:#c084fc}
-body{font-family:'Montserrat',sans-serif;background:radial-gradient(ellipse at 70% 20%,rgba(168,85,247,.25),transparent 50%),var(--bg);color:var(--text)}
+body{font-family:'Montserrat',sans-serif;background:radial-gradient(ellipse at 70% 20%,rgba(168,85,247,.25),transparent 50%),var(--bg);color:var(--text);overflow-x:hidden}
+.urgency-banner{background:#000;border-bottom:1px solid rgba(168,85,247,.15);text-align:center;padding:10px 20px;font-size:11.5px;font-weight:700;letter-spacing:1px;color:rgba(245,240,255,.55);margin-top:72px;display:flex;align-items:center;justify-content:center;gap:10px}
 .hero{min-height:100vh;display:flex;align-items:center;padding:44px 120px 80px;gap:60px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 65% 55%,rgba(168,85,247,.38) 0%,rgba(91,33,182,.18) 35%,transparent 70%);pointer-events:none}
 .hero-content{position:relative;z-index:2;flex:0 0 48%;max-width:520px}
@@ -20,6 +21,7 @@ h1{margin-top:18px;font-size:clamp(40px,5.5vw,78px);line-height:.95;letter-spaci
 h1 span{display:block;background:linear-gradient(90deg,var(--p),var(--p2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-sub{margin-top:18px;font-size:16px;line-height:1.7;color:var(--muted)}
 .btn{margin-top:30px;display:inline-flex;padding:18px 34px;border-radius:12px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;text-decoration:none;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;box-shadow:0 12px 34px rgba(168,85,247,.45)}
+.trust{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:rgba(245,240,255,.45)}
 .cards{position:relative;z-index:2;flex:1;min-height:500px}
 .card{position:absolute;width:280px;border-radius:20px;overflow:hidden;border:1px solid rgba(168,85,247,.35);box-shadow:0 26px 60px rgba(0,0,0,.52)}
 .card img{display:block;width:100%;aspect-ratio:2/3;object-fit:cover}
@@ -29,17 +31,32 @@ h1 span{display:block;background:linear-gradient(90deg,var(--p),var(--p2));-webk
 @keyframes f1{0%,100%{transform:rotate(-12deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-12px)}}
 @keyframes f2{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(0) translateY(-16px)}}
 @keyframes f3{0%,100%{transform:rotate(12deg) translateY(0)}50%{transform:rotate(12deg) translateY(-10px)}}
-@media(max-width:960px){.hero{padding:110px 22px 50px;display:block}.cards{display:none}}
+@media(max-width:960px){
+  .urgency-banner{margin-top:58px;font-size:11px}
+  .hero{padding:0;display:block;min-height:calc(100vh - 58px)}
+  .hero::before{background:linear-gradient(to bottom,transparent 20%,rgba(5,0,8,.55) 52%,rgba(5,0,8,.96) 74%,#05000b 92%)}
+  .hero-mobile-bg{position:absolute;inset:0;z-index:0;background:url('/assets/img/hero_mobile1.jpeg') center top/cover no-repeat}
+  .hero-content{max-width:none;width:100%;padding:0 20px 42px;text-align:center;position:relative;margin-top:42vh}
+  .hero-tag{display:none}
+  h1{font-size:clamp(36px,11vw,56px);letter-spacing:-1px}
+  .hero-sub{font-size:14px;margin-top:10px}
+  .btn{margin-top:18px;width:100%;max-width:320px;justify-content:center;padding:16px 22px}
+  .trust{justify-content:center;gap:10px;font-size:10px;margin-top:10px}
+  .cards{display:none}
+}
 </style>
 </head>
 <body>
 <div id="ev-header"></div>
+<div class="urgency-banner">• 13 vagas restantes · <strong style="color:#fff">R$35,00</strong></div>
 <section class="hero">
+  <div class="hero-mobile-bg"></div>
   <div class="hero-content">
     <div class="hero-tag">🍓 Frutinhas Virais · Entrega Imediata</div>
-    <h1>Crie vídeos de <span>frutinhas virais</span></h1>
+    <h1>frutinhas <span>virais</span></h1>
     <p class="hero-sub">Método direto para criar conteúdo que prende atenção e escala visualizações com IA, sem aparecer e sem edição complexa.</p>
     <a class="btn kiwify-link" data-kiwify-curso href="https://pay.kiwify.com.br/HM1g0Nv" target="_blank" rel="noopener">Quero começar agora</a>
+    <div class="trust"><span>🔒 Garantia 7 dias</span><span>🔒 Acesso imediato</span><span>♾️ Acesso vitalício</span></div>
   </div>
   <div class="cards">
     <div class="card c1"><img src="/prompts/assets/img/img1.jpeg" alt="Frutinhas 1"></div>
