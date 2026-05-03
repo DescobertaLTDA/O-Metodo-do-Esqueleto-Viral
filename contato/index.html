@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<script src="/components.js"></script>
+<script src="/components.js?v=20260503a"></script>
 <script src="/config.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contato — Esqueleto Viral</title>
@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--o1:#A855F7;--o2:#C084FC;--o3:#FFFFFF;--dark:#000000;--dark2:#0a0a0a;--dark3:#0A0A0A;--dark4:#111111;--text:#FFFFFF;--muted:rgba(255,255,255,0.45);}
+:root{--o1:#FF5A00;--o2:#FFC478;--o3:#FFFFFF;--dark:#000000;--dark2:#0a0a0a;--dark3:#0A0A0A;--dark4:#111111;--text:#FFFFFF;--muted:rgba(255,255,255,0.45);}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--dark);color:var(--text);font-family:'Montserrat',sans-serif;min-height:100vh;}
@@ -34,10 +34,10 @@ body{background:var(--dark);color:var(--text);font-family:'Montserrat',sans-seri
 .contact-label{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--o2);margin-bottom:10px;}
 .contact-title{font-size:16px;font-weight:900;color:var(--text);margin-bottom:8px;}
 .contact-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
-.contact-btn{display:inline-block;background:transparent;border:1px solid rgba(168,85,247,0.35);color:var(--o2);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;border-radius:8px;transition:background .2s,border-color .2s,color .2s;cursor:pointer;}
-.contact-btn:hover{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.6);color:var(--o3);}
-.contact-btn.primary{background:linear-gradient(135deg,#7C3AED,#A855F7,#C084FC);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(168,85,247,0.35);}
-.contact-btn.primary:hover{box-shadow:0 8px 28px rgba(168,85,247,0.5);background:linear-gradient(135deg,#A855F7,#C084FC);}
+.contact-btn{display:inline-block;background:transparent;border:1px solid rgba(255,90,0,0.35);color:var(--o2);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;text-decoration:none;border-radius:8px;transition:background .2s,border-color .2s,color .2s;cursor:pointer;}
+.contact-btn:hover{background:rgba(255,90,0,0.1);border-color:rgba(255,90,0,0.6);color:var(--o3);}
+.contact-btn.primary{background:linear-gradient(135deg,#FF5A00,#FF5A00,#FFC478);border-color:transparent;color:#fff;box-shadow:0 4px 20px rgba(255,90,0,0.35);}
+.contact-btn.primary:hover{box-shadow:0 8px 28px rgba(255,90,0,0.5);background:linear-gradient(135deg,#FF5A00,#FFC478);}
 .form-section{max-width:640px;margin:0 auto;padding:0 60px 100px;}
 .form-title{font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:8px;}
 .form-title span{color:var(--o1);}
@@ -45,14 +45,14 @@ body{background:var(--dark);color:var(--text);font-family:'Montserrat',sans-seri
 .form-group{margin-bottom:16px;}
 .form-label{display:block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(240,232,216,0.4);margin-bottom:8px;}
 .form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:border-color .2s,background .2s;}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(168,85,247,0.5);background:rgba(255,255,255,0.06);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(255,90,0,0.5);background:rgba(255,255,255,0.06);}
 .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.18);}
-.form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(192,132,252,0.7)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
+.form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,196,120,0.7)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;}
 .form-select option{background:#161616;color:var(--text);}
 .form-textarea{resize:vertical;min-height:120px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-btn{width:100%;background:linear-gradient(135deg,#7C3AED,#A855F7,#C084FC);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:18px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 8px 32px rgba(168,85,247,0.4);transition:transform .2s,box-shadow .2s;margin-top:8px;}
-.form-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(168,85,247,0.55);}
+.form-btn{width:100%;background:linear-gradient(135deg,#FF5A00,#FF5A00,#FFC478);color:#fff;font-family:'Montserrat',sans-serif;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:18px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 8px 32px rgba(255,90,0,0.4);transition:transform .2s,box-shadow .2s;margin-top:8px;}
+.form-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,90,0,0.55);}
 .form-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
 .form-success{display:none;text-align:center;padding:48px 24px;background:rgba(0,200,80,0.06);border:1px solid rgba(0,200,80,0.2);border-radius:16px;margin-top:16px;}
 .form-success-icon{font-size:56px;margin-bottom:16px;}
@@ -62,7 +62,7 @@ body{background:var(--dark);color:var(--text);font-family:'Montserrat',sans-seri
 /* MODAIS */
 .modal-overlay{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal-box{background:var(--dark3);border:1px solid rgba(168,85,247,0.15);border-radius:20px;width:100%;max-width:480px;padding:40px 36px;position:relative;transform:translateY(20px);transition:transform .35s ease;max-height:90vh;overflow-y:auto;}
+.modal-box{background:var(--dark3);border:1px solid rgba(255,90,0,0.15);border-radius:20px;width:100%;max-width:480px;padding:40px 36px;position:relative;transform:translateY(20px);transition:transform .35s ease;max-height:90vh;overflow-y:auto;}
 .modal-overlay.open .modal-box{transform:translateY(0);}
 .modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:rgba(240,232,216,0.3);font-size:22px;cursor:pointer;line-height:1;transition:color .2s;}
 .modal-close:hover{color:var(--o2);}

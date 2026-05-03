@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --o1: #A855F7;
-  --o2: #C084FC;
+  --o1: #FF5A00;
+  --o2: #FFC478;
   --o3: #FFFFFF;
   --dark: #000000;
   --dark2: #0A0A0A;
@@ -41,8 +41,8 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   background: rgba(4,0,8,0.97);
   border-bottom: 1px solid rgba(255,255,255,0.04);}
-nav::before { content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent 0%,rgba(168,85,247,0.6) 30%,rgba(233,213,255,0.9) 50%,rgba(168,85,247,0.6) 70%,transparent 100%); pointer-events:none; }
-nav { box-shadow: 0 1px 0 rgba(168,85,247,0.12), 0 8px 32px rgba(0,0,0,0.6);
+nav::before { content:""; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent 0%,rgba(255,90,0,0.6) 30%,rgba(255,196,120,0.9) 50%,rgba(255,90,0,0.6) 70%,transparent 100%); pointer-events:none; }
+nav { box-shadow: 0 1px 0 rgba(255,90,0,0.12), 0 8px 32px rgba(0,0,0,0.6);
   backdrop-filter: blur(20px);
 }
 .nav-logo {
@@ -95,7 +95,7 @@ nav { box-shadow: 0 1px 0 rgba(168,85,247,0.12), 0 8px 32px rgba(0,0,0,0.6);
   text-transform: uppercase; letter-spacing: 1px;
   color: var(--text); margin: 48px 0 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(168,85,247,0.15);
+  border-bottom: 1px solid rgba(255,90,0,0.15);
 }
 .page-content h2::before {
   content: '';
@@ -116,15 +116,15 @@ nav { box-shadow: 0 1px 0 rgba(168,85,247,0.12), 0 8px 32px rgba(0,0,0,0.6);
 }
 .page-content a {
   color: var(--o1); text-decoration: none;
-  border-bottom: 1px solid rgba(192,132,252,0.3);
+  border-bottom: 1px solid rgba(255,196,120,0.3);
   transition: color .2s;
 }
 .page-content a:hover { color: var(--o3); }
 .page-content strong { color: var(--text); }
 
 .info-box {
-  background: rgba(168,85,247,0.06);
-  border: 1px solid rgba(168,85,247,0.18);
+  background: rgba(255,90,0,0.06);
+  border: 1px solid rgba(255,90,0,0.18);
   border-radius: 12px;
   padding: 20px 24px;
   margin: 24px 0;
@@ -137,7 +137,7 @@ nav { box-shadow: 0 1px 0 rgba(168,85,247,0.12), 0 8px 32px rgba(0,0,0,0.6);
 /* FOOTER */
 footer {
   background: var(--dark2);
-  border-top: 1px solid rgba(168,85,247,0.08);
+  border-top: 1px solid rgba(255,90,0,0.08);
   padding: 28px 60px;
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 12px;

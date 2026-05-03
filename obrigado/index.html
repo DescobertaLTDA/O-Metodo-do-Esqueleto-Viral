@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<script src="/components.js"></script>
+<script src="/components.js?v=20260503a"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Obrigado! — Esqueleto Viral</title>
 <meta name="robots" content="noindex, nofollow">
@@ -29,8 +29,8 @@ fbq('track', 'PageView');
 
 <style>
 :root {
-  --o1: #A855F7;
-  --o2: #C084FC;
+  --o1: #FF5A00;
+  --o2: #FFC478;
   --o3: #FFFFFF;
   --dark: #000000;
   --dark2: #0A0A0A;
@@ -68,8 +68,8 @@ body::after {
   content:'';
   position:absolute; inset:0;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(168,85,247,0.14) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(192,132,252,0.08) 0%, transparent 60%);
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(255,90,0,0.14) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255,196,120,0.08) 0%, transparent 60%);
   pointer-events:none;
 }
 
@@ -92,12 +92,12 @@ body::after {
   background:linear-gradient(135deg, var(--o1), var(--o2));
   display:flex; align-items:center; justify-content:center;
   font-size:48px;
-  box-shadow: 0 0 0 12px rgba(168,85,247,0.08), 0 0 0 24px rgba(168,85,247,0.04), 0 20px 60px rgba(168,85,247,0.4);
+  box-shadow: 0 0 0 12px rgba(255,90,0,0.08), 0 0 0 24px rgba(255,90,0,0.04), 0 20px 60px rgba(255,90,0,0.4);
   animation: pulse-ring 2s ease-in-out infinite;
 }
 @keyframes pulse-ring {
-  0%,100% { box-shadow: 0 0 0 12px rgba(168,85,247,0.08), 0 0 0 24px rgba(168,85,247,0.04), 0 20px 60px rgba(168,85,247,0.4); }
-  50%      { box-shadow: 0 0 0 16px rgba(168,85,247,0.12), 0 0 0 32px rgba(168,85,247,0.06), 0 20px 60px rgba(168,85,247,0.5); }
+  0%,100% { box-shadow: 0 0 0 12px rgba(255,90,0,0.08), 0 0 0 24px rgba(255,90,0,0.04), 0 20px 60px rgba(255,90,0,0.4); }
+  50%      { box-shadow: 0 0 0 16px rgba(255,90,0,0.12), 0 0 0 32px rgba(255,90,0,0.06), 0 20px 60px rgba(255,90,0,0.5); }
 }
 
 /* TEXTOS */
@@ -117,9 +117,9 @@ body::after {
 .headline .line-white { display:block; color:#fff; }
 .headline .line-fire {
   display:block;
-  background:linear-gradient(90deg, #FFFFFF 0%, #C084FC 55%, #A855F7 100%);
+  background:linear-gradient(90deg, #FFFFFF 0%, #FFC478 55%, #FF5A00 100%);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  filter:drop-shadow(0 2px 20px rgba(168,85,247,0.45));
+  filter:drop-shadow(0 2px 20px rgba(255,90,0,0.45));
 }
 .subtitle {
   font-size:15px; color:var(--muted); line-height:1.75;
@@ -137,11 +137,11 @@ body::after {
 .step {
   display:flex; align-items:flex-start; gap:14px;
   background:var(--dark3);
-  border:1px solid rgba(168,85,247,0.12);
+  border:1px solid rgba(255,90,0,0.12);
   border-radius:14px; padding:16px 18px;
   transition:border-color .3s;
 }
-.step:hover { border-color:rgba(168,85,247,0.3); }
+.step:hover { border-color:rgba(255,90,0,0.3); }
 .step-num {
   width:30px; height:30px; flex-shrink:0; border-radius:50%;
   background:linear-gradient(135deg, var(--o1), var(--o2));
@@ -155,16 +155,16 @@ body::after {
 .cta-wrap { animation: fadeUp .6s .6s ease both; margin-bottom:32px; }
 .btn-primary {
   display:flex; flex-direction:column; align-items:center;
-  background:linear-gradient(135deg, #7C3AED 0%, #A855F7 55%, #C084FC 100%);
+  background:linear-gradient(135deg, #FF5A00 0%, #FF5A00 55%, #FFC478 100%);
   color:#fff; text-decoration:none;
   padding:20px 32px; border-radius:16px;
   font-size:14px; font-weight:900; letter-spacing:1.5px;
   text-transform:uppercase;
-  box-shadow:0 8px 40px rgba(168,85,247,0.45);
+  box-shadow:0 8px 40px rgba(255,90,0,0.45);
   transition:transform .2s, box-shadow .2s;
   margin-bottom:14px;
 }
-.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 50px rgba(168,85,247,0.65); }
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 50px rgba(255,90,0,0.65); }
 .btn-kiwify-logo { height:18px; width:auto; margin-bottom:6px; opacity:0.9; }
 .btn-sub { font-size:11px; font-weight:500; opacity:.7; letter-spacing:.5px; text-transform:none; margin-top:4px; }
 
@@ -177,7 +177,7 @@ body::after {
 /* DIVIDER */
 .divider {
   height:1px;
-  background:linear-gradient(90deg, transparent, rgba(168,85,247,0.2), transparent);
+  background:linear-gradient(90deg, transparent, rgba(255,90,0,0.2), transparent);
   margin:8px 0 28px;
 }
 
@@ -302,7 +302,7 @@ body::after {
     <!-- Suporte -->
     <p style="margin-top:24px;font-size:11px;color:rgba(240,232,216,0.2);line-height:1.8;">
       Algum problema? Fale com a gente:<br>
-<a href="/cdn-cgi/l/email-protection#04606177676b666176706569616a706568446369656d682a676b69" style="color:rgba(192,132,252,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="b9dddccadad6dbdccbcdd8d4dcd7cdd8d5f9ded4d8d0d597dad6d4">[email&#160;protected]</span></a>
+<a href="/cdn-cgi/l/email-protection#04606177676b666176706569616a706568446369656d682a676b69" style="color:rgba(255,196,120,0.65);text-decoration:none;"><span class="__cf_email__" data-cfemail="b9dddccadad6dbdccbcdd8d4dcd7cdd8d5f9ded4d8d0d597dad6d4">[email&#160;protected]</span></a>
     </p>
 
   </div>
@@ -316,7 +316,7 @@ body::after {
   var canvas = document.getElementById('confetti-canvas');
   var ctx = canvas.getContext('2d');
   var W, H, particles = [];
-var COLORS = ['#7C3AED','#A855F7','#C084FC','#A855F7','#fff','#6D28D9'];
+var COLORS = ['#FF5A00','#FF5A00','#FFC478','#FF5A00','#fff','#B44600'];
   function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
   resize(); window.addEventListener('resize', resize);
   function rand(a,b){ return Math.random()*(b-a)+a; }
