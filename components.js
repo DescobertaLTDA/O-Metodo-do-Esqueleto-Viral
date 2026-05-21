@@ -82,21 +82,7 @@
       '<nav>',
       '  <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Ir para a página inicial">',
       '    <div class="nav-logo-icon">',
-      '      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">',
-      '        <path d="M12 2C12 2 9 6 9 9.5C9 9.5 7 8.5 7 6.5C5.5 8 5 10 5 12C5 15.87 8.13 19 12 19C15.87 19 19 15.87 19 12C19 7.5 12 2 12 2Z" fill="url(#fire1)"/>',
-      '        <path d="M12 22C12 22 10 19.5 10 17.5C10 16.12 10.9 15 12 15C13.1 15 14 16.12 14 17.5C14 19.5 12 22 12 22Z" fill="url(#fire2)"/>',
-      '        <defs>',
-      '          <linearGradient id="fire1" x1="12" y1="2" x2="12" y2="19" gradientUnits="userSpaceOnUse">',
-      '            <stop offset="0%" stop-color="#FF8A1F"/>',
-      '            <stop offset="60%" stop-color="#FF5A00"/>',
-      '            <stop offset="100%" stop-color="#ff5a00"/>',
-      '          </linearGradient>',
-      '          <linearGradient id="fire2" x1="12" y1="15" x2="12" y2="22" gradientUnits="userSpaceOnUse">',
-      '            <stop offset="0%" stop-color="#FFC478"/>',
-      '            <stop offset="100%" stop-color="#FF5A00"/>',
-      '          </linearGradient>',
-      '        </defs>',
-      '      </svg>',
+      '      <img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;">',
       '    </div>',
       '    <div class="nav-logo-text">',
       '      <span class="nav-logo-main">ESQUELETO</span>',
@@ -183,13 +169,8 @@
 
     logo.innerHTML =
       '<div class="nav-logo-icon">' +
-      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M12 2C12 2 9 6 9 9.5C9 9.5 7 8.5 7 6.5C5.5 8 5 10 5 12C5 15.87 8.13 19 12 19C15.87 19 19 15.87 19 12C19 7.5 12 2 12 2Z" fill="url(#fire1)"/>' +
-      '<path d="M12 22C12 22 10 19.5 10 17.5C10 16.12 10.9 15 12 15C13.1 15 14 16.12 14 17.5C14 19.5 12 22 12 22Z" fill="url(#fire2)"/>' +
-      '<defs>' +
-      '<linearGradient id="fire1" x1="12" y1="2" x2="12" y2="19" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FF8A1F"/><stop offset="60%" stop-color="#FF5A00"/><stop offset="100%" stop-color="#ff5a00"/></linearGradient>' +
-      '<linearGradient id="fire2" x1="12" y1="15" x2="12" y2="22" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#FFC478"/><stop offset="100%" stop-color="#FF5A00"/></linearGradient>' +
-      '</defs></svg></div>' +
+      '<img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;">' +
+      '</div>' +
       '<div class="nav-logo-text"><span class="nav-logo-main">ESQUELETO</span></div>';
   }
 
