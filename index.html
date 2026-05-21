@@ -151,6 +151,7 @@ src="https://www.facebook.com/tr?id=940556475332489&ev=PageView&noscript=1"/>
 </script>
 
 <script src="/components.js?v=20260503a"></script>
+<script src="/assets/utm-tracker.js?v=20260521"></script>
 
 <link rel="preload" as="image" href="assets/img/hero_mobile1.jpeg" media="(max-width:768px)">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_auto,w_800/v1773239895/Skeleton_gladiator_fights_trex_e2665aab2e_dngr6u.jpg" media="(min-width:769px)">
@@ -4640,35 +4641,8 @@ document.querySelectorAll('.faq-item').forEach(function(item){
   tick();
 })();
 
-(function(){
-(function(){
-  var BASE_URL='https://pay.kiwify.com.br/HM1g0Nv',SS_KEY='ev_utm',LS_KEY='ev_utm_ls';
-  var CANAL_MAP={'pontomisterioso':{utm_source:'youtube',utm_medium:'bio',utm_campaign:'pontomisterioso'},'canalligado':{utm_source:'youtube',utm_medium:'bio',utm_campaign:'canalligado'},'misteriocentral':{utm_source:'youtube',utm_medium:'bio',utm_campaign:'misteriocentral'},'socratesbizarro':{utm_source:'youtube',utm_medium:'bio',utm_campaign:'socratesbizarro'},'primalreverse':{utm_source:'youtube',utm_medium:'bio',utm_campaign:'primalreverse'},'descobertamental':{utm_source:'tiktok',utm_medium:'bio',utm_campaign:'descobertamental'}};
-  var FALLBACK={utm_source:'site',utm_medium:'organico',utm_campaign:'direto'};
-  function detectCanal(){ var slug=window.location.pathname.replace(/^\//,'').replace(/\/$/,'').toLowerCase();return CANAL_MAP[slug]||null; }
-  var UTM_KEYS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
-  function readParams(){ var canal=detectCanal(),p=canal?Object.assign({},canal):{};var u=new URLSearchParams(window.location.search);UTM_KEYS.forEach(function(k){ var v=u.get(k);if(v&&v.trim()!=='')p[k]=v.trim(); });var src=u.get('src');if(src&&src.trim())p['utm_content']=p['utm_content']||src.trim();return p; }
-  function saveParams(p){ var existing={};try{existing=JSON.parse(sessionStorage.getItem(SS_KEY)||'{}');}catch(e){}var merged=Object.assign({},existing,p);if(!merged.utm_source)merged.utm_source=FALLBACK.utm_source;if(!merged.utm_medium)merged.utm_medium=FALLBACK.utm_medium;if(!merged.utm_campaign)merged.utm_campaign=FALLBACK.utm_campaign;try{sessionStorage.setItem(SS_KEY,JSON.stringify(merged));}catch(e){}try{localStorage.setItem(LS_KEY,JSON.stringify(merged));}catch(e){}return merged; }
-  function loadSaved(){ try{var ss=JSON.parse(sessionStorage.getItem(SS_KEY)||'null');if(ss)return ss;var ls=JSON.parse(localStorage.getItem(LS_KEY)||'null');if(ls)return ls;}catch(e){}return null; }
-  function buildUrl(p){ var keys=Object.keys(p);if(!keys.length)return BASE_URL;return BASE_URL+'?'+keys.map(function(k){ return encodeURIComponent(k)+'='+encodeURIComponent(p[k]); }).join('&'); }
-  function updateLinks(url){ document.querySelectorAll('a.kiwify-link, [data-kiwify]').forEach(function(el){ el.href=url; el.setAttribute('data-ev-utm-url', url); }); }
-  function init(){ var fromUrl=readParams(),hasFresh=Object.keys(fromUrl).length>0,saved=loadSaved();var final=hasFresh?saveParams(fromUrl):(saved?saveParams(saved):saveParams({}));var url=buildUrl(final);window.__EV_CHECKOUT_URL=url;updateLinks(url);setTimeout(function(){ updateLinks(url); },1500);setTimeout(function(){ updateLinks(url); },4000); }
-  init();
-})();
+// UTM Tracker v2 — captura todas as fontes e propaga até o checkout
 
-document.querySelectorAll('a.kiwify-link').forEach(function(el){
-  el.addEventListener('click',function(){
-    // Meta Pixel
-    if(typeof fbq==='function'){ fbq('track','InitiateCheckout',{content_name:'Esqueleto Viral',currency:'BRL',value:35.00}); }
-    // Google Analytics — begin_checkout (clique no botão, não compra confirmada)
-    if(typeof gtag==='function'){ gtag('event','begin_checkout',{currency:'BRL',value:35.00,items:[{item_name:'Curso Esqueleto Viral',price:35.00,quantity:1}]}); }
-    // TikTok Pixel — InitiateCheckout
-    if(typeof ttq==='object'){ ttq.track('InitiateCheckout',{content_id:'esqueleto-viral',content_name:'Esqueleto Viral',content_type:'product',currency:'BRL',value:35.00}); }
-  });
-});
-
-// TikTok Pixel — ViewContent (disparado ao carregar a página)
-if(typeof ttq==='object'){ ttq.track('ViewContent',{content_id:'esqueleto-viral',content_name:'Esqueleto Viral',content_type:'product',currency:'BRL',value:35.00}); }
 // Nav timer sync
 (function(){
   function syncNav(){

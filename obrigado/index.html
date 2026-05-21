@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="/components.js?v=20260503a"></script>
+<script src="/assets/utm-tracker.js?v=20260521"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Obrigado! — Esqueleto Viral</title>
 <meta name="robots" content="noindex, nofollow">
@@ -349,23 +350,7 @@ var COLORS = ['#FF5A00','#FF5A00','#FFC478','#FF5A00','#fff','#B44600'];
   setTimeout(function(){ spawn(60); }, 1600);
 })();
 
-// ── Rastreamento de compra — GA4 + Meta Pixel ─────────────────────
-(function(){
-  var STORAGE_KEY = 'ev_purchase_fired';
-  if(sessionStorage.getItem(STORAGE_KEY)) return;
-
-  var params = new URLSearchParams(window.location.search);
-  var valorBruto = parseFloat(params.get('valor'));
-  var valor = (!isNaN(valorBruto) && valorBruto > 0) ? valorBruto : 97.00;
-  var produto = params.get('produto') || 'Produto Esqueleto Viral';
-  var transactionId = 'txn_' + Date.now() + '_' + Math.floor(Math.random()*100000);
-
-  if(typeof gtag === 'function'){
-    gtag('event', 'purchase', {
-      transaction_id: transactionId,
-      value: valor,
-      currency: 'BRL',
-      items: [{ item_id: 'esquel
+// Purchase com UTMs tratado pelo utm-tracker.js
 
 
 
