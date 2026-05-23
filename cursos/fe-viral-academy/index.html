@@ -74,7 +74,7 @@ const EV_CONFIG = {
   seo: {
     siteUrl: 'https://esqueletoviral.com.br',
     blogUrl:  'https://esqueletoviral.com.br/blog',
-    favicon:  '/cursos/fe-viral-academy/assets/img/jesus_hero.png',
+    favicon:  '/cursos/fe-viral-academy/assets/img/logo.png',
     ogImage:  'https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_100,w_1200/v1774009933/Skeleton_warrior_filming_202603200931_vcjxjh.jpg',
   },
 
@@ -2035,8 +2035,11 @@ nav::before {
     var logo = document.getElementById('nav-logo-main');
     if (!logo) return;
     var main = logo.querySelector('.nav-logo-main');
-    if (main) {
-      main.innerHTML = 'ACADEMY';
+    if (main) main.innerHTML = 'ACADEMY';
+    var icon = logo.querySelector('.nav-logo-icon img');
+    if (icon) {
+      icon.src = '/cursos/fe-viral-academy/assets/img/logo.png';
+      icon.alt = 'Fé Viral Academy';
     }
     clearInterval(_fvaInterval);
   }
