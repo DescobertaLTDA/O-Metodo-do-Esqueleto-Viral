@@ -3328,8 +3328,9 @@ nav::before {
       .ev-analytics-banner p { font-size:12px; }
 
       /* ── Carrossel mobile ── */
-      .ev-analytics-inner { padding:0 16px; overflow:hidden; }
-      .fva-carousel-wrap { gap:8px; overflow:hidden; }
+      .proof-section { overflow:hidden; } /* contém overflow no nível da section */
+      .ev-analytics-inner { padding:0 16px; overflow:visible; }
+      .fva-carousel-wrap { gap:8px; overflow:visible; }
       .fva-stack-container {
         width: 52vw;
         height: calc(52vw * 16 / 9);
@@ -5462,6 +5463,21 @@ window.CRISP_WEBSITE_ID = "";
   window.fvaCarousel = function(dir) {
     fvaGoTo(current + dir);
   };
+
+  // Touch swipe
+  var stack = document.getElementById('fvaStack');
+  var _tx = 0, _ty = 0;
+  stack.addEventListener('touchstart', function(e) {
+    _tx = e.touches[0].clientX;
+    _ty = e.touches[0].clientY;
+  }, { passive: true });
+  stack.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - _tx;
+    var dy = e.changedTouches[0].clientY - _ty;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 38) {
+      fvaGoTo(current + (dx < 0 ? 1 : -1));
+    }
+  }, { passive: true });
 
   update();
 })();
