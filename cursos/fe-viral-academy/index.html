@@ -74,7 +74,7 @@ const EV_CONFIG = {
   seo: {
     siteUrl: 'https://esqueletoviral.com.br',
     blogUrl:  'https://esqueletoviral.com.br/blog',
-    favicon:  '/assets/logo/logo_1_teste.webp',
+    favicon:  '/cursos/fe-viral-academy/assets/img/jesus_hero.png',
     ogImage:  'https://res.cloudinary.com/dxzgkrshw/image/upload/f_auto,q_100,w_1200/v1774009933/Skeleton_warrior_filming_202603200931_vcjxjh.jpg',
   },
 
@@ -2007,6 +2007,43 @@ footer { background:var(--dark2); border-top:1px solid rgba(201,168,76,0.08); pa
 })();
 </script>
 
+<!-- FVA: header overrides -->
+<style>
+nav {
+  box-shadow: 0 1px 0 rgba(201,168,76,0.25), 0 8px 32px rgba(6,13,31,0.85) !important;
+}
+nav::before {
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.6) 30%, rgba(240,208,128,0.95) 50%, rgba(201,168,76,0.6) 70%, transparent 100%) !important;
+}
+.nav-logo-icon {
+  border-color: rgba(201,168,76,0.35) !important;
+  box-shadow: 0 0 16px rgba(201,168,76,0.25), inset 0 1px 0 rgba(255,255,255,0.06) !important;
+}
+.nav-btn {
+  background: linear-gradient(135deg, #C9A84C 0%, #C9A84C 50%, #F0D080 100%) !important;
+  box-shadow: 0 4px 24px rgba(150,120,40,0.5), 0 1px 0 rgba(255,255,255,0.1) inset !important;
+  color: #0a0a0a !important;
+}
+.nav-btn:hover {
+  box-shadow: 0 8px 32px rgba(201,168,76,0.6), 0 1px 0 rgba(255,255,255,0.1) inset !important;
+}
+</style>
+
+<script>
+(function() {
+  function patchFVAHeader() {
+    var logo = document.getElementById('nav-logo-main');
+    if (!logo) return;
+    var main = logo.querySelector('.nav-logo-main');
+    if (main) {
+      main.innerHTML = 'ACADEMY';
+    }
+    clearInterval(_fvaInterval);
+  }
+  var _fvaInterval = setInterval(patchFVAHeader, 50);
+  setTimeout(function(){ clearInterval(_fvaInterval); }, 5000);
+})();
+</script>
 
 </head>
 <body>
