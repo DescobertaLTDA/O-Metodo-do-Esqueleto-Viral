@@ -3257,10 +3257,21 @@ nav::before {
     .ev-sample-player-inner { position:relative; border-radius:16px; overflow:hidden; border:1px solid rgba(201,168,76,0.35); box-shadow:0 0 0 1px rgba(240,208,128,0.06),0 0 60px rgba(201,168,76,0.18),0 30px 70px rgba(0,0,0,0.7); z-index:1; }
     .ev-sample-player-line { position:absolute; top:0; left:0; right:0; height:2px; z-index:2; background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.7) 30%,rgba(240,208,128,0.95) 50%,rgba(201,168,76,0.7) 70%,transparent 100%); }
     .ev-sample-player video { width:100%; aspect-ratio:9/16; display:block; border:none; background:#000; object-fit:cover; }
-    .fva-carousel-wrap { display:flex; align-items:center; gap:16px; justify-content:center; margin-bottom:20px; }
-    .fva-carousel-btn { background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.9); width:40px; height:40px; border-radius:50%; font-size:28px; line-height:1; cursor:pointer; flex-shrink:0; transition:all .2s; display:flex; align-items:center; justify-content:center; padding-bottom:2px; }
+    .fva-carousel-wrap { display:flex; align-items:center; justify-content:center; margin-bottom:16px; gap:12px; }
+    .fva-stack-container { position:relative; width:220px; height:391px; flex-shrink:0; overflow:visible; }
+    .fva-stack-item { position:absolute; top:0; left:0; width:100%; height:100%; border-radius:16px; overflow:hidden; border:1px solid rgba(201,168,76,0.35); box-shadow:0 24px 60px rgba(0,0,0,0.85); transition:transform .45s cubic-bezier(.4,0,.2,1), opacity .45s ease; cursor:pointer; will-change:transform; }
+    .fva-stack-item[data-pos="0"]  { transform:translateX(0) scale(1); z-index:3; cursor:default; }
+    .fva-stack-item[data-pos="-1"] { transform:translateX(-62%) scale(0.80); z-index:2; }
+    .fva-stack-item[data-pos="1"]  { transform:translateX(62%) scale(0.80); z-index:2; }
+    .fva-stack-overlay { position:absolute; inset:0; z-index:4; background:rgba(6,13,31,0.68); transition:opacity .45s ease; border-radius:16px; }
+    .fva-stack-item[data-pos="0"] .fva-stack-overlay { opacity:0; pointer-events:none; }
+    .fva-stack-item:not([data-pos="0"]) .fva-stack-overlay { opacity:1; cursor:pointer; }
+    .fva-stack-inner { position:relative; width:100%; height:100%; }
+    .fva-stack-inner video { width:100%; height:100%; object-fit:cover; display:block; background:#000; }
+    .fva-top-line { position:absolute; top:0; left:0; right:0; height:2px; z-index:6; pointer-events:none; background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.7) 30%,rgba(240,208,128,0.95) 50%,rgba(201,168,76,0.7) 70%,transparent 100%); }
+    .fva-carousel-btn { background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.3); color:rgba(201,168,76,0.9); width:38px; height:38px; border-radius:50%; font-size:26px; cursor:pointer; flex-shrink:0; transition:all .2s; display:flex; align-items:center; justify-content:center; position:relative; z-index:10; padding-bottom:2px; }
     .fva-carousel-btn:hover { background:rgba(201,168,76,0.28); border-color:rgba(201,168,76,0.6); }
-    .fva-carousel-dots { display:flex; gap:8px; justify-content:center; margin-bottom:32px; }
+    .fva-carousel-dots { display:flex; gap:8px; justify-content:center; margin-top:20px; margin-bottom:32px; }
     .fva-dot { width:8px; height:8px; border-radius:50%; background:rgba(201,168,76,0.2); cursor:pointer; transition:all .25s; border:none; }
     .fva-dot.fva-dot-active { background:rgba(201,168,76,0.9); transform:scale(1.25); }
 
@@ -3330,15 +3341,34 @@ nav::before {
         </h3>
       </div>
 
-      <!-- Carrossel 9:16 -->
+      <!-- Carrossel 9:16 stack -->
       <div class="fva-carousel-wrap">
         <button class="fva-carousel-btn" onclick="fvaCarousel(-1)" aria-label="Anterior">&#8249;</button>
-        <div class="ev-sample-player">
-          <div class="ev-sample-player-glow">
-            <div class="ev-sample-player-inner">
-              <div class="ev-sample-player-line"></div>
-              <video id="fvaVideo" controls playsinline preload="none">
-                <source id="fvaVideoSrc" src="assets/videos/video_1.mp4" type="video/mp4">
+        <div class="fva-stack-container" id="fvaStack">
+          <div class="fva-stack-item" data-vidx="0" onclick="this.dataset.pos!=='0'&&fvaGoTo(0)">
+            <div class="fva-stack-overlay"></div>
+            <div class="fva-stack-inner">
+              <div class="fva-top-line"></div>
+              <video controls playsinline preload="metadata">
+                <source src="assets/videos/video_1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="fva-stack-item" data-vidx="1" onclick="this.dataset.pos!=='0'&&fvaGoTo(1)">
+            <div class="fva-stack-overlay"></div>
+            <div class="fva-stack-inner">
+              <div class="fva-top-line"></div>
+              <video controls playsinline preload="metadata">
+                <source src="assets/videos/video_2.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div class="fva-stack-item" data-vidx="2" onclick="this.dataset.pos!=='0'&&fvaGoTo(2)">
+            <div class="fva-stack-overlay"></div>
+            <div class="fva-stack-inner">
+              <div class="fva-top-line"></div>
+              <video controls playsinline preload="metadata">
+                <source src="assets/videos/video_3.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -5584,28 +5614,46 @@ window.CRISP_WEBSITE_ID = "";
 
 <script>
 (function() {
-  var videos = [
-    'assets/videos/video_1.mp4',
-    'assets/videos/video_2.mp4',
-    'assets/videos/video_3.mp4'
-  ];
+  var n = 3;
   var current = 0;
 
-  window.fvaGoTo = function(idx) {
-    current = idx;
-    var vid = document.getElementById('fvaVideo');
-    var src = document.getElementById('fvaVideoSrc');
-    if (vid) vid.pause();
-    if (src) { src.src = videos[current]; }
-    if (vid) vid.load();
+  function getPos(idx) {
+    var diff = (idx - current + n) % n;
+    if (diff > n / 2) diff -= n;
+    return diff;
+  }
+
+  function update() {
+    document.querySelectorAll('.fva-stack-item').forEach(function(item) {
+      var idx = +item.getAttribute('data-vidx');
+      var pos = getPos(idx);
+      item.setAttribute('data-pos', pos);
+      var vid = item.querySelector('video');
+      if (vid && pos !== 0) vid.pause();
+    });
     document.querySelectorAll('.fva-dot').forEach(function(d, i) {
       d.classList.toggle('fva-dot-active', i === current);
     });
+  }
+
+  // Thumbnail: mostra frame no segundo 1 de cada vídeo inativo
+  document.querySelectorAll('.fva-stack-item video').forEach(function(vid, i) {
+    vid.addEventListener('loadedmetadata', function() {
+      if (i !== current) vid.currentTime = 1;
+    });
+  });
+
+  window.fvaGoTo = function(idx) {
+    document.querySelectorAll('.fva-stack-item video').forEach(function(v) { v.pause(); });
+    current = ((idx % n) + n) % n;
+    update();
   };
 
   window.fvaCarousel = function(dir) {
-    fvaGoTo((current + dir + videos.length) % videos.length);
+    fvaGoTo(current + dir);
   };
+
+  update();
 })();
 </script>
 </body>
