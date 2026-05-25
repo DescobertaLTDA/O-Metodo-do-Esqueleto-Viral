@@ -93,6 +93,7 @@
       '  <div class="foot-bar">',
       '    <div class="foot-bar-inner">',
       '      <p class="foot-copy">© 2026 L.G.S Descoberta Mental LTDA - CNPJ 56.027.103/0001-08 - Todos os direitos reservados</p>',
+      '      <span style="font-size:10px;color:rgba(255,255,255,0.08);letter-spacing:1px;font-family:monospace;">v1.0.0</span>',
       '    </div>',
       '  </div>',
       '</footer>'
@@ -130,7 +131,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525m')
+    fetch(BASE + file + '?v=20260525n')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
