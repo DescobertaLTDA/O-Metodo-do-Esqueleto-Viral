@@ -12,110 +12,47 @@
   var INLINE_COMPONENTS = {
     'header.html': [
       '<style>',
-      'nav {',
-      '  position:fixed; top:0; left:0; right:0; z-index:500;',
-      '  padding:0 60px; height:72px;',
-      '  display:flex; align-items:center; justify-content:space-between;',
-      '  background:rgba(4,0,8,0.97);',
-      '  backdrop-filter:none;',
-      '  border-bottom:1px solid rgba(255,255,255,0.04);',
-      '  box-shadow: 0 1px 0 rgba(255,90,0,0.12), 0 8px 32px rgba(0,0,0,0.6);',
-      '}',
-      'nav::before {',
-      "  content:'';",
-      '  position:absolute; top:0; left:0; right:0; height:2px;',
-      '  background: linear-gradient(90deg, transparent 0%, rgba(255,90,0,0.6) 30%, rgba(255,196,120,0.9) 50%, rgba(255,90,0,0.6) 70%, transparent 100%);',
-      '  pointer-events:none;',
-      '}',
-      '.nav-logo {',
-      '  display:flex; align-items:center; gap:12px;',
-      '  font-weight:900; font-size:15px;',
-      '  letter-spacing:4px; text-transform:uppercase;',
-      '  color:rgba(245,240,255,0.92);',
-      '  text-decoration:none;',
-      '  position:relative;',
-      '}',
-      '.nav-logo-icon {',
-      '  width:36px; height:36px;',
-      '  background: linear-gradient(135deg, #0a0a0a, #000000);',
-      '  border:1px solid rgba(255,90,0,0.3);',
-      '  border-radius:10px;',
-      '  display:flex; align-items:center; justify-content:center;',
-      '  font-size:17px;',
-      '  box-shadow: 0 0 16px rgba(255,90,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06);',
-      '  flex-shrink:0;',
-      '}',
-      '.nav-logo-text { display:flex; flex-direction:column; line-height:1; }',
-      '.nav-logo-main { font-size:16px; font-weight:900; letter-spacing:2px; color:#fff; text-transform:uppercase; }',
-      '.nav-logo-main span { color:var(--o1); text-shadow: 0 0 20px rgba(255,90,0,0.5); }',
-      '.nav-cta-group { display:flex; flex-direction:column; align-items:flex-end; gap:5px; }',
-      '.nav-btn {',
-      '  position:relative; overflow:hidden;',
-      '  display:inline-flex; align-items:center; gap:8px;',
-      '  background: linear-gradient(135deg, #FF5A00 0%, #FF5A00 50%, #FFC478 100%);',
-      "  color:#fff; font-family:'Montserrat',sans-serif;",
-      '  font-weight:800; font-size:11px; letter-spacing:2px;',
-      '  text-transform:uppercase; padding:11px 24px;',
-      '  border:none; cursor:pointer; text-decoration:none;',
-      '  border-radius:10px;',
-      '  transition:transform .2s, box-shadow .2s;',
-      '  box-shadow: 0 4px 24px rgba(180,70,0,0.45), 0 1px 0 rgba(255,255,255,0.1) inset;',
-      '}',
-      '.nav-btn::before {',
-      "  content:''; position:absolute; top:0; left:-100%; width:55%; height:100%;",
-      '  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);',
-      '  transition:left .5s ease;',
-      '}',
-      '.nav-btn:hover { transform:translateY(-1px); box-shadow:0 8px 32px rgba(255,90,0,0.55), 0 1px 0 rgba(255,255,255,0.1) inset; }',
-      '.nav-btn:hover::before { left:160%; }',
-      '.nav-btn:active { transform:translateY(0); }',
-      '.nav-btn-sub { display:none !important; }',
-      '@media(max-width:768px){',
-      '  nav { padding:0 14px; height:58px; }',
-      '  nav::before { height:1.5px; }',
-      '  .nav-logo { gap:8px; }',
-      '  .nav-logo-icon { width:28px; height:28px; border-radius:7px; flex-shrink:0; }',
-      '  .nav-logo-main { font-size:12px; letter-spacing:1px; white-space:nowrap; }',
-      '  .nav-btn { font-size:9.5px; padding:8px 14px; letter-spacing:1px; border-radius:7px; white-space:nowrap; }',
-      '}',
-      '.nav-hamburger{background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;width:36px;height:36px;justify-content:center;align-items:center;border-radius:8px;transition:background .2s;flex-shrink:0;}',
+      'nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(4,0,8,0.97);border-bottom:1px solid rgba(255,255,255,0.04);box-shadow:0 1px 0 rgba(255,90,0,0.12),0 8px 32px rgba(0,0,0,0.6);}',
+      "nav::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(255,90,0,0.6) 30%,rgba(255,196,120,0.9) 50%,rgba(255,90,0,0.6) 70%,transparent 100%);pointer-events:none;}",
+      '.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}',
+      '.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#0a0a0a,#000);border:1px solid rgba(255,90,0,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(255,90,0,0.2),inset 0 1px 0 rgba(255,255,255,0.06);flex-shrink:0;}',
+      '.nav-logo-text{display:flex;flex-direction:column;line-height:1;}',
+      ".nav-logo-main{font-size:16px;font-weight:900;letter-spacing:2px;color:#fff;text-transform:uppercase;font-family:'Montserrat',sans-serif;}",
+      '.nav-logo-main span{color:var(--o1);}',
+      ".nav-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#FF5A00 0%,#FF5A00 50%,#FFC478 100%);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:11px 24px;border:none;cursor:pointer;text-decoration:none;border-radius:10px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(180,70,0,0.45),0 1px 0 rgba(255,255,255,0.1) inset;white-space:nowrap;}",
+      ".nav-btn::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);transition:left .5s ease;}",
+      '.nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,90,0,0.55),0 1px 0 rgba(255,255,255,0.1) inset;}',
+      '.nav-btn:hover::before{left:160%;}.nav-btn:active{transform:translateY(0);}',
+      '.nav-hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;width:36px;height:36px;justify-content:center;align-items:center;border-radius:8px;transition:background .2s;flex-shrink:0;}',
       '.nav-hamburger:hover{background:rgba(255,255,255,0.06);}',
-      '.nav-hamburger span{display:block;width:18px;height:2px;background:rgba(255,255,255,0.7);border-radius:2px;transition:transform .3s,opacity .3s;}',
+      '.nav-hamburger span{display:block;width:20px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;transition:transform .3s,opacity .3s;}',
       '.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}',
       '.nav-hamburger.open span:nth-child(2){opacity:0;}',
       '.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}',
-      '.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:498;opacity:0;pointer-events:none;transition:opacity .3s;}',
+      '.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:498;opacity:0;pointer-events:none;transition:opacity .3s;}',
       '.nav-overlay.open{opacity:1;pointer-events:all;}',
-      '.nav-drawer{position:fixed;top:0;left:0;width:260px;height:100vh;background:#0a0008;border-right:1px solid rgba(255,90,0,0.15);z-index:499;display:flex;flex-direction:column;padding:72px 0 24px;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:4px 0 32px rgba(0,0,0,0.6);}',
+      '.nav-drawer{position:fixed;top:0;left:0;width:270px;height:100vh;background:#0c0010;border-right:1px solid rgba(255,90,0,0.15);z-index:499;display:flex;flex-direction:column;padding:80px 0 32px;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:6px 0 40px rgba(0,0,0,0.7);}',
       '.nav-drawer.open{transform:translateX(0);}',
-      ".nav-drawer a{display:flex;align-items:center;padding:14px 28px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);text-decoration:none;letter-spacing:.4px;transition:background .2s,color .2s;border-bottom:1px solid rgba(255,255,255,0.04);}",
+      ".nav-drawer a{display:flex;align-items:center;gap:10px;padding:15px 28px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.72);text-decoration:none;letter-spacing:.4px;transition:background .2s,color .2s;border-bottom:1px solid rgba(255,255,255,0.04);}",
       '.nav-drawer a:hover{background:rgba(255,255,255,0.04);color:#fff;}',
-      '.nav-drawer-cta{margin:16px 20px 0!important;padding:12px 20px!important;background:linear-gradient(135deg,#FF5A00,#FFC478)!important;color:#fff!important;border-radius:8px!important;border-bottom:none!important;justify-content:center!important;font-weight:800!important;letter-spacing:1px!important;}',
-      '.nav-drawer-sep{height:1px;background:rgba(255,255,255,0.06);margin:8px 0;}',
-      '@media(max-width:768px){.nav-hamburger{width:30px;height:30px;}.nav-drawer{width:80vw;max-width:280px;}}',
+      '.nav-drawer-sep{height:1px;background:rgba(255,255,255,0.06);margin:6px 0;}',
+      '.nav-drawer-cta{margin:20px 20px 0!important;padding:13px 20px!important;background:linear-gradient(135deg,#FF5A00,#FFC478)!important;color:#fff!important;border-radius:10px!important;border-bottom:none!important;justify-content:center!important;font-weight:800!important;letter-spacing:1px!important;font-size:12px!important;}',
+      '@media(max-width:768px){nav{padding:0 16px;height:60px;}.nav-hamburger{display:flex;}',
+      '.nav-logo-main{font-size:13px;letter-spacing:1.5px;}.nav-logo-icon{width:30px;height:30px;border-radius:8px;}',
+      '.nav-btn{font-size:9.5px;padding:9px 14px;letter-spacing:1px;border-radius:8px;}.nav-drawer{width:80vw;max-width:300px;}}',
       '</style>',
       '<nav>',
-      '  <button class="nav-hamburger" id="nav-hamburger" onclick="_evToggleDrawer()" aria-label="Menu" aria-expanded="false">',
-      '    <span></span><span></span><span></span>',
-      '  </button>',
-      '  <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Ir para a página inicial">',
-      '    <div class="nav-logo-icon">',
-      '      <img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;">',
-      '    </div>',
-      '    <div class="nav-logo-text">',
-      '      <span class="nav-logo-main">ESQUELETO</span>',
-      '    </div>',
+      '  <button class="nav-hamburger" id="nav-hamburger" onclick="_evToggleDrawer()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>',
+      '  <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Esqueleto Viral">',
+      '    <div class="nav-logo-icon"><img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;"></div>',
+      '    <div class="nav-logo-text"><span class="nav-logo-main">ESQUELETO</span></div>',
       '  </a>',
-      '  <div style="display:flex;align-items:center;gap:16px;">',
-      '    <div class="nav-cta-group">',
-      '      <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
-      '    </div>',
-      '  </div>',
+      '  <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
       '</nav>',
       '<div class="nav-overlay" id="nav-overlay" onclick="_evCloseDrawer()"></div>',
-      '<div class="nav-drawer" id="nav-drawer" role="navigation" aria-label="Menu de navegação">',
+      '<div class="nav-drawer" id="nav-drawer" role="navigation" aria-label="Menu">',
       '  <a href="#main-content" onclick="_evCloseDrawer()">🏠 Início</a>',
-      '  <a href="#analytics" onclick="_evCloseDrawer()">▶ Prova Real</a>',
+      '  <a href="#analytics" onclick="_evCloseDrawer()">▶️ Prova Real</a>',
       '  <div class="nav-drawer-sep"></div>',
       '  <a href="#faq" onclick="_evCloseDrawer()">❓ FAQ</a>',
       '  <a href="/prompts" onclick="_evCloseDrawer()">💬 Prompts</a>',
@@ -123,21 +60,7 @@
       '  <a href="/contato" onclick="_evCloseDrawer()">📧 Contato</a>',
       '  <div class="nav-drawer-sep"></div>',
       '  <a href="#cta" onclick="_evCloseDrawer()" class="nav-drawer-cta">🎯 Garantir Acesso</a>',
-      '</div>',
-      '<script>',
-      'function _evToggleDrawer(){',
-      '  var h=document.getElementById("nav-hamburger"),d=document.getElementById("nav-drawer"),o=document.getElementById("nav-overlay");',
-      '  var open=d.classList.toggle("open");',
-      '  h.classList.toggle("open");o.classList.toggle("open");',
-      '  h.setAttribute("aria-expanded",open?"true":"false");',
-      '}',
-      'function _evCloseDrawer(){',
-      '  var h=document.getElementById("nav-hamburger"),d=document.getElementById("nav-drawer"),o=document.getElementById("nav-overlay");',
-      '  h.classList.remove("open");d.classList.remove("open");o.classList.remove("open");',
-      '  h.setAttribute("aria-expanded","false");',
-      '}',
-      'document.addEventListener("keydown",function(e){if(e.key==="Escape")_evCloseDrawer();});',
-      '</script>'
+      '</div>'
     ].join('\n'),
     'footer.html': [
       '<style>',
@@ -250,7 +173,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525a')
+    fetch(BASE + file + '?v=20260525b')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
@@ -279,6 +202,26 @@
     init();
   }
 })();
+
+// ── Hamburger drawer (global — onclick in injected HTML can't run its own <script>) ──
+window._evToggleDrawer = function() {
+  var h = document.getElementById('nav-hamburger');
+  var d = document.getElementById('nav-drawer');
+  var o = document.getElementById('nav-overlay');
+  if (!d) return;
+  var open = d.classList.toggle('open');
+  if (h) { h.classList.toggle('open'); h.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  if (o) o.classList.toggle('open');
+};
+window._evCloseDrawer = function() {
+  var h = document.getElementById('nav-hamburger');
+  var d = document.getElementById('nav-drawer');
+  var o = document.getElementById('nav-overlay');
+  if (h) { h.classList.remove('open'); h.setAttribute('aria-expanded', 'false'); }
+  if (d) d.classList.remove('open');
+  if (o) o.classList.remove('open');
+};
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') window._evCloseDrawer(); });
 
 
 
