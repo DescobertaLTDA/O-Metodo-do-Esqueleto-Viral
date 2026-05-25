@@ -63,13 +63,13 @@
       '        <div style="font-family:\'Montserrat\',sans-serif;font-weight:900;font-size:16px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,255,0.6);">ESQUELETO <span style="color:var(--o1);">VIRAL</span></div>',
       '      </div>',
       '      <div class="foot-links">',
-      '        <a href="/prompts">Prompts</a>',
+      '        <a href="/cursos/prompts/">Prompts</a>',
       '        <span>|</span>',
-      '        <a href="/blog">Blog</a>',
+      '        <a href="/blog/">Blog</a>',
       '        <span>|</span>',
-      '        <a href="/contato">Contato</a>',
+      '        <a href="/paginas/contato/">Contato</a>',
       '        <span>|</span>',
-      '        <a href="/privacidade">Politica de Privacidade</a>',
+      '        <a href="/paginas/privacidade/">Política de Privacidade</a>',
       '      </div>',
       '    </div>',
       '    <div class="foot-divider"></div>',
@@ -131,7 +131,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525p')
+    fetch(BASE + file + '?v=20260525q')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();

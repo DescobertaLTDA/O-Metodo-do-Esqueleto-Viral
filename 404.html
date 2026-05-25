@@ -24,35 +24,18 @@ body{font-family:'Montserrat',sans-serif;background:#040008;color:#fff;min-heigh
 <script>
 (function(){
   var l = window.location;
-  var path = l.pathname;
+  var path = l.pathname.replace(/\/$/, '') || '/';
 
-  // ── Rota do blog: /blog/slug-do-artigo
-  if(path.match(/^\/blog\/.+/)){
-    var slug = path.replace('/blog/', '').replace(/\/$/, '');
-    l.replace('/blog.html?slug=' + encodeURIComponent(slug));
+  // ── Aliases: redireciona atalhos curtos para as URLs reais
+  var aliases = {
+    '/contato':    '/paginas/contato/',
+    '/privacidade':'/paginas/privacidade/',
+    '/obrigado':   '/paginas/obrigado/',
+    '/prompts':    '/cursos/prompts/',
+  };
+  if (aliases[path]) {
+    l.replace(aliases[path]);
     return;
-  }
-
-  // ── Rota do blog sem slug: /blog
-  if(path === '/blog' || path === '/blog/'){
-    l.replace('/blog.html');
-    return;
-  }
-
-  // ── Rotas SPA conhecidas (prompts, contato, privacidade, obrigado)
-  var spaRoutes = ['/prompts','/contato','/privacidade','/obrigado','/paginas'];
-  for(var i=0;i<spaRoutes.length;i++){
-    if(path === spaRoutes[i] || path.indexOf(spaRoutes[i]+'/') === 0){
-      var pathSegmentsToKeep = 0;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g,'~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g,'~and~') : '') +
-        l.hash
-      );
-      return;
-    }
   }
 
   // ── Tudo o mais: exibe a página 404 amigável (não redireciona)
