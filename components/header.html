@@ -1,8 +1,8 @@
 <style>
 nav {
   position:fixed; top:0; left:0; right:0; z-index:500;
-  padding:0 48px; height:72px;
-  display:flex; align-items:center; justify-content:space-between;
+  padding:0 20px 0 12px; height:72px;
+  display:flex; align-items:center; gap:12px;
   background:rgba(4,0,8,0.97);
   border-bottom:1px solid rgba(255,255,255,0.04);
   box-shadow: 0 1px 0 rgba(255,90,0,0.12), 0 8px 32px rgba(0,0,0,0.6);
@@ -14,28 +14,27 @@ nav::before {
   pointer-events:none;
 }
 .nav-logo {
-  display:flex; align-items:center; gap:12px;
-  text-decoration:none;
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none; flex:1;
 }
 .nav-logo-icon {
-  width:36px; height:36px;
+  width:34px; height:34px; flex-shrink:0;
   background: linear-gradient(135deg, #0a0a0a, #000000);
   border:1px solid rgba(255,90,0,0.3);
-  border-radius:10px;
+  border-radius:9px;
   display:flex; align-items:center; justify-content:center;
   box-shadow: 0 0 16px rgba(255,90,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
-  flex-shrink:0;
 }
 .nav-logo-text { display:flex; flex-direction:column; line-height:1; }
-.nav-logo-main { font-size:16px; font-weight:900; letter-spacing:2px; color:#fff; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
-.nav-logo-main span { color:var(--o1); }
+.nav-logo-main { font-size:15px; font-weight:900; letter-spacing:2px; color:#fff; text-transform:uppercase; font-family:'Montserrat',sans-serif; }
+.nav-cta-group { display:flex; align-items:center; flex-shrink:0; }
 .nav-btn {
   position:relative; overflow:hidden;
-  display:inline-flex; align-items:center; gap:8px;
+  display:inline-flex; align-items:center;
   background: linear-gradient(135deg, #FF5A00 0%, #FF5A00 50%, #FFC478 100%);
   color:#fff; font-family:'Montserrat',sans-serif;
   font-weight:800; font-size:11px; letter-spacing:2px;
-  text-transform:uppercase; padding:11px 24px;
+  text-transform:uppercase; padding:11px 22px;
   border:none; cursor:pointer; text-decoration:none;
   border-radius:10px;
   transition:transform .2s, box-shadow .2s;
@@ -50,18 +49,18 @@ nav::before {
 .nav-btn:hover { transform:translateY(-1px); box-shadow:0 8px 32px rgba(255,90,0,0.55), 0 1px 0 rgba(255,255,255,0.1) inset; }
 .nav-btn:hover::before { left:160%; }
 .nav-btn:active { transform:translateY(0); }
-/* Hamburger — hidden on desktop, shown on mobile */
+/* Hamburger */
 .nav-hamburger {
-  display:none;
   background:none; border:none; cursor:pointer;
-  flex-direction:column; gap:5px;
-  width:36px; height:36px;
+  display:flex; flex-direction:column; gap:5px;
+  width:34px; height:34px; flex-shrink:0;
   justify-content:center; align-items:center;
-  border-radius:8px; transition:background .2s; flex-shrink:0;
+  border-radius:8px; transition:background .2s;
+  padding:0;
 }
-.nav-hamburger:hover { background:rgba(255,255,255,0.06); }
+.nav-hamburger:hover { background:rgba(255,255,255,0.07); }
 .nav-hamburger span {
-  display:block; width:20px; height:2px;
+  display:block; width:19px; height:2px;
   background:rgba(255,255,255,0.8); border-radius:2px;
   transition:transform .3s, opacity .3s;
 }
@@ -86,12 +85,13 @@ nav::before {
 }
 .nav-drawer.open { transform:translateX(0); }
 .nav-drawer a {
-  display:flex; align-items:center; padding:15px 28px;
+  display:flex; align-items:center; gap:10px;
+  padding:15px 28px;
   font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600;
-  color:rgba(255,255,255,0.72); text-decoration:none; letter-spacing:.4px;
+  color:rgba(255,255,255,0.72); text-decoration:none;
+  letter-spacing:.4px;
   transition:background .2s, color .2s;
   border-bottom:1px solid rgba(255,255,255,0.04);
-  gap:10px;
 }
 .nav-drawer a:hover { background:rgba(255,255,255,0.04); color:#fff; }
 .nav-drawer-sep { height:1px; background:rgba(255,255,255,0.06); margin:6px 0; }
@@ -100,15 +100,13 @@ nav::before {
   background:linear-gradient(135deg,#FF5A00,#FFC478) !important;
   color:#fff !important; border-radius:10px !important;
   border-bottom:none !important; justify-content:center !important;
-  font-weight:800 !important; letter-spacing:1px !important;
-  font-size:12px !important;
+  font-weight:800 !important; letter-spacing:1px !important; font-size:12px !important;
 }
 @media(max-width:768px){
-  nav { padding:0 16px; height:60px; }
-  .nav-hamburger { display:flex; }
-  .nav-logo-main { font-size:13px; letter-spacing:1.5px; }
-  .nav-logo-icon { width:30px; height:30px; border-radius:8px; }
-  .nav-btn { font-size:9.5px; padding:9px 14px; letter-spacing:1px; border-radius:8px; }
+  nav { padding:0 12px 0 8px; height:60px; gap:8px; }
+  .nav-logo-main { font-size:12px; letter-spacing:1.5px; }
+  .nav-logo-icon { width:28px; height:28px; border-radius:7px; }
+  .nav-btn { font-size:9px; padding:8px 12px; letter-spacing:1px; border-radius:8px; }
   .nav-drawer { width:80vw; max-width:300px; }
 }
 </style>
@@ -120,14 +118,16 @@ nav::before {
 
   <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Esqueleto Viral">
     <div class="nav-logo-icon">
-      <img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;">
+      <img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:24px;height:24px;object-fit:contain;display:block;">
     </div>
     <div class="nav-logo-text">
       <span class="nav-logo-main">ESQUELETO</span>
     </div>
   </a>
 
-  <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>
+  <div class="nav-cta-group">
+    <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>
+  </div>
 </nav>
 
 <div class="nav-overlay" id="nav-overlay" onclick="_evCloseDrawer()"></div>
