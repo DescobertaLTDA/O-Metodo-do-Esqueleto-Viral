@@ -99,26 +99,11 @@
     ].join('\n')
   };
 
-  function applyHeaderLogo() {
-    if (typeof EV_CONFIG === 'undefined') return;
-
-    var logo = document.getElementById('nav-logo-main');
-    if (!logo || !EV_CONFIG.logo || EV_CONFIG.logo.urlLight) return;
-
-    logo.innerHTML =
-      '<div class="nav-logo-icon">' +
-      '<img src="/assets/logo/logo_1_teste.webp" alt="Esqueleto Viral" style="width:26px;height:26px;object-fit:contain;display:block;">' +
-      '</div>' +
-      '<div class="nav-logo-text"><span class="nav-logo-main">ESQUELETO</span></div>';
-  }
-
   function injectComponent(id, html) {
     var el = document.getElementById(id);
     if (!el) return;
 
     el.outerHTML = html;
-
-    if (id === 'ev-header') applyHeaderLogo();
   }
 
   function ensureSocialProofScript() {
@@ -144,7 +129,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525i')
+    fetch(BASE + file + '?v=20260525j')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
