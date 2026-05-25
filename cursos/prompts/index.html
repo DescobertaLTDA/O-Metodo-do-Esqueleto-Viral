@@ -38,7 +38,7 @@ src="https://www.facebook.com/tr?id=1164662478796267&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
-<script src="/assets/js/components.js?v=20260525k"></script>
+<script src="/assets/js/components.js?v=20260525q"></script>
 <script>
 // EV_CONFIG inline fallback — substitui o /config.js externo
 window.EV_CONFIG = {
@@ -122,8 +122,8 @@ window.EV_CONFIG = {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://res.cloudinary.com">
-<link rel="preload" as="image" href="/prompts/assets/img/hero.jpeg" media="(max-width:900px)">
-<link rel="preload" as="image" href="/prompts/assets/img/hero.jpeg" media="(min-width:901px)">
+<link rel="preload" as="image" href="/cursos/prompts/assets/img/hero.jpeg" media="(max-width:900px)">
+<link rel="preload" as="image" href="/cursos/prompts/assets/img/hero.jpeg" media="(min-width:901px)">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -192,7 +192,7 @@ body::after {
 }
 .urg-mobile { display:none; }
 
-/* Header comes from /assets/js/components.js?v=20260525k to stay consistent with home */
+/* Header comes from /assets/js/components.js?v=20260525q to stay consistent with home */
 
 /* HERO */
 .hero {
@@ -205,7 +205,7 @@ body::after {
 .hero-bg {
   display:none;
   position:absolute; inset:0; z-index:0; pointer-events:none;
-  background:url('/prompts/assets/img/hero.jpeg') center 10%/cover no-repeat;
+  background:url('/cursos/prompts/assets/img/hero.jpeg') center 10%/cover no-repeat;
 }
 .hero::before {
   content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
@@ -635,7 +635,7 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
   <div class="hero-visual">
     <div class="product-card">
       <div class="product-card-badge">🔥 Disponível</div>
-      <img loading="eager" fetchpriority="high" src="/prompts/assets/img/hero.jpeg" alt="Esqueleto Transparente">
+      <img loading="eager" fetchpriority="high" src="/cursos/prompts/assets/img/hero.jpeg" alt="Esqueleto Transparente">
       <div class="product-card-footer">
         <div class="product-card-name">Esqueleto Transparente</div>
         <div class="product-card-sub">Prompt para Flow AI &amp; Whisk AI</div>
@@ -678,12 +678,12 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
     <div class="section-label reveal" style="color:var(--o2);">Em breve</div>
     <h2 class="section-title reveal">Mais personagens<br><span style="color:var(--o1);">chegando.</span></h2>
     <div class="soon-grid reveal">
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img1.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img2.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img3.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img4.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img5.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
-      <div class="soon-card"><img loading="lazy" src="/prompts/assets/img/img6.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img1.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img2.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img3.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img4.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img5.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
+      <div class="soon-card"><img loading="lazy" src="/cursos/prompts/assets/img/img6.jpeg" alt=""><div class="soon-badge">Em breve</div></div>
     </div>
   </div>
 </section>
@@ -710,7 +710,7 @@ footer { text-align:center; padding:32px 24px; font-size:12px; color:rgba(245,24
 <div class="popup-overlay" id="popupOverlay" onclick="if(event.target===this)closePopup()">
   <div class="popup-box">
     <button class="popup-close" onclick="closePopup()">×</button>
-    <img loading="lazy" src="/prompts/assets/img/hero.jpeg" alt="Esqueleto Transparente" class="popup-img">
+    <img loading="lazy" src="/cursos/prompts/assets/img/hero.jpeg" alt="Esqueleto Transparente" class="popup-img">
     <div class="popup-body">
       <div class="popup-tag">🔥 Disponível agora</div>
       <div class="popup-name">Esqueleto Transparente</div>
@@ -763,62 +763,18 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 
-// WhatsApp badge
+// WhatsApp badge — incrementa periodicamente para social proof
 (function(){
-  const badge = document.getElementById('waBadge');
-  let count = 48;
+  var badge = document.getElementById('waBadge');
+  if(!badge) return;
+  var count = 48;
   function bump(){
     count += Math.floor(Math.random()*3)+1;
     badge.textContent = count > 99 ? '99+' : count;
     badge.style.transform = 'scale(1.35)';
-    setTimeout(() => badge.style.transform = 'scale(1)', 200);
-    } catch(e){}
-    return null;
+    setTimeout(function(){ badge.style.transform = 'scale(1)'; }, 200);
   }
-
-  // 3. Salva no storage
-  function save(p){
-    try { sessionStorage.setItem(BASE_KEY, JSON.stringify(p)); } catch(e){}
-    try { localStorage.setItem(BASE_KEY,   JSON.stringify(p)); } catch(e){}
-  }
-
-  // 4. Monta query string
-  function buildQuery(p){
-    var keys = Object.keys(p);
-    if(!keys.length) return '';
-    return keys.map(function(k){ return encodeURIComponent(k)+'='+encodeURIComponent(p[k]); }).join('&');
-  }
-
-  // 5. Injeta nos links de compra
-  function injectLinks(p){
-    var qs = buildQuery(p);
-    document.querySelectorAll('a[href*="kiwify"]').forEach(function(l){
-      l.href = l.href.split('?')[0] + (qs ? '?' + qs : '');
-    });
-  }
-
-  // Resolve UTMs finais
-  var fromUrl = readFromUrl();
-  var saved   = load();
-  var final;
-
-  if(Object.keys(fromUrl).length > 0){
-    // Chegou com UTMs na URL — mescla sobre o salvo e persiste
-    final = Object.assign({}, saved || {}, fromUrl);
-  } else if(saved){
-    // URL limpa mas já tinha UTMs salvos — reutiliza
-    final = saved;
-  } else {
-    // Nunca teve UTM — usa fallback orgânico
-    final = Object.assign({}, FALLBACK);
-  }
-
-  save(final);
-  injectLinks(final);
-
-  // Re-aplica após renderizações assíncronas
-  setTimeout(function(){ injectLinks(final); }, 800);
-  setTimeout(function(){ injectLinks(final); }, 2500);
+  setInterval(bump, 18000 + Math.random()*24000);
 })();
 
 // ── GOOGLE ANALYTICS 4 — RASTREAMENTO COMPLETO ──────────────────
