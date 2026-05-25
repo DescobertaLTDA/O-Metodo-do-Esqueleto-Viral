@@ -108,7 +108,7 @@
       '  </a>',
       '  <div style="display:flex;align-items:center;gap:16px;">',
       '    <div class="nav-cta-group">',
-      '      <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
+      '      <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
       '    </div>',
       '  </div>',
       '</nav>',
