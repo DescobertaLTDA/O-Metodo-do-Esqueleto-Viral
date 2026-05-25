@@ -124,12 +124,13 @@
     var el = document.getElementById(id);
     if (!el) return;
 
-    if (window.location.protocol === 'file:') {
-      if (INLINE_COMPONENTS[file]) injectComponent(id, INLINE_COMPONENTS[file]);
+    // Always use inline for the header — avoids fetch delay and logo flicker
+    if (INLINE_COMPONENTS[file]) {
+      injectComponent(id, INLINE_COMPONENTS[file]);
       return;
     }
 
-    fetch(BASE + file + '?v=20260525j')
+    fetch(BASE + file + '?v=20260525k')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
@@ -138,10 +139,6 @@
         injectComponent(id, html);
       })
       .catch(function (err) {
-        if (INLINE_COMPONENTS[file]) {
-          injectComponent(id, INLINE_COMPONENTS[file]);
-          return;
-        }
         console.warn('[EV Components]', err);
       });
   }
