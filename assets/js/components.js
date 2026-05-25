@@ -12,9 +12,8 @@
   var INLINE_COMPONENTS = {
     'header.html': [
       '<style>',
-      'nav{position:fixed;top:0;left:0;right:0;z-index:500;height:72px;background:rgba(4,0,8,0.97);border-bottom:1px solid rgba(255,255,255,0.04);box-shadow:0 1px 0 rgba(201,168,76,0.25),0 8px 32px rgba(0,0,0,0.6);}',
+      'nav{position:fixed;top:0;left:0;right:0;z-index:500;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;background:rgba(4,0,8,0.97);border-bottom:1px solid rgba(255,255,255,0.04);box-shadow:0 1px 0 rgba(201,168,76,0.25),0 8px 32px rgba(0,0,0,0.6);}',
       "nav::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.5) 30%,rgba(240,208,80,0.9) 50%,rgba(201,168,76,0.5) 70%,transparent 100%);pointer-events:none;}",
-      '.nav-inner{max-width:1140px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px;}',
       '.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}',
       '.nav-logo-icon{width:34px;height:34px;flex-shrink:0;background:linear-gradient(135deg,#1a1000,#0a0800);border:1px solid rgba(201,168,76,0.4);border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(201,168,76,0.2),inset 0 1px 0 rgba(255,255,255,0.06);}',
       '.nav-logo-text{display:flex;flex-direction:column;line-height:1;}',
@@ -23,16 +22,15 @@
       ".nav-btn::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.28),transparent);transition:left .5s ease;}",
       '.nav-btn:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(201,168,76,0.65),0 1px 0 rgba(255,255,255,0.2) inset;}',
       '.nav-btn:hover::before{left:160%;}.nav-btn:active{transform:translateY(0);}',
-      '@media(max-width:768px){nav{height:60px;}.nav-inner{padding:0 16px;}.nav-logo-main{font-size:12px;letter-spacing:2px;}.nav-logo-icon{width:28px;height:28px;border-radius:7px;}.nav-btn{font-size:9px;padding:8px 14px;letter-spacing:1px;border-radius:8px;}}',
+      '@media(max-width:1024px){nav{padding:0 32px;}}',
+      '@media(max-width:768px){nav{height:60px;padding:0 16px;}.nav-logo-main{font-size:12px;letter-spacing:2px;}.nav-logo-icon{width:28px;height:28px;border-radius:7px;}.nav-btn{font-size:9px;padding:8px 14px;letter-spacing:1px;border-radius:8px;}}',
       '</style>',
       '<nav>',
-      '  <div class="nav-inner">',
-      '    <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Academy">',
-      '      <div class="nav-logo-icon"><img src="/assets/logo/logo_1_teste.webp" alt="Academy" style="width:22px;height:22px;object-fit:contain;display:block;"></div>',
-      '      <div class="nav-logo-text"><span class="nav-logo-main">ACADEMY</span></div>',
-      '    </a>',
-      '    <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
-      '  </div>',
+      '  <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Academy">',
+      '    <div class="nav-logo-icon"><img src="/assets/logo/logo_1_teste.webp" alt="Academy" style="width:22px;height:22px;object-fit:contain;display:block;"></div>',
+      '    <div class="nav-logo-text"><span class="nav-logo-main">ACADEMY</span></div>',
+      '  </a>',
+      '  <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
       '</nav>'
     ].join('\n'),
     'footer.html': [
@@ -146,7 +144,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525g')
+    fetch(BASE + file + '?v=20260525i')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
