@@ -1,5 +1,5 @@
 /**
- * Esqueleto Viral — UTM Tracker v2
+ * Esqueleto Viral — UTM Tracker v3
  *
  * Fontes capturadas (por prioridade):
  *   1. Parâmetros UTM na URL (?utm_source=...)
@@ -11,17 +11,17 @@
  *   7. Cookie de 30 dias (retorno após fechar o navegador)
  *   8. Fallback: direto/organico
  *
+ * IMPORTANTE: os links de checkout NÃO recebem UTMs na URL.
+ * A atribuição é salva em cookie/localStorage e lida na página /obrigado.
+ *
  * Páginas cobertas:
- *   - Todas as landing pages → atualiza links de checkout com UTMs
+ *   - Todas as landing pages → captura origem, persiste, dispara pixels
  *   - /obrigado/ → dispara Purchase no GA4, Meta Pixel e TikTok com UTMs
  */
 (function () {
   'use strict';
 
   // ── Configuração ─────────────────────────────────────────────────
-  var BASE_URL  = (typeof EV_CONFIG !== 'undefined' && EV_CONFIG.curso && EV_CONFIG.curso.checkoutUrl)
-                  ? EV_CONFIG.curso.checkoutUrl
-                  : 'https://pay.kiwify.com.br/HM1g0Nv';
   var SS_KEY    = 'ev_utm';
   var LS_KEY    = 'ev_utm_ls';
   var CK_KEY    = 'ev_utm_30d';
@@ -149,22 +149,6 @@
     return merged;
   }
 
-  // ── URL de checkout com UTMs ─────────────────────────────────────
-  function buildCheckoutUrl(utms) {
-    var qs = UTM_KEYS
-      .filter(function (k) { return utms[k]; })
-      .map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(utms[k]); })
-      .join('&');
-    return BASE_URL + (qs ? '?' + qs : '');
-  }
-
-  // ── Atualiza todos os links de checkout ──────────────────────────
-  function updateLinks(url) {
-    document.querySelectorAll('a.kiwify-link, [data-kiwify], [data-kiwify-curso]').forEach(function (el) {
-      el.href = url;
-    });
-  }
-
   // ── Helpers de pixel ─────────────────────────────────────────────
   function ga4(event, params) {
     if (typeof gtag === 'function') { try { gtag('event', event, params); } catch (e) {} }
@@ -248,17 +232,11 @@
     var utms = resolve();
     persist(utms);
 
-    window.EV_UTM          = utms;
-    window.EV_CHECKOUT_URL = buildCheckoutUrl(utms);
+    window.EV_UTM = utms;
 
     if (/\/obrigado/i.test(window.location.pathname)) {
       initThankYou(utms);
     } else {
-      var url = window.EV_CHECKOUT_URL;
-      updateLinks(url);
-      setTimeout(function () { updateLinks(url); }, 300);
-      setTimeout(function () { updateLinks(url); }, 1000);
-      setTimeout(function () { updateLinks(url); }, 3000);
       bindCheckoutClick(utms);
       fireViewContent();
     }
