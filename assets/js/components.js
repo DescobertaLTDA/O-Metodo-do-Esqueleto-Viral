@@ -131,7 +131,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525o')
+    fetch(BASE + file + '?v=20260525p')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
