@@ -61,6 +61,9 @@
       '  <a href="/blog" onclick="_evCloseDrawer()">📝 Blog</a>',
       '  <a href="/contato" onclick="_evCloseDrawer()">📧 Contato</a>',
       '  <div class="nav-drawer-sep"></div>',
+      '  <a href="/cursos/academy/" onclick="_evCloseDrawer()">🎓 Cursos</a>',
+      '  <a href="https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09" target="_blank" rel="noopener" onclick="_evCloseDrawer()" style="color:rgba(37,211,102,0.85);">💬 WhatsApp Suporte</a>',
+      '  <div class="nav-drawer-sep"></div>',
       '  <a href="#cta" onclick="_evCloseDrawer()" class="nav-drawer-cta">🎯 Garantir Acesso</a>',
       '</div>'
     ].join('\n'),
@@ -175,7 +178,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525c')
+    fetch(BASE + file + '?v=20260525d')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
