@@ -26,10 +26,10 @@
       '@media(max-width:768px){nav{height:60px;padding:0 16px;}.nav-logo-main{font-size:12px;letter-spacing:2px;}.nav-logo-icon{width:28px;height:28px;border-radius:7px;}.nav-btn{font-size:9px;padding:8px 14px;letter-spacing:1px;border-radius:8px;}}',
       '</style>',
       '<nav>',
-      '  <a class="nav-logo" id="nav-logo-main" href="https://www.esqueletoviral.com.br/" aria-label="Academy">',
+      '  <div class="nav-logo" id="nav-logo-main">',
       '    <div class="nav-logo-icon"><img src="/assets/logo/logo_1_teste.webp" alt="Academy" style="width:22px;height:22px;object-fit:contain;display:block;"></div>',
       '    <div class="nav-logo-text"><span class="nav-logo-main">ACADEMY</span></div>',
-      '  </a>',
+      '  </div>',
       '  <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
       '</nav>'
     ].join('\n'),
@@ -130,7 +130,7 @@
       return;
     }
 
-    fetch(BASE + file + '?v=20260525l')
+    fetch(BASE + file + '?v=20260525m')
       .then(function (res) {
         if (!res.ok) throw new Error('Falha ao carregar ' + file);
         return res.text();
