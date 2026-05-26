@@ -201,6 +201,23 @@
     try { sessionStorage.setItem(FIRED, '1'); } catch (e) {}
   }
 
+  // ── Injeta UTMs do visitante em todos os links do Kiwify ─────────
+  function injectUtmsIntoLinks(utms) {
+    var links = document.querySelectorAll('a.kiwify-link, [data-kiwify], [data-kiwify-curso]');
+    links.forEach(function (el) {
+      if (!el.href) return;
+      try {
+        var url = new URL(el.href);
+        if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
+        if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
+        if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
+        if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
+        if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
+        el.href = url.toString();
+      } catch (e) {}
+    });
+  }
+
   // ── Click no checkout — InitiateCheckout ─────────────────────────
   function bindCheckoutClick(utms) {
     document.addEventListener('click', function (e) {
@@ -237,6 +254,7 @@
     if (/\/obrigado/i.test(window.location.pathname)) {
       initThankYou(utms);
     } else {
+      injectUtmsIntoLinks(utms);
       bindCheckoutClick(utms);
       fireViewContent();
     }
