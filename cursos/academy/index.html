@@ -151,7 +151,7 @@ src="https://www.facebook.com/tr?id=940556475332489&ev=PageView&noscript=1"/>
 </script>
 
 <script src="/assets/js/components.js?v=20260526e"></script>
-<script src="/assets/js/utm-tracker.js?v=20260526c"></script>
+<script src="/assets/js/utm-tracker.js?v=20260526f"></script>
 
 <link rel="preload" as="image" href="assets/img/jesus_hero.png" media="(max-width:768px)">
 <link rel="preload" as="image" href="assets/img/jesus_hero.png" media="(min-width:769px)">
@@ -5024,11 +5024,11 @@ document.querySelectorAll('[data-monetizo]').forEach(function(el){ el.style.disp
     el.href = c.social.whatsapp;
   });
 
-  // CHECKOUT LINKS (curso)
+  // CHECKOUT LINKS (curso) — URL base limpa; utm-tracker.js injeta os UTMs do visitante
+  var _checkoutBase = c.curso.checkoutUrl.split('?')[0];
   document.querySelectorAll('[data-kiwify-curso], a.kiwify-link, [data-kiwify]').forEach(function(el){
-    var base = window.__EV_CHECKOUT_URL || c.curso.checkoutUrl;
     var uc = el.dataset.utmContent;
-    el.href = uc ? base + '&utm_content=' + uc : base;
+    el.href = uc ? _checkoutBase + '?utm_content=' + uc : _checkoutBase;
   });
 
   // VAGAS RESTANTES

@@ -201,24 +201,31 @@
     try { sessionStorage.setItem(FIRED, '1'); } catch (e) {}
   }
 
+  // ── Monta URL limpa de checkout para um elemento ────────────────
+  // Regra: base limpa (sem UTMs) + UTMs do visitante + utm_content do botão
+  function buildCleanCheckoutUrl(el, utms) {
+    var base = el.href.split('?')[0];           // Remove TODOS os params existentes
+    var url = new URL(base);
+    if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
+    if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
+    if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
+    if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
+    // utm_content vem do atributo do botão (posição), nunca do visitante
+    var uc = el.getAttribute('data-utm-content');
+    if (uc) url.searchParams.set('utm_content', uc);
+    return url.toString();
+  }
+
   // ── Injeta UTMs do visitante em todos os links do Kiwify ─────────
   function injectUtmsIntoLinks(utms) {
     var links = document.querySelectorAll('a.kiwify-link, [data-kiwify], [data-kiwify-curso]');
     links.forEach(function (el) {
       if (!el.href) return;
-      try {
-        var url = new URL(el.href);
-        if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
-        if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
-        if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
-        if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
-        if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
-        el.href = url.toString();
-      } catch (e) {}
+      try { el.href = buildCleanCheckoutUrl(el, utms); } catch (e) {}
     });
   }
 
-  // ── Click no checkout — injeta UTMs no href + dispara eventos ────
+  // ── Click no checkout — re-injeta UTMs limpos na hora do clique ──
   function bindCheckoutClick(utms) {
     document.addEventListener('click', function (e) {
       var el = e.target && e.target.closest
@@ -226,17 +233,9 @@
         : null;
       if (!el) return;
 
-      // Injeta UTMs no href no momento do clique (garante links dinâmicos)
+      // Re-injeta na hora do clique (garante links injetados dinamicamente)
       if (el.href) {
-        try {
-          var url = new URL(el.href);
-          if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
-          if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
-          if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
-          if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
-          if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
-          el.href = url.toString();
-        } catch (e) {}
+        try { el.href = buildCleanCheckoutUrl(el, utms); } catch (e) {}
       }
 
       ga4('begin_checkout', {
@@ -257,7 +256,8 @@
     tk('ViewContent', { content_id: 'esqueleto-viral', content_name: 'Esqueleto Viral', content_type: 'product', currency: 'BRL', value: PRECO });
   }
 
-  // ── Seta __EV_CHECKOUT_URL com UTMs do visitante ─────────────────
+  // ── Seta __EV_CHECKOUT_URL com UTMs do visitante (sem utm_content) ─
+  // utm_content é por botão — cada botão usa seu data-utm-content
   function setCheckoutUrl(utms) {
     try {
       if (typeof EV_CONFIG === 'undefined' || !EV_CONFIG.curso || !EV_CONFIG.curso.checkoutUrl) return;
@@ -266,7 +266,6 @@
       if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
       if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
       if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
-      if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
       if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
       window.__EV_CHECKOUT_URL = url.toString();
     } catch(e) {}
