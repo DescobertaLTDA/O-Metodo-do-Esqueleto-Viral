@@ -218,13 +218,26 @@
     });
   }
 
-  // ── Click no checkout — InitiateCheckout ─────────────────────────
+  // ── Click no checkout — injeta UTMs no href + dispara eventos ────
   function bindCheckoutClick(utms) {
     document.addEventListener('click', function (e) {
       var el = e.target && e.target.closest
         ? e.target.closest('a.kiwify-link, [data-kiwify], [data-kiwify-curso]')
         : null;
       if (!el) return;
+
+      // Injeta UTMs no href no momento do clique (garante links dinâmicos)
+      if (el.href) {
+        try {
+          var url = new URL(el.href);
+          if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
+          if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
+          if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
+          if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
+          if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
+          el.href = url.toString();
+        } catch (e) {}
+      }
 
       ga4('begin_checkout', {
         currency:     'BRL',
