@@ -257,12 +257,28 @@
     tk('ViewContent', { content_id: 'esqueleto-viral', content_name: 'Esqueleto Viral', content_type: 'product', currency: 'BRL', value: PRECO });
   }
 
+  // ── Seta __EV_CHECKOUT_URL com UTMs do visitante ─────────────────
+  function setCheckoutUrl(utms) {
+    try {
+      if (typeof EV_CONFIG === 'undefined' || !EV_CONFIG.curso || !EV_CONFIG.curso.checkoutUrl) return;
+      var base = EV_CONFIG.curso.checkoutUrl.split('?')[0];
+      var url = new URL(base);
+      if (utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
+      if (utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
+      if (utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
+      if (utms.utm_content)  url.searchParams.set('utm_content',  utms.utm_content);
+      if (utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
+      window.__EV_CHECKOUT_URL = url.toString();
+    } catch(e) {}
+  }
+
   // ── Init ─────────────────────────────────────────────────────────
   function init() {
     var utms = resolve();
     persist(utms);
 
     window.EV_UTM = utms;
+    setCheckoutUrl(utms);
 
     if (/\/obrigado/i.test(window.location.pathname)) {
       initThankYou(utms);
