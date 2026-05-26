@@ -148,6 +148,14 @@
 
   function init() {
     loadComponent('ev-header', 'header.html');
+
+    // Após injetar o header, aponta o botão nav para o checkout DESTA página
+    // (cada página tem seu próprio EV_CONFIG.curso.checkoutUrl)
+    var navBtn = document.querySelector('a.nav-btn[data-kiwify-curso]');
+    if (navBtn && typeof EV_CONFIG !== 'undefined' && EV_CONFIG.curso && EV_CONFIG.curso.checkoutUrl) {
+      navBtn.href = EV_CONFIG.curso.checkoutUrl.split('?')[0];
+    }
+
     loadComponent('ev-footer', 'footer.html');
     ensureSocialProofScript();
   }
