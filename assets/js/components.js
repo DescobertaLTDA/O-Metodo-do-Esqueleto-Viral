@@ -30,7 +30,7 @@
       '    <div class="nav-logo-icon"><img src="/assets/logo/logo_1_teste.webp" alt="Academy" style="width:22px;height:22px;object-fit:contain;display:block;"></div>',
       '    <div class="nav-logo-text"><span class="nav-logo-main">ACADEMY</span></div>',
       '  </div>',
-      '  <a href="https://pay.kiwify.com.br/HM1g0Nv" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
+      '  <a href="https://pay.kiwify.com.br/1yZMIvf" data-kiwify-curso data-utm-content="nav" target="_blank" rel="noopener" class="nav-btn kiwify-link">Garantir minha vaga →</a>',
       '</nav>'
     ].join('\n'),
     'footer.html': [
