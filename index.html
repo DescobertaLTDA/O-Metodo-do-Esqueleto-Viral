@@ -4185,9 +4185,46 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
 
   /* Opções */
   .survey-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:0; }
-  .survey-btn-academy { grid-column:1 / -1; border-color:rgba(255,196,120,0.25) !important; background:rgba(255,196,120,0.05) !important; }
-  .survey-btn-academy:hover { border-color:rgba(255,196,120,0.5) !important; background:rgba(255,196,120,0.1) !important; }
-  .survey-btn-academy .survey-btn-icon { font-size:20px; }
+  .survey-btn-academy {
+    grid-column:1 / -1;
+    background:linear-gradient(135deg,#1a1000 0%,#2a1a00 100%) !important;
+    border:1.5px solid rgba(255,196,120,0.5) !important;
+    box-shadow:0 0 24px rgba(255,196,120,0.15), inset 0 1px 0 rgba(255,196,120,0.1) !important;
+    padding:0 !important;
+    overflow:hidden;
+    flex-direction:column;
+    gap:0;
+    align-items:stretch !important;
+    text-align:left;
+  }
+  .survey-btn-academy:hover {
+    border-color:rgba(255,196,120,0.8) !important;
+    box-shadow:0 0 36px rgba(255,196,120,0.28), inset 0 1px 0 rgba(255,196,120,0.15) !important;
+    transform:translateY(-2px);
+  }
+  .academy-btn-tag {
+    background:linear-gradient(90deg,#C9A84C,#FFC478,#C9A84C);
+    color:#0a0800;
+    font-size:9px; font-weight:900; letter-spacing:2.5px;
+    text-transform:uppercase; padding:5px 16px;
+    display:block; width:100%; box-sizing:border-box;
+  }
+  .academy-btn-body {
+    display:flex; align-items:center; gap:14px;
+    padding:14px 18px;
+  }
+  .academy-btn-icon { font-size:26px; flex-shrink:0; }
+  .academy-btn-text { display:flex; flex-direction:column; gap:3px; }
+  .academy-btn-headline {
+    font-size:14px; font-weight:900; color:#FFC478;
+    letter-spacing:-.2px; line-height:1.2;
+  }
+  .academy-btn-sub {
+    font-size:11px; color:rgba(255,255,255,0.45); font-weight:500;
+  }
+  .academy-btn-arrow {
+    margin-left:auto; font-size:18px; color:rgba(255,196,120,0.6); flex-shrink:0;
+  }
   .survey-btn {
     background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
     border-radius:12px; padding:16px 14px; cursor:pointer;
@@ -4263,7 +4300,17 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
         <button class="survey-btn" onclick="funilNext(1,'tempo',this)"><span class="survey-btn-icon">⏰</span><span>Não sei se terei tempo</span></button>
         <button class="survey-btn" onclick="funilNext(1,'duvida',this)"><span class="survey-btn-icon">🤔</span><span>Tenho dúvida se funciona pra mim</span></button>
         <button class="survey-btn" onclick="funilNext(1,'pesquisando',this)"><span class="survey-btn-icon">👀</span><span>Ainda quero pesquisar mais</span></button>
-        <button class="survey-btn survey-btn-academy" onclick="_irParaAcademy(this)"><span class="survey-btn-icon">📘</span><span>Quero monetizar no <strong>Facebook</strong> — ver outro curso</span></button>
+        <button class="survey-btn survey-btn-academy" onclick="_irParaAcademy(this)">
+          <span class="academy-btn-tag">💰 Curso em destaque — alternativa recomendada</span>
+          <span class="academy-btn-body">
+            <span class="academy-btn-icon">📘</span>
+            <span class="academy-btn-text">
+              <span class="academy-btn-headline">Faça até R$1.247/mês com o Facebook →</span>
+              <span class="academy-btn-sub">Monetize no Facebook · Método comprovado · Sem aparecer</span>
+            </span>
+            <span class="academy-btn-arrow">›</span>
+          </span>
+        </button>
       </div>
     </div>
 
