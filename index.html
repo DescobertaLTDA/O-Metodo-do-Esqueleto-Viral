@@ -4534,13 +4534,15 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     if(btn) btn.classList.add('selecionado');
     _gaEvent('funil_resultado', _respostas[1] + '_' + respP5);
 
+    // Envia respostas do funil para o endpoint do funil
+    _enviarFunil();
+
     // Vai para o passo de contato antes de mostrar resultado
     setTimeout(function(){
       _setProgress(6);
       _showStep('funilContato');
       document.getElementById('funilCounter').textContent = 'Quase lá...';
       document.getElementById('funilVoltar').style.display = 'none';
-      // Foca no campo nome após transição
       setTimeout(function(){ var n = document.getElementById('funilNome'); if(n) n.focus(); }, 300);
     }, 180);
   };
@@ -4558,11 +4560,12 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     });
   })();
 
-  function _enviarFormspree(extra) {
+  // Respostas do funil (P1–P5) → endpoint do funil
+  function _enviarFunil() {
     fetch('https://formspree.io/f/xqegbdpe', {
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify(Object.assign({
+      body: JSON.stringify({
         p1_objecao:     _respostas[1] || '',
         p2_experiencia: _respostas[2] || '',
         p3_objetivo:    _respostas[3] || '',
@@ -4570,7 +4573,23 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
         p5_decisao:     _respostas[5] || '',
         pagina:  window.location.href,
         horario: new Date().toLocaleString('pt-BR')
-      }, extra || {}))
+      })
+    }).catch(function(){});
+  }
+
+  // Dados de contato (nome + WhatsApp) → endpoint de contatos
+  function _enviarContato(nome, wpp) {
+    fetch('https://formspree.io/f/mlgvoaqe', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        nome:      nome || '',
+        whatsapp:  wpp  || '',
+        p1_objecao: _respostas[1] || '',  // contexto útil para follow-up
+        p5_decisao: _respostas[5] || '',
+        pagina:  window.location.href,
+        horario: new Date().toLocaleString('pt-BR')
+      })
     }).catch(function(){});
   }
 
@@ -4596,14 +4615,13 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     if(btn) { btn.textContent = 'Carregando...'; btn.disabled = true; }
 
     _gaEvent('funil_contato', 'enviado');
-    _enviarFormspree({ nome: nome, whatsapp: '+55 ' + wpp });
+    _enviarContato(nome, '+55 ' + wpp);
 
     setTimeout(_mostrarResultado, 300);
   };
 
   window.funilPularContato = function() {
     _gaEvent('funil_contato', 'pulado');
-    _enviarFormspree({ nome: '', whatsapp: 'pulado' });
     _mostrarResultado();
   };
 
