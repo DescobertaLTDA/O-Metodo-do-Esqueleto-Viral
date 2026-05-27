@@ -4368,27 +4368,34 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     var html = '';
     var urlBase = _checkoutBase;
 
-    // Desconto para quem quer mas acha caro
-    var urlDesconto = urlBase + '?coupon=DESCONTO20&utm_content=funil-desconto';
-    var urlNormal   = urlBase + '?utm_content=funil-resultado';
-    var urlWa       = 'https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09';
+    // URLs com utm_content identificando exatamente de onde veio a compra no funil
+    var urlR37     = 'https://pay.kiwify.com.br/ukgm3m3'; // produto R$37 direto
+    var urlWa      = 'https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09';
+
+    // utm_content por resultado — aparece no CSV do Kiwify para rastrear o funil
+    var ucDesconto = 'funil-r37-preco';      // preço → viu oferta R$37
+    var ucTempo    = 'funil-r47-tempo';      // sem tempo → convencido
+    var ucGarantia = 'funil-r47-garantia';  // dúvida → garantia resolveu
+    var ucFalar    = 'funil-r47-falar';     // dúvida → foi falar antes
+    var ucPesq     = 'funil-r47-pesq';      // pesquisando → decidiu
+    var ucCanal    = 'funil-r47-canal';     // acompanhou canal → decidiu depois
 
     if(respP5 === 'sim-desconto' || respP5 === 'talvez' || respP5 === 'parcelar') {
       html = '<div class="funil-result-box">'
            + '<div class="funil-result-badge">🎁 Oferta exclusiva liberada</div>'
-           + '<div class="funil-result-title">Você ganhou 21% de desconto — só agora</div>'
-           + '<div class="funil-result-text">Como você respondeu ao nosso funil, liberamos um cupom especial. O desconto é aplicado <strong>automaticamente</strong> no checkout.</div>'
+           + '<div class="funil-result-title">Preço especial só para você — acesso por R$37,00</div>'
+           + '<div class="funil-result-text">Porque você chegou até aqui, liberamos um preço especial. <strong>R$10 de desconto</strong> aplicado automaticamente neste link.</div>'
            + '<div class="funil-desconto-box">'
            + '<div>'
            + '<div class="funil-desconto-preco-de">De R$47,00</div>'
-           + '<div class="funil-desconto-preco-por">R$37,13</div>'
-           + '<div class="funil-desconto-cupom">Cupom DESCONTO20 aplicado</div>'
+           + '<div class="funil-desconto-preco-por">R$37,00</div>'
+           + '<div class="funil-desconto-cupom">Preço especial do funil</div>'
            + '</div>'
            + '<div style="font-size:28px;">→</div>'
            + '<div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Acesso vitalício · 7 dias de garantia · Começa hoje</div>'
            + '</div>'
-           + '<a href="' + urlDesconto + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-desconto">🔓 Garantir por R$37,13 com desconto →</a>'
-           + '<a href="https://wa.me/5511999999999?text=Oi%2C+vi+o+cupom+de+desconto+do+Esqueleto+Viral%21" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Tirar dúvida antes de garantir</a>'
+           + '<a href="' + urlR37 + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="' + ucDesconto + '">🔓 Garantir por R$37,00 agora →</a>'
+           + '<a href="https://wa.me/5511999999999?text=Oi%2C+quero+saber+mais+sobre+o+Esqueleto+Viral" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Tirar dúvida antes de garantir</a>'
            + '</div>';
 
     } else if(respP5 === 'nao-preco' || respP5 === 'sem-tempo-real') {
@@ -4397,7 +4404,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-title">Sem problema — fica no canal do WhatsApp</div>'
            + '<div class="funil-result-text">Quando o momento certo chegar, você já vai saber tudo sobre o método. Postamos resultados reais de alunos toda semana.</div>'
            + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Entrar no canal do WhatsApp</a>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir o acesso mesmo assim →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="' + ucCanal + '">Garantir o acesso mesmo assim →</a>'
            + '</div>';
 
     } else if(respP5 === 'sim-tempo' || respP5 === 'vitali' || respP5 === 'fim-semana') {
@@ -4405,7 +4412,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-badge">⚡ Feito para quem tem pouco tempo</div>'
            + '<div class="funil-result-title">30 minutos por vídeo. Acesso vitalício.</div>'
            + '<div class="funil-result-text">Cada aula tem menos de 20 minutos. Você produz o primeiro vídeo no mesmo dia. E o acesso não expira — vai no seu ritmo, sem pressão.</div>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">✅ Garantir acesso vitalício →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="' + ucTempo + '">✅ Garantir acesso vitalício →</a>'
            + '</div>';
 
     } else if(respP5 === 'garantia') {
@@ -4413,7 +4420,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-badge">🛡️ 7 dias de garantia total</div>'
            + '<div class="funil-result-title">Teste sem risco. Se não gostar, devolvemos tudo.</div>'
            + '<div class="funil-result-text">Acessa o curso, assiste as aulas, aplica o método. Se em <strong>7 dias</strong> não gostar — por qualquer motivo — peça o reembolso. Sem perguntas, sem burocracia.</div>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">🛡️ Testar com garantia de 7 dias →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="' + ucGarantia + '">🛡️ Testar com garantia de 7 dias →</a>'
            + '</div>';
 
     } else if(respP5 === 'falar' || respP5 === 'resultados' || respP5 === 'nicho') {
@@ -4422,7 +4429,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-title">A gente te responde antes de você decidir</div>'
            + '<div class="funil-result-text">Manda sua dúvida no WhatsApp. Te mostramos resultados do seu nicho específico e respondemos qualquer pergunta antes de você comprar.</div>'
            + '<a href="https://wa.me/5511999999999?text=Oi%2C+tenho+uma+d%C3%BAvida+sobre+o+Esqueleto+Viral" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Tirar dúvida no WhatsApp</a>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir com garantia de 7 dias →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="' + ucFalar + '">Garantir com garantia de 7 dias →</a>'
            + '</div>';
 
     } else if(respP5 === 'canal-wa') {
@@ -4431,7 +4438,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-title">Entra no canal — postamos resultados toda semana</div>'
            + '<div class="funil-result-text">Quando estiver pronto, o método ainda estará aqui. Mas o preço de <strong>R$47,00</strong> é promocional e pode mudar a qualquer momento.</div>'
            + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Entrar no canal do WhatsApp</a>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir agora por R$47,00 →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="' + ucCanal + '">Garantir agora por R$47,00 →</a>'
            + '</div>';
 
     } else {
@@ -4440,7 +4447,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-badge">📹 Mais provas para você</div>'
            + '<div class="funil-result-title">Faz sentido pesquisar. Mas veja isso:</div>'
            + '<div class="funil-result-text">O método já gerou mais de 200M de views em canais sem aparecer no Brasil. Acesso vitalício, 7 dias de garantia. Se não funcionar — reembolso total.</div>'
-           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">Testar com garantia de 7 dias →</a>'
+           + '<a href="' + urlBase + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="' + ucPesq + '">Testar com garantia de 7 dias →</a>'
            + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Acompanhar pelo WhatsApp primeiro</a>'
            + '</div>';
     }
@@ -4460,9 +4467,6 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
           if(utms.utm_term)     u.searchParams.set('utm_term',     utms.utm_term);
           var uc = a.getAttribute('data-utm-content');
           if(uc) u.searchParams.set('utm_content', uc);
-          // Preserva coupon se já estava na URL
-          var existingCoupon = new URL(a.href).searchParams.get('coupon');
-          if(existingCoupon) u.searchParams.set('coupon', existingCoupon);
           a.href = u.toString();
         } catch(e){}
       });
