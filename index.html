@@ -4215,8 +4215,19 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
   .funil-desconto-items { display:flex; flex-direction:column; gap:7px; width:100%; text-align:left; }
   .funil-desconto-item { font-size:13px; color:rgba(245,240,255,0.65); display:flex; align-items:center; gap:8px; }
 
+  /* Formulário de contato */
+  .funil-contato-form { display:flex; flex-direction:column; gap:10px; margin-top:20px; }
+  .funil-input { width:100%; box-sizing:border-box; background:rgba(245,240,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:13px 16px; font-size:14px; color:#fff; font-family:'Montserrat',sans-serif; outline:none; transition:border-color .2s; }
+  .funil-input::placeholder { color:rgba(255,255,255,0.25); }
+  .funil-input:focus { border-color:rgba(255,90,0,0.5); background:rgba(255,90,0,0.04); }
+  .funil-input-wrap { position:relative; display:flex; align-items:center; }
+  .funil-input-ddi { position:absolute; left:14px; font-size:13px; color:rgba(255,255,255,0.4); pointer-events:none; white-space:nowrap; }
+  .funil-input-tel { padding-left:72px !important; }
+  .funil-skip { background:none; border:none; cursor:pointer; font-size:11px; color:rgba(255,255,255,0.2); font-family:'Montserrat',sans-serif; letter-spacing:.5px; padding:4px 0; text-align:center; transition:color .2s; }
+  .funil-skip:hover { color:rgba(255,255,255,0.45); }
+
   /* CTAs */
-  .funil-cta-primary { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:linear-gradient(135deg,#FF5A00,#FFC478); color:#fff; font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:15px 28px; border-radius:10px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(255,90,0,0.4); width:100%; justify-content:center; }
+  .funil-cta-primary { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:linear-gradient(135deg,#FF5A00,#FFC478); color:#fff; font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:15px 28px; border-radius:10px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(255,90,0,0.4); width:100%; justify-content:center; border:none; cursor:pointer; }
   .funil-cta-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,90,0,0.55); }
   .funil-cta-secondary { display:inline-flex; align-items:center; gap:6px; margin-top:10px; font-size:12px; font-weight:700; color:rgba(255,255,255,0.35); text-decoration:none; letter-spacing:0.5px; transition:color .2s; }
   .funil-cta-secondary:hover { color:rgba(255,255,255,0.7); }
@@ -4287,6 +4298,21 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     <!-- PASSO 5 — Pergunta final (preenchida via JS) -->
     <div class="funil-step" id="funilP5" style="display:none"></div>
 
+    <!-- PASSO CONTATO — WhatsApp antes do resultado -->
+    <div class="funil-step" id="funilContato" style="display:none">
+      <div class="survey-question">Quase lá! Para onde enviamos seu resultado?</div>
+      <div class="survey-subtitle">Só precisamos do seu WhatsApp para entregar o resultado personalizado.</div>
+      <div class="funil-contato-form">
+        <input type="text" id="funilNome" class="funil-input" placeholder="Seu nome" autocomplete="given-name">
+        <div class="funil-input-wrap">
+          <span class="funil-input-ddi">🇧🇷 +55</span>
+          <input type="tel" id="funilWpp" class="funil-input funil-input-tel" placeholder="(11) 99999-9999" autocomplete="tel" inputmode="numeric" maxlength="15">
+        </div>
+        <button class="funil-cta-primary" style="margin-top:4px;" onclick="funilEnviarContato(this)">Ver meu resultado →</button>
+        <button class="funil-skip" onclick="funilPularContato()">Pular e ver resultado</button>
+      </div>
+    </div>
+
     <!-- RESULTADO (preenchido via JS) -->
     <div class="funil-step" id="funilResultado" style="display:none"></div>
 
@@ -4307,14 +4333,16 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
   }
 
   function _setProgress(passo) {
-    document.getElementById('funilBar').style.width = (passo * 20) + '%';
+    // 6 passos reais: 5 perguntas + contato (resultado = 100%)
+    var pct = passo <= 5 ? (passo * 16) : passo === 6 ? 90 : 100;
+    document.getElementById('funilBar').style.width = pct + '%';
     document.getElementById('funilCounter').textContent = passo <= 5
       ? 'Pergunta ' + passo + ' de 5'
       : 'Seu resultado';
   }
 
   function _showStep(id) {
-    ['funilP1','funilP2','funilP3','funilP4','funilP5','funilResultado'].forEach(function(s){
+    ['funilP1','funilP2','funilP3','funilP4','funilP5','funilContato','funilResultado'].forEach(function(s){
       document.getElementById(s).style.display = 'none';
     });
     document.getElementById(id).style.display = 'block';
@@ -4505,28 +4533,77 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     if(btn) btn.classList.add('selecionado');
     _gaEvent('funil_resultado', _respostas[1] + '_' + respP5);
 
-    // Envia para Formspree
+    // Vai para o passo de contato antes de mostrar resultado
+    setTimeout(function(){
+      _setProgress(6);
+      _showStep('funilContato');
+      document.getElementById('funilCounter').textContent = 'Quase lá...';
+      document.getElementById('funilVoltar').style.display = 'none';
+      // Foca no campo nome após transição
+      setTimeout(function(){ var n = document.getElementById('funilNome'); if(n) n.focus(); }, 300);
+    }, 180);
+  };
+
+  // Formata telefone enquanto digita: (11) 99999-9999
+  (function(){
+    var tel = document.getElementById('funilWpp');
+    if(!tel) return;
+    tel.addEventListener('input', function(){
+      var v = tel.value.replace(/\D/g,'').substring(0,11);
+      if(v.length <= 2)       tel.value = v.length ? '(' + v : '';
+      else if(v.length <= 6)  tel.value = '(' + v.substring(0,2) + ') ' + v.substring(2);
+      else if(v.length <= 10) tel.value = '(' + v.substring(0,2) + ') ' + v.substring(2,6) + '-' + v.substring(6);
+      else                    tel.value = '(' + v.substring(0,2) + ') ' + v.substring(2,7) + '-' + v.substring(7);
+    });
+  })();
+
+  function _enviarFormspree(extra) {
     fetch('https://formspree.io/f/xqegbdpe', {
       method:'POST',
       headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({
-        p1_objecao:    _respostas[1]  || '',
-        p2_experiencia:_respostas[2]  || '',
-        p3_objetivo:   _respostas[3]  || '',
-        p4_tempo:      _respostas[4]  || '',
-        p5_decisao:    respP5         || '',
-        pagina: window.location.href,
+      body: JSON.stringify(Object.assign({
+        p1_objecao:     _respostas[1] || '',
+        p2_experiencia: _respostas[2] || '',
+        p3_objetivo:    _respostas[3] || '',
+        p4_tempo:       _respostas[4] || '',
+        p5_decisao:     _respostas[5] || '',
+        pagina:  window.location.href,
         horario: new Date().toLocaleString('pt-BR')
-      })
+      }, extra || {}))
     }).catch(function(){});
+  }
 
-    setTimeout(function(){
-      _buildResultado(respP5);
-      _setProgress(6);
-      _showStep('funilResultado');
-      document.getElementById('funilCounter').textContent = '✅ Resultado personalizado';
-      document.getElementById('funilVoltar').style.display = 'none';
-    }, 180);
+  function _mostrarResultado() {
+    _buildResultado(_respostas[5]);
+    _setProgress(7);
+    _showStep('funilResultado');
+    document.getElementById('funilCounter').textContent = '✅ Resultado personalizado';
+    document.getElementById('funilVoltar').style.display = 'none';
+  }
+
+  window.funilEnviarContato = function(btn) {
+    var nome = (document.getElementById('funilNome').value || '').trim();
+    var wpp  = (document.getElementById('funilWpp').value  || '').trim();
+
+    if(!wpp || wpp.replace(/\D/g,'').length < 10) {
+      document.getElementById('funilWpp').focus();
+      document.getElementById('funilWpp').style.borderColor = 'rgba(255,60,60,0.6)';
+      setTimeout(function(){ document.getElementById('funilWpp').style.borderColor = ''; }, 2000);
+      return;
+    }
+
+    if(btn) { btn.textContent = 'Carregando...'; btn.disabled = true; }
+
+    _gaEvent('funil_contato', 'enviado');
+    _enviarFormspree({ nome: nome, whatsapp: '+55 ' + wpp });
+
+    setTimeout(_mostrarResultado, 300);
+  };
+
+  window.funilPularContato = function() {
+    _gaEvent('funil_contato', 'pulado');
+    _enviarFormspree({ nome: '', whatsapp: 'pulado' });
+    _mostrarResultado();
   };
 
   window.funilVoltarPasso = function() {
