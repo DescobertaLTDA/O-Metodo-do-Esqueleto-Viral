@@ -4185,6 +4185,9 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
 
   /* Opções */
   .survey-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:0; }
+  .survey-btn-academy { grid-column:1 / -1; border-color:rgba(255,196,120,0.25) !important; background:rgba(255,196,120,0.05) !important; }
+  .survey-btn-academy:hover { border-color:rgba(255,196,120,0.5) !important; background:rgba(255,196,120,0.1) !important; }
+  .survey-btn-academy .survey-btn-icon { font-size:20px; }
   .survey-btn {
     background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
     border-radius:12px; padding:16px 14px; cursor:pointer;
@@ -4260,6 +4263,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
         <button class="survey-btn" onclick="funilNext(1,'tempo',this)"><span class="survey-btn-icon">⏰</span><span>Não sei se terei tempo</span></button>
         <button class="survey-btn" onclick="funilNext(1,'duvida',this)"><span class="survey-btn-icon">🤔</span><span>Tenho dúvida se funciona pra mim</span></button>
         <button class="survey-btn" onclick="funilNext(1,'pesquisando',this)"><span class="survey-btn-icon">👀</span><span>Ainda quero pesquisar mais</span></button>
+        <button class="survey-btn survey-btn-academy" onclick="_irParaAcademy(this)"><span class="survey-btn-icon">📘</span><span>Quero monetizar no <strong>Facebook</strong> — ver outro curso</span></button>
       </div>
     </div>
 
@@ -4623,6 +4627,26 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
   window.funilPularContato = function() {
     _gaEvent('funil_contato', 'pulado');
     _mostrarResultado();
+  };
+
+  // Redireciona para a página da Academy preservando os UTMs do visitante
+  // utm_content = 'funil-p1-academy' → rastreável no CSV da Kiwify e no GA4
+  window._irParaAcademy = function(btn) {
+    if(btn) btn.classList.add('selecionado');
+    _gaEvent('funil_p1', 'academy');  // rastreável no GA4
+
+    try {
+      var utms = window.EV_UTM || {};
+      var url  = new URL('https://www.esqueletoviral.com.br/cursos/academy/');
+      if(utms.utm_source)   url.searchParams.set('utm_source',   utms.utm_source);
+      if(utms.utm_medium)   url.searchParams.set('utm_medium',   utms.utm_medium);
+      if(utms.utm_campaign) url.searchParams.set('utm_campaign', utms.utm_campaign);
+      if(utms.utm_term)     url.searchParams.set('utm_term',     utms.utm_term);
+      url.searchParams.set('utm_content', 'funil-p1-academy');
+      setTimeout(function(){ window.location.href = url.toString(); }, 200);
+    } catch(e) {
+      window.location.href = 'https://www.esqueletoviral.com.br/cursos/academy/';
+    }
   };
 
   window.funilVoltarPasso = function() {
