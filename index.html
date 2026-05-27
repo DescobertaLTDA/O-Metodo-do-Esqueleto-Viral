@@ -294,21 +294,21 @@ nav::before {
 .nav-btn {
   position:relative; overflow:hidden;
   display:inline-flex; align-items:center; gap:8px;
-  background: linear-gradient(135deg, #C97A10 0%, #A86208 100%);
-  color:#F5E6C8; font-family:'Montserrat',sans-serif;
+  background: linear-gradient(135deg, #E8921A 0%, #E8921A 50%, #C9860A 100%);
+  color:#fff; font-family:'Montserrat',sans-serif;
   font-weight:800; font-size:11px; letter-spacing:2px;
   text-transform:uppercase; padding:11px 24px;
   border:none; cursor:pointer; text-decoration:none;
   border-radius:10px;
   transition:transform .2s, box-shadow .2s;
-  box-shadow: 0 2px 12px rgba(120,60,0,0.35), 0 1px 0 rgba(255,220,120,0.08) inset;
+  box-shadow: 0 4px 24px rgba(180,70,0,0.45), 0 1px 0 rgba(255,255,255,0.1) inset;
 }
 .nav-btn::before {
   content:''; position:absolute; top:0; left:-100%; width:55%; height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);
   transition:left .5s ease;
 }
-.nav-btn:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(120,60,0,0.5), 0 1px 0 rgba(255,220,120,0.1) inset; }
+.nav-btn:hover { transform:translateY(-1px); box-shadow:0 8px 32px rgba(232,146,26,0.55), 0 1px 0 rgba(255,255,255,0.1) inset; }
 .nav-btn:hover::before { left:160%; }
 .nav-btn:active { transform:translateY(0); }
 
@@ -457,7 +457,7 @@ nav::before {
 
 .btn-hero {
   position:relative; overflow:hidden;
-  background:linear-gradient(135deg, #C97A10 0%, #A86208 100%);
+  background:linear-gradient(135deg, #E8921A 0%, #C9860A 100%);
   color:#fff; font-family:'Montserrat',sans-serif;
   font-weight:900; font-size:14px; letter-spacing:2px;
   text-transform:uppercase; padding:18px 40px;
@@ -610,7 +610,7 @@ nav::before {
   top: -13px; left: 50%;
   transform: translateX(-50%) translateY(4px);
   display: flex; align-items: center; gap: 5px;
-  background: linear-gradient(135deg, #C97A10, #C97A10, #A86208);
+  background: linear-gradient(135deg, #E8921A, #E8921A, #C9860A);
   color: #fff;
   font-family: 'Montserrat', sans-serif;
   font-size: 9px; font-weight: 900;
@@ -849,7 +849,7 @@ nav::before {
 .pricing-installment { font-size:13px; color:rgba(255,255,255,0.45); margin:8px 0 40px; letter-spacing:.5px; }
 .pricing-installment strong { color:rgba(245,240,255,0.8); }
 
-.btn-buy { display:block; width:100%; background:linear-gradient(135deg, #C97A10 0%, #A86208 100%); color:#fff; font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; letter-spacing:3px; text-transform:uppercase; padding:24px 20px; text-decoration:none; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(232,146,26,0.5), 0 2px 0 rgba(255,255,255,0.1) inset; transition:transform .2s, box-shadow .2s; margin-bottom:18px; border-radius:14px; }
+.btn-buy { display:block; width:100%; background:linear-gradient(135deg, #E8921A 0%, #C9860A 100%); color:#fff; font-family:'Montserrat',sans-serif; font-weight:900; font-size:15px; letter-spacing:3px; text-transform:uppercase; padding:24px 20px; text-decoration:none; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(232,146,26,0.5), 0 2px 0 rgba(255,255,255,0.1) inset; transition:transform .2s, box-shadow .2s; margin-bottom:18px; border-radius:14px; }
 .btn-buy::after { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent); transition:left .5s; }
 .btn-buy:hover { transform:translateY(-3px); box-shadow:0 20px 60px rgba(232,146,26,0.65); }
 .btn-buy:hover::after { left:160%; }
@@ -912,7 +912,7 @@ nav::before {
   margin-top:-8px;
 }
 .bsc-btn {
-  background:linear-gradient(135deg,#C97A10,#C97A10,#A86208);
+  background:linear-gradient(135deg,#E8921A,#E8921A,#C9860A);
   color:#fff; font-family:'Montserrat',sans-serif;
   font-weight:900; font-size:12px; letter-spacing:2px;
   text-transform:uppercase; padding:15px 28px;
@@ -2734,7 +2734,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(232,146,26,0.08); pa
   .topvideos-stage { height: calc(55vw * 1.5 + 60px); transform-style: preserve-3d; overflow: visible; }
   .topvideos-card-wrap { position: absolute; top: 50%; left: 50%; width: 55vw; height: calc(55vw * 1.5); margin-top: calc(55vw * -0.75); margin-left: calc(55vw * -0.5); pointer-events: none; transform-style: preserve-3d; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; overflow: visible; }
 }
-.topvideos-viral-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%) translateY(4px); display: flex; align-items: center; gap: 5px; background: linear-gradient(135deg, #C97A10, #C97A10, #A86208); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 2.5px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; box-shadow: 0 4px 16px rgba(232,146,26,0.6), 0 0 0 2px rgba(255,255,255,0.12); white-space: nowrap; z-index: 30; opacity: 0; transition: opacity .3s ease, transform .3s ease; pointer-events: none; }
+.topvideos-viral-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%) translateY(4px); display: flex; align-items: center; gap: 5px; background: linear-gradient(135deg, #E8921A, #E8921A, #C9860A); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 2.5px; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; box-shadow: 0 4px 16px rgba(232,146,26,0.6), 0 0 0 2px rgba(255,255,255,0.12); white-space: nowrap; z-index: 30; opacity: 0; transition: opacity .3s ease, transform .3s ease; pointer-events: none; }
 .topvideos-card-wrap.is-center .topvideos-viral-badge { opacity: 1; transform: translateX(-50%) translateY(0); }
 .topvideos-card { position: absolute; inset: 0; border-radius: 20px; overflow: hidden; will-change: transform; cursor: pointer; box-shadow: 0 24px 60px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.06); }
 .topvideos-card.is-center { box-shadow: 0 0 0 2.5px rgba(201,134,10,0.65), 0 0 40px rgba(232,146,26,0.4), 0 30px 70px rgba(0,0,0,0.9) !important; }
@@ -3742,7 +3742,7 @@ footer { background:var(--dark2); border-top:1px solid rgba(232,146,26,0.08); pa
 .pc-value .cents { font-size:0.4em; letter-spacing:0; vertical-align:top; margin-top:14px; display:inline-block; }
 .pc-installment { font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:32px; letter-spacing:.3px; }
 .pc-installment strong { color:rgba(245,240,255,0.75); }
-.pc-btn { display:block; width:100%; background:linear-gradient(135deg, #C97A10 0%, #A86208 100%); color:#fff; font-family:'Montserrat',sans-serif; font-weight:900; font-size:14px; letter-spacing:2.5px; text-transform:uppercase; text-decoration:none; padding:20px 16px; border-radius:14px; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(232,146,26,0.5), 0 2px 0 rgba(255,255,255,0.08) inset; transition:transform .2s, box-shadow .2s; margin-bottom:14px; }
+.pc-btn { display:block; width:100%; background:linear-gradient(135deg, #E8921A 0%, #C9860A 100%); color:#fff; font-family:'Montserrat',sans-serif; font-weight:900; font-size:14px; letter-spacing:2.5px; text-transform:uppercase; text-decoration:none; padding:20px 16px; border-radius:14px; position:relative; overflow:hidden; box-shadow:0 8px 40px rgba(232,146,26,0.5), 0 2px 0 rgba(255,255,255,0.08) inset; transition:transform .2s, box-shadow .2s; margin-bottom:14px; }
 .pc-btn::after { content:''; position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transition:left .5s; }
 .pc-btn:hover { transform:translateY(-3px); box-shadow:0 18px 55px rgba(232,146,26,0.65); }
 .pc-btn:hover::after { left:160%; }
@@ -4900,7 +4900,7 @@ document.querySelectorAll('[data-monetizo]').forEach(function(el){ el.style.disp
 <style>
 .cf-viral-item { position:relative; }
 .cf-viral-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.2) 50%,transparent 100%);display:flex;flex-direction:column;justify-content:space-between;padding:10px;pointer-events:none; }
-.cf-viral-badge { align-self:flex-start;background:linear-gradient(135deg,#C97A10,#C97A10,#A86208);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:20px;box-shadow:0 2px 10px rgba(232,146,26,0.6); }
+.cf-viral-badge { align-self:flex-start;background:linear-gradient(135deg,#E8921A,#E8921A,#C9860A);color:#fff;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border-radius:20px;box-shadow:0 2px 10px rgba(232,146,26,0.6); }
 .cf-viral-bottom { display:flex;flex-direction:column;gap:2px; }
 .cf-viral-views { color:#fff;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;letter-spacing:-0.5px;text-shadow:0 2px 8px rgba(0,0,0,0.9); }
 .cf-viral-revenue { color:var(--o2);font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,0.9); }
