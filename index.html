@@ -4206,10 +4206,13 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
   .funil-result-text strong { color:#fff; }
 
   /* Desconto destaque */
-  .funil-desconto-box { background:rgba(255,196,120,0.08); border:1px solid rgba(255,196,120,0.25); border-radius:12px; padding:16px 18px; margin:16px 0; display:flex; align-items:center; gap:14px; }
-  .funil-desconto-preco-de { font-size:12px; color:rgba(255,255,255,0.35); text-decoration:line-through; }
-  .funil-desconto-preco-por { font-size:26px; font-weight:900; color:#FFC478; line-height:1; }
-  .funil-desconto-cupom { font-size:10px; font-weight:800; letter-spacing:2px; color:rgba(255,196,120,0.7); text-transform:uppercase; }
+  .funil-desconto-box { background:rgba(255,196,120,0.07); border:1px solid rgba(255,196,120,0.28); border-radius:14px; padding:20px 18px; margin:18px 0; display:flex; flex-direction:column; align-items:center; gap:0; text-align:center; }
+  .funil-desconto-preco-de { font-size:13px; color:rgba(255,255,255,0.35); text-decoration:line-through; margin-bottom:4px; }
+  .funil-desconto-preco-por { font-size:42px; font-weight:900; color:#FFC478; line-height:1; letter-spacing:-1px; margin-bottom:8px; }
+  .funil-desconto-pill { display:inline-flex; align-items:center; gap:5px; background:rgba(255,196,120,0.14); border:1px solid rgba(255,196,120,0.28); border-radius:99px; padding:4px 12px; font-size:10px; font-weight:800; letter-spacing:1.5px; color:#FFC478; text-transform:uppercase; margin-bottom:16px; }
+  .funil-desconto-divider { width:100%; height:1px; background:rgba(255,196,120,0.15); margin-bottom:14px; }
+  .funil-desconto-items { display:flex; flex-direction:column; gap:7px; width:100%; text-align:left; }
+  .funil-desconto-item { font-size:13px; color:rgba(245,240,255,0.65); display:flex; align-items:center; gap:8px; }
 
   /* CTAs */
   .funil-cta-primary { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:linear-gradient(135deg,#FF5A00,#FFC478); color:#fff; font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:15px 28px; border-radius:10px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(255,90,0,0.4); width:100%; justify-content:center; }
@@ -4386,13 +4389,15 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
            + '<div class="funil-result-title">Preço especial só para você — acesso por R$37,00</div>'
            + '<div class="funil-result-text">Porque você chegou até aqui, liberamos um preço especial. <strong>R$10 de desconto</strong> aplicado automaticamente neste link.</div>'
            + '<div class="funil-desconto-box">'
-           + '<div>'
            + '<div class="funil-desconto-preco-de">De R$47,00</div>'
            + '<div class="funil-desconto-preco-por">R$37,00</div>'
-           + '<div class="funil-desconto-cupom">Preço especial do funil</div>'
+           + '<div class="funil-desconto-pill">💰 Economia de R$10,00</div>'
+           + '<div class="funil-desconto-divider"></div>'
+           + '<div class="funil-desconto-items">'
+           + '<div class="funil-desconto-item">✅ Acesso vitalício ao curso</div>'
+           + '<div class="funil-desconto-item">🛡️ 7 dias de garantia total</div>'
+           + '<div class="funil-desconto-item">⚡ Começa hoje — acesso imediato</div>'
            + '</div>'
-           + '<div style="font-size:28px;">→</div>'
-           + '<div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Acesso vitalício · 7 dias de garantia · Começa hoje</div>'
            + '</div>'
            + '<a href="' + urlR37 + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="' + ucDesconto + '">🔓 Garantir por R$37,00 agora →</a>'
            + '<a href="https://wa.me/5511999999999?text=Oi%2C+quero+saber+mais+sobre+o+Esqueleto+Viral" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Tirar dúvida antes de garantir</a>'
