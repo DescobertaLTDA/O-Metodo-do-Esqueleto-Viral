@@ -4167,14 +4167,21 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
 
 
 
-<!-- ═══ SURVEY: POR QUE NÃO COMPROU?═══ -->
+<!-- ═══ FUNIL DE 5 PERGUNTAS ═══ -->
 <style>
-  .survey-section { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.1); border-bottom:1px solid rgba(255,90,0,0.1); padding:48px 0; }
+  .survey-section { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.1); border-bottom:1px solid rgba(255,90,0,0.1); padding:52px 0; }
   .survey-wrap { max-width:640px; margin:0 auto; padding:0 24px; text-align:center; }
-  .survey-label { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,90,0,0.6); margin-bottom:12px; }
+  .survey-label { font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:rgba(255,90,0,0.6); margin-bottom:14px; }
   .survey-title { font-size:clamp(18px,3vw,24px); font-weight:900; text-transform:uppercase; letter-spacing:-0.5px; color:#fff; margin-bottom:8px; line-height:1.2; }
+  .survey-title span { color:var(--o1); }
   .survey-sub { font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:28px; line-height:1.6; }
 
+  /* Progress bar */
+  .funil-progress-wrap { width:100%; background:rgba(255,255,255,0.06); border-radius:99px; height:4px; margin-bottom:10px; overflow:hidden; }
+  .funil-progress-bar { height:4px; background:linear-gradient(90deg,#FF5A00,#FFC478); border-radius:99px; transition:width .4s ease; }
+  .funil-step-counter { font-size:10px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,0.25); text-transform:uppercase; margin-bottom:24px; }
+
+  /* Opções */
   .survey-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:0; }
   .survey-btn {
     background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
@@ -4184,23 +4191,35 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
     transition:all .2s; display:flex; align-items:center; gap:12px;
   }
   .survey-btn:hover { background:rgba(255,90,0,0.08); border-color:rgba(255,90,0,0.3); color:#fff; transform:translateY(-2px); }
+  .survey-btn.selecionado { background:rgba(255,90,0,0.15); border-color:rgba(255,90,0,0.5); color:#fff; }
   .survey-btn-icon { font-size:20px; flex-shrink:0; }
 
-  /* Resposta personalizada */
-  .survey-response { display:none; margin-top:20px; background:rgba(255,90,0,0.07); border:1px solid rgba(255,90,0,0.2); border-radius:14px; padding:24px 22px; text-align:left; animation:surveyFadeIn .35s ease; }
-  .survey-response.ativo { display:block; }
-  @keyframes surveyFadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-  .survey-response-title { font-size:14px; font-weight:900; color:#fff; margin-bottom:8px; text-transform:uppercase; letter-spacing:-0.3px; }
-  .survey-response-text { font-size:13px; color:rgba(245,240,255,0.6); line-height:1.75; }
-  .survey-response-text strong { color:#fff; }
-  .survey-response-cta { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:linear-gradient(135deg,#FF5A00,#FFC478); color:#fff; font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:14px 24px; border-radius:10px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(255,90,0,0.4); }
-  .survey-response-cta:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,90,0,0.55); }
-  .survey-response-cta-alt { display:inline-flex; align-items:center; gap:6px; margin-top:10px; font-size:12px; font-weight:700; color:rgba(255,255,255,0.35); text-decoration:none; letter-spacing:0.5px; transition:color .2s; }
-  .survey-response-cta-alt:hover { color:rgba(255,255,255,0.7); }
+  /* Passos */
+  .funil-step { animation:funilFadeIn .3s ease; }
+  @keyframes funilFadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
-  .survey-back { display:none; background:none; border:none; cursor:pointer; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:rgba(255,255,255,0.25); margin-top:16px; text-transform:uppercase; transition:color .2s; }
-  .survey-back:hover { color:rgba(255,255,255,0.55); }
-  .survey-back.ativo { display:inline-block; }
+  /* Resultado */
+  .funil-result-box { background:rgba(255,90,0,0.07); border:1px solid rgba(255,90,0,0.2); border-radius:16px; padding:28px 24px; text-align:left; margin-top:8px; }
+  .funil-result-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,90,0,0.15); border:1px solid rgba(255,90,0,0.3); border-radius:99px; padding:5px 14px; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--o1); margin-bottom:14px; }
+  .funil-result-title { font-size:18px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:10px; }
+  .funil-result-text { font-size:13px; color:rgba(245,240,255,0.65); line-height:1.75; }
+  .funil-result-text strong { color:#fff; }
+
+  /* Desconto destaque */
+  .funil-desconto-box { background:rgba(255,196,120,0.08); border:1px solid rgba(255,196,120,0.25); border-radius:12px; padding:16px 18px; margin:16px 0; display:flex; align-items:center; gap:14px; }
+  .funil-desconto-preco-de { font-size:12px; color:rgba(255,255,255,0.35); text-decoration:line-through; }
+  .funil-desconto-preco-por { font-size:26px; font-weight:900; color:#FFC478; line-height:1; }
+  .funil-desconto-cupom { font-size:10px; font-weight:800; letter-spacing:2px; color:rgba(255,196,120,0.7); text-transform:uppercase; }
+
+  /* CTAs */
+  .funil-cta-primary { display:inline-flex; align-items:center; gap:8px; margin-top:18px; background:linear-gradient(135deg,#FF5A00,#FFC478); color:#fff; font-family:'Montserrat',sans-serif; font-weight:800; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; padding:15px 28px; border-radius:10px; text-decoration:none; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 20px rgba(255,90,0,0.4); width:100%; justify-content:center; }
+  .funil-cta-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,90,0,0.55); }
+  .funil-cta-secondary { display:inline-flex; align-items:center; gap:6px; margin-top:10px; font-size:12px; font-weight:700; color:rgba(255,255,255,0.35); text-decoration:none; letter-spacing:0.5px; transition:color .2s; }
+  .funil-cta-secondary:hover { color:rgba(255,255,255,0.7); }
+
+  /* Voltar */
+  .survey-back { background:none; border:none; cursor:pointer; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:1px; color:rgba(255,255,255,0.2); margin-top:20px; text-transform:uppercase; transition:color .2s; display:none; }
+  .survey-back:hover { color:rgba(255,255,255,0.5); }
 
   @media(max-width:480px){
     .survey-options { grid-template-columns:1fr; }
@@ -4211,114 +4230,304 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
 <section class="survey-section">
   <div class="survey-wrap">
     <div class="survey-label">Antes de você ir embora</div>
-    <h2 class="survey-title">O que te impediu<br><span style="color:var(--o1);">de garantir o acesso?</span></h2>
-    <p class="survey-sub">Leva 2 segundos. Sua resposta ajuda muito.</p>
 
-    <div class="survey-options" id="surveyOptions">
-      <button class="survey-btn" onclick="surveyResponder('preco')">
-        <span class="survey-btn-icon">💸</span>
-        <span>O preço está alto para mim agora</span>
-      </button>
-      <button class="survey-btn" onclick="surveyResponder('tempo')">
-        <span class="survey-btn-icon">⏰</span>
-        <span>Não sei se terei tempo para aplicar</span>
-      </button>
-      <button class="survey-btn" onclick="surveyResponder('duvida')">
-        <span class="survey-btn-icon">🤔</span>
-        <span>Não sei se funciona para o meu caso</span>
-      </button>
-      <button class="survey-btn" onclick="surveyResponder('pesquisando')">
-        <span class="survey-btn-icon">👀</span>
-        <span>Ainda estou pesquisando, volto depois</span>
-      </button>
-    </div>
+    <!-- Progress -->
+    <div class="funil-progress-wrap"><div class="funil-progress-bar" id="funilBar" style="width:20%"></div></div>
+    <div class="funil-step-counter" id="funilCounter">Pergunta 1 de 5</div>
 
-    <!-- Respostas personalizadas -->
-    <div class="survey-response" id="survey-preco">
-      <div class="survey-response-title">💸 Sobre o preço</div>
-      <div class="survey-response-text">
-        Entendo totalmente. Se fizer sentido pra você, pode entrar agora por <strong>R$47,00</strong> e começar no seu ritmo, com acesso vitalício.
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:18px;">
-        <a href="https://pay.kiwify.com.br/1yZMIvf" data-utm-content="survey" target="_blank" rel="noopener" class="survey-response-cta kiwify-link">Garantir acesso por R$47,00 →</a>
-        <a href="#" onclick="if(window.$crisp){$crisp.push(['set','session:segments',[['suporte-site']]]);$crisp.push(['do','chat:open']);$crisp.push(['do','message:send',['text','Olá! Tenho interesse no curso mas preciso de ajuda para decidir.']]);}return false;" class="survey-response-cta-alt">💬 Falar com suporte antes de comprar</a>
+    <!-- PASSO 1 — Objeção principal -->
+    <div class="funil-step" id="funilP1">
+      <h2 class="survey-title">O que pesou mais<br><span>na sua decisão?</span></h2>
+      <p class="survey-sub">Leva 1 minuto. Sua resposta nos ajuda a melhorar.</p>
+      <div class="survey-options">
+        <button class="survey-btn" onclick="funilNext(1,'preco',this)"><span class="survey-btn-icon">💸</span><span>O preço está apertado agora</span></button>
+        <button class="survey-btn" onclick="funilNext(1,'tempo',this)"><span class="survey-btn-icon">⏰</span><span>Não sei se terei tempo</span></button>
+        <button class="survey-btn" onclick="funilNext(1,'duvida',this)"><span class="survey-btn-icon">🤔</span><span>Tenho dúvida se funciona pra mim</span></button>
+        <button class="survey-btn" onclick="funilNext(1,'pesquisando',this)"><span class="survey-btn-icon">👀</span><span>Ainda quero pesquisar mais</span></button>
       </div>
     </div>
 
-    <div class="survey-response" id="survey-tempo">
-      <div class="survey-response-title">⏰ Sobre o tempo</div>
-      <div class="survey-response-text">
-        Cada vídeo leva <strong>cerca de 30 minutos</strong> para ser produzido com o método — do roteiro à exportação. Você não precisa de estúdio, câmera ou equipamento.<br><br>
-        O acesso é <strong>vitalício</strong>. Pode começar no seu ritmo, sem pressão.
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:18px;">
-        <a href="https://pay.kiwify.com.br/1yZMIvf" data-utm-content="survey" target="_blank" rel="noopener" class="survey-response-cta kiwify-link">Quero acesso vitalício →</a>
-        <a href="#" onclick="if(window.$crisp){$crisp.push(['set','session:segments',[['suporte-site']]]);$crisp.push(['do','chat:open']);$crisp.push(['do','message:send',['text','Olá! Tenho interesse no curso mas quero entender melhor quanto tempo preciso dedicar. Pode me ajudar?']]);}return false;" class="survey-response-cta-alt">💬 Ver como funciona na prática</a>
-      </div>
-    </div>
-
-    <div class="survey-response" id="survey-duvida">
-      <div class="survey-response-title">🤔 Sobre se funciona para você</div>
-      <div class="survey-response-text">
-        O método funciona para qualquer nicho — humor, curiosidades, história, lifestyle, animais. Se você consegue usar o ChatGPT para escrever uma mensagem, consegue aplicar isso.<br><br>
-        E se não funcionar?<strong>7 dias de garantia total</strong>, sem perguntas. Peça o reembolso e pronto.
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:18px;">
-        <a href="https://pay.kiwify.com.br/1yZMIvf" data-utm-content="survey" target="_blank" rel="noopener" class="survey-response-cta kiwify-link">Testar com garantia de 7 dias →</a>
-        <a href="#" onclick="if(window.$crisp){$crisp.push(['set','session:segments',[['suporte-site']]]);$crisp.push(['do','chat:open']);$crisp.push(['do','message:send',['text','Olá! Tenho interesse no curso mas não sei se funciona para o meu caso. Pode me ajudar?']]);}return false;" class="survey-response-cta-alt">💬 Tirar dúvidas antes de comprar</a>
+    <!-- PASSO 2 — Experiência -->
+    <div class="funil-step" id="funilP2" style="display:none">
+      <h2 class="survey-title">Você já tentou<br><span>criar conteúdo antes?</span></h2>
+      <div class="survey-options">
+        <button class="survey-btn" onclick="funilNext(2,'sem-resultado',this)"><span class="survey-btn-icon">😔</span><span>Sim, mas não tive resultado</span></button>
+        <button class="survey-btn" onclick="funilNext(2,'esporadico',this)"><span class="survey-btn-icon">📱</span><span>Sim, faço às vezes</span></button>
+        <button class="survey-btn" onclick="funilNext(2,'nunca',this)"><span class="survey-btn-icon">✋</span><span>Não, nunca tentei</span></button>
+        <button class="survey-btn" onclick="funilNext(2,'canal-ativo',this)"><span class="survey-btn-icon">🎬</span><span>Tenho canal/perfil ativo</span></button>
       </div>
     </div>
 
-    <div class="survey-response" id="survey-pesquisando">
-      <div class="survey-response-title">👀 Ainda pesquisando</div>
-      <div class="survey-response-text">
-        Faz sentido. Mas saiba que o preço de <strong>R$47,00</strong> é promocional e pode subir a qualquer momento.<br><br>
-        Se quiser acompanhar antes de decidir, entra no canal do WhatsApp — postamos resultados reais dos alunos toda semana.
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:18px;">
-        <a href="https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09" target="_blank" rel="noopener" class="survey-response-cta" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Entrar no canal do WhatsApp</a>
-        <a href="https://pay.kiwify.com.br/1yZMIvf" data-utm-content="survey" target="_blank" rel="noopener" class="survey-response-cta-alt kiwify-link">Garantir agora por R$47,00 →</a>
+    <!-- PASSO 3 — Objetivo -->
+    <div class="funil-step" id="funilP3" style="display:none">
+      <h2 class="survey-title">Qual é seu<br><span>objetivo principal?</span></h2>
+      <div class="survey-options">
+        <button class="survey-btn" onclick="funilNext(3,'renda-extra',this)"><span class="survey-btn-icon">💰</span><span>Ganhar uma renda extra</span></button>
+        <button class="survey-btn" onclick="funilNext(3,'substituir',this)"><span class="survey-btn-icon">🚀</span><span>Substituir meu emprego</span></button>
+        <button class="survey-btn" onclick="funilNext(3,'monetizar',this)"><span class="survey-btn-icon">📈</span><span>Monetizar canal que já tenho</span></button>
+        <button class="survey-btn" onclick="funilNext(3,'testar',this)"><span class="survey-btn-icon">🧪</span><span>Só quero testar uma ideia</span></button>
       </div>
     </div>
 
-    <button class="survey-back" id="surveyBack" onclick="surveyVoltar()">← Escolher outra opção</button>
+    <!-- PASSO 4 — Tempo disponível -->
+    <div class="funil-step" id="funilP4" style="display:none">
+      <h2 class="survey-title">Quanto tempo você<br><span>tem por semana?</span></h2>
+      <div class="survey-options">
+        <button class="survey-btn" onclick="funilNext(4,'menos-1h',this)"><span class="survey-btn-icon">⚡</span><span>Menos de 1 hora</span></button>
+        <button class="survey-btn" onclick="funilNext(4,'1-3h',this)"><span class="survey-btn-icon">⏱️</span><span>1 a 3 horas</span></button>
+        <button class="survey-btn" onclick="funilNext(4,'3-5h',this)"><span class="survey-btn-icon">🕐</span><span>3 a 5 horas</span></button>
+        <button class="survey-btn" onclick="funilNext(4,'bastante',this)"><span class="survey-btn-icon">📆</span><span>Bastante tempo disponível</span></button>
+      </div>
+    </div>
+
+    <!-- PASSO 5 — Pergunta final (preenchida via JS) -->
+    <div class="funil-step" id="funilP5" style="display:none"></div>
+
+    <!-- RESULTADO (preenchido via JS) -->
+    <div class="funil-step" id="funilResultado" style="display:none"></div>
+
+    <button class="survey-back" id="funilVoltar" onclick="funilVoltarPasso()">← Voltar</button>
   </div>
 </section>
 
 <script>
-function surveyResponder(tipo) {
-  document.getElementById('surveyOptions').style.display = 'none';
-  document.querySelectorAll('.survey-response').forEach(function(el){ el.classList.remove('ativo'); });
-  var r = document.getElementById('survey-' + tipo);
-  if(r) r.classList.add('ativo');
-  document.getElementById('surveyBack').classList.add('ativo');
-  if(typeof gtag === 'function'){
-    gtag('event', 'survey_resposta', { event_category: 'Survey', event_label: tipo });
+(function(){
+  var _respostas = {};
+  var _passoAtual = 1;
+  var _checkoutBase = (typeof EV_CONFIG !== 'undefined' && EV_CONFIG.curso)
+    ? EV_CONFIG.curso.checkoutUrl.split('?')[0]
+    : 'https://pay.kiwify.com.br/1yZMIvf';
+
+  function _gaEvent(nome, label) {
+    if(typeof gtag === 'function') gtag('event', nome, { event_category:'Funil', event_label: label });
   }
-  // Envia para Formspree
-  var labels = {
-    preco: 'O preço está alto para mim agora',
-    tempo: 'Não sei se terei tempo para aplicar',
-    duvida: 'Não sei se funciona para o meu caso',
-    pesquisando: 'Ainda estou pesquisando, volto depois'
+
+  function _setProgress(passo) {
+    document.getElementById('funilBar').style.width = (passo * 20) + '%';
+    document.getElementById('funilCounter').textContent = passo <= 5
+      ? 'Pergunta ' + passo + ' de 5'
+      : 'Seu resultado';
+  }
+
+  function _showStep(id) {
+    ['funilP1','funilP2','funilP3','funilP4','funilP5','funilResultado'].forEach(function(s){
+      document.getElementById(s).style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+    document.getElementById('funilVoltar').style.display = _passoAtual > 1 ? 'inline-block' : 'none';
+  }
+
+  function _buildP5() {
+    var objecao = _respostas[1];
+    var el = document.getElementById('funilP5');
+    var html = '';
+
+    if(objecao === 'preco') {
+      html = '<h2 class="survey-title">Última pergunta —<br><span>uma proposta especial</span></h2>'
+           + '<p class="survey-sub">Se eu conseguisse <strong style="color:#fff;">reduzir o valor agora</strong>, você garantiria o acesso hoje?</p>'
+           + '<div class="survey-options">'
+           + '<button class="survey-btn" onclick="funilResultado(\'sim-desconto\',this)"><span class="survey-btn-icon">🎯</span><span>Sim! Com desconto, eu fecharia agora</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'talvez\',this)"><span class="survey-btn-icon">🤔</span><span>Talvez, depende do valor</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'nao-preco\',this)"><span class="survey-btn-icon">❌</span><span>Não, o preço não é o único problema</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'parcelar\',this)"><span class="survey-btn-icon">💳</span><span>Quero parcelar no cartão</span></button>'
+           + '</div>';
+    } else if(objecao === 'tempo') {
+      html = '<h2 class="survey-title">Só mais uma —<br><span>sobre o seu tempo</span></h2>'
+           + '<p class="survey-sub">Se eu te mostrasse que leva <strong style="color:#fff;">menos de 30 minutos por vídeo</strong>, mudaria algo?</p>'
+           + '<div class="survey-options">'
+           + '<button class="survey-btn" onclick="funilResultado(\'sim-tempo\',this)"><span class="survey-btn-icon">✅</span><span>Sim, 30 min por vídeo encaixa</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'vitali\',this)"><span class="survey-btn-icon">♾️</span><span>Preciso do acesso vitalício para ir no meu ritmo</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'sem-tempo-real\',this)"><span class="survey-btn-icon">😓</span><span>Honestamente, não tenho tempo agora</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'fim-semana\',this)"><span class="survey-btn-icon">📅</span><span>Só consigo no fim de semana</span></button>'
+           + '</div>';
+    } else if(objecao === 'duvida') {
+      html = '<h2 class="survey-title">Última pergunta —<br><span>o que te daria segurança?</span></h2>'
+           + '<p class="survey-sub">O que seria necessário para você testar agora?</p>'
+           + '<div class="survey-options">'
+           + '<button class="survey-btn" onclick="funilResultado(\'garantia\',this)"><span class="survey-btn-icon">🛡️</span><span>A garantia de 7 dias já resolve</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'resultados\',this)"><span class="survey-btn-icon">📊</span><span>Quero ver mais resultados reais</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'falar\',this)"><span class="survey-btn-icon">💬</span><span>Quero falar com alguém antes</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'nicho\',this)"><span class="survey-btn-icon">🎯</span><span>Não sei se funciona pro meu nicho</span></button>'
+           + '</div>';
+    } else {
+      html = '<h2 class="survey-title">Última pergunta —<br><span>o que ainda falta?</span></h2>'
+           + '<p class="survey-sub">O que falta para você tomar a decisão?</p>'
+           + '<div class="survey-options">'
+           + '<button class="survey-btn" onclick="funilResultado(\'mais-provas\',this)"><span class="survey-btn-icon">📹</span><span>Quero ver mais vídeos de resultado</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'comparar\',this)"><span class="survey-btn-icon">⚖️</span><span>Estou comparando com outros cursos</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'tempo-pensar\',this)"><span class="survey-btn-icon">💭</span><span>Só preciso de mais tempo para pensar</span></button>'
+           + '<button class="survey-btn" onclick="funilResultado(\'canal-wa\',this)"><span class="survey-btn-icon">📲</span><span>Quero acompanhar antes de decidir</span></button>'
+           + '</div>';
+    }
+    el.innerHTML = html;
+  }
+
+  function _buildResultado(respP5) {
+    var objecao = _respostas[1];
+    var el = document.getElementById('funilResultado');
+    var html = '';
+    var urlBase = _checkoutBase;
+
+    // Desconto para quem quer mas acha caro
+    var urlDesconto = urlBase + '?coupon=DESCONTO20&utm_content=funil-desconto';
+    var urlNormal   = urlBase + '?utm_content=funil-resultado';
+    var urlWa       = 'https://whatsapp.com/channel/0029VbBq7gzKmCPScpRpQc09';
+
+    if(respP5 === 'sim-desconto' || respP5 === 'talvez' || respP5 === 'parcelar') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">🎁 Oferta exclusiva liberada</div>'
+           + '<div class="funil-result-title">Você ganhou 21% de desconto — só agora</div>'
+           + '<div class="funil-result-text">Como você respondeu ao nosso funil, liberamos um cupom especial. O desconto é aplicado <strong>automaticamente</strong> no checkout.</div>'
+           + '<div class="funil-desconto-box">'
+           + '<div>'
+           + '<div class="funil-desconto-preco-de">De R$47,00</div>'
+           + '<div class="funil-desconto-preco-por">R$37,13</div>'
+           + '<div class="funil-desconto-cupom">Cupom DESCONTO20 aplicado</div>'
+           + '</div>'
+           + '<div style="font-size:28px;">→</div>'
+           + '<div style="font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;">Acesso vitalício · 7 dias de garantia · Começa hoje</div>'
+           + '</div>'
+           + '<a href="' + urlDesconto + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-desconto">🔓 Garantir por R$37,13 com desconto →</a>'
+           + '<a href="https://wa.me/5511999999999?text=Oi%2C+vi+o+cupom+de+desconto+do+Esqueleto+Viral%21" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Tirar dúvida antes de garantir</a>'
+           + '</div>';
+
+    } else if(respP5 === 'nao-preco' || respP5 === 'sem-tempo-real') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">💬 Entendemos você</div>'
+           + '<div class="funil-result-title">Sem problema — fica no canal do WhatsApp</div>'
+           + '<div class="funil-result-text">Quando o momento certo chegar, você já vai saber tudo sobre o método. Postamos resultados reais de alunos toda semana.</div>'
+           + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Entrar no canal do WhatsApp</a>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir o acesso mesmo assim →</a>'
+           + '</div>';
+
+    } else if(respP5 === 'sim-tempo' || respP5 === 'vitali' || respP5 === 'fim-semana') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">⚡ Feito para quem tem pouco tempo</div>'
+           + '<div class="funil-result-title">30 minutos por vídeo. Acesso vitalício.</div>'
+           + '<div class="funil-result-text">Cada aula tem menos de 20 minutos. Você produz o primeiro vídeo no mesmo dia. E o acesso não expira — vai no seu ritmo, sem pressão.</div>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">✅ Garantir acesso vitalício →</a>'
+           + '</div>';
+
+    } else if(respP5 === 'garantia') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">🛡️ 7 dias de garantia total</div>'
+           + '<div class="funil-result-title">Teste sem risco. Se não gostar, devolvemos tudo.</div>'
+           + '<div class="funil-result-text">Acessa o curso, assiste as aulas, aplica o método. Se em <strong>7 dias</strong> não gostar — por qualquer motivo — peça o reembolso. Sem perguntas, sem burocracia.</div>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">🛡️ Testar com garantia de 7 dias →</a>'
+           + '</div>';
+
+    } else if(respP5 === 'falar' || respP5 === 'resultados' || respP5 === 'nicho') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">💬 Fala com a gente</div>'
+           + '<div class="funil-result-title">A gente te responde antes de você decidir</div>'
+           + '<div class="funil-result-text">Manda sua dúvida no WhatsApp. Te mostramos resultados do seu nicho específico e respondemos qualquer pergunta antes de você comprar.</div>'
+           + '<a href="https://wa.me/5511999999999?text=Oi%2C+tenho+uma+d%C3%BAvida+sobre+o+Esqueleto+Viral" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Tirar dúvida no WhatsApp</a>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir com garantia de 7 dias →</a>'
+           + '</div>';
+
+    } else if(respP5 === 'canal-wa') {
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">📲 Acompanhe antes de decidir</div>'
+           + '<div class="funil-result-title">Entra no canal — postamos resultados toda semana</div>'
+           + '<div class="funil-result-text">Quando estiver pronto, o método ainda estará aqui. Mas o preço de <strong>R$47,00</strong> é promocional e pode mudar a qualquer momento.</div>'
+           + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-primary" style="background:linear-gradient(135deg,#25D366,#128C7E);">💬 Entrar no canal do WhatsApp</a>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-secondary kiwify-link" data-utm-content="funil-resultado">Garantir agora por R$47,00 →</a>'
+           + '</div>';
+
+    } else {
+      // default (mais-provas, comparar, tempo-pensar)
+      html = '<div class="funil-result-box">'
+           + '<div class="funil-result-badge">📹 Mais provas para você</div>'
+           + '<div class="funil-result-title">Faz sentido pesquisar. Mas veja isso:</div>'
+           + '<div class="funil-result-text">O método já gerou mais de 200M de views em canais sem aparecer no Brasil. Acesso vitalício, 7 dias de garantia. Se não funcionar — reembolso total.</div>'
+           + '<a href="' + urlNormal + '" target="_blank" rel="noopener" class="funil-cta-primary kiwify-link" data-utm-content="funil-resultado">Testar com garantia de 7 dias →</a>'
+           + '<a href="' + urlWa + '" target="_blank" rel="noopener" class="funil-cta-secondary">💬 Acompanhar pelo WhatsApp primeiro</a>'
+           + '</div>';
+    }
+
+    el.innerHTML = html;
+
+    // Re-inicializa links de checkout injetados pelo resultado
+    if(window.EV_UTM) {
+      el.querySelectorAll('a.kiwify-link').forEach(function(a){
+        if(!a.href) return;
+        try {
+          var u = new URL(a.href.split('?')[0]);
+          var utms = window.EV_UTM;
+          if(utms.utm_source)   u.searchParams.set('utm_source',   utms.utm_source);
+          if(utms.utm_medium)   u.searchParams.set('utm_medium',   utms.utm_medium);
+          if(utms.utm_campaign) u.searchParams.set('utm_campaign', utms.utm_campaign);
+          if(utms.utm_term)     u.searchParams.set('utm_term',     utms.utm_term);
+          var uc = a.getAttribute('data-utm-content');
+          if(uc) u.searchParams.set('utm_content', uc);
+          // Preserva coupon se já estava na URL
+          var existingCoupon = new URL(a.href).searchParams.get('coupon');
+          if(existingCoupon) u.searchParams.set('coupon', existingCoupon);
+          a.href = u.toString();
+        } catch(e){}
+      });
+    }
+  }
+
+  // Expõe funções globais
+  window.funilNext = function(passo, valor, btn) {
+    _respostas[passo] = valor;
+    _passoAtual = passo + 1;
+
+    if(btn) btn.classList.add('selecionado');
+
+    _gaEvent('funil_p' + passo, valor);
+
+    setTimeout(function(){
+      if(_passoAtual === 5) {
+        _buildP5();
+        _setProgress(5);
+        _showStep('funilP5');
+      } else {
+        _setProgress(_passoAtual);
+        _showStep('funilP' + _passoAtual);
+      }
+    }, 180);
   };
-  fetch('https://formspree.io/f/xqegbdpe', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      objecao: labels[tipo] || tipo,
-      pagina: window.location.href,
-      horario: new Date().toLocaleString('pt-BR')
-    })
-  });
-}
-function surveyVoltar() {
-  document.querySelectorAll('.survey-response').forEach(function(el){ el.classList.remove('ativo'); });
-  document.getElementById('surveyOptions').style.display = 'grid';
-  document.getElementById('surveyBack').classList.remove('ativo');
-}
+
+  window.funilResultado = function(respP5, btn) {
+    _respostas[5] = respP5;
+    if(btn) btn.classList.add('selecionado');
+    _gaEvent('funil_resultado', _respostas[1] + '_' + respP5);
+
+    // Envia para Formspree
+    fetch('https://formspree.io/f/xqegbdpe', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        p1_objecao:    _respostas[1]  || '',
+        p2_experiencia:_respostas[2]  || '',
+        p3_objetivo:   _respostas[3]  || '',
+        p4_tempo:      _respostas[4]  || '',
+        p5_decisao:    respP5         || '',
+        pagina: window.location.href,
+        horario: new Date().toLocaleString('pt-BR')
+      })
+    }).catch(function(){});
+
+    setTimeout(function(){
+      _buildResultado(respP5);
+      _setProgress(6);
+      _showStep('funilResultado');
+      document.getElementById('funilCounter').textContent = '✅ Resultado personalizado';
+      document.getElementById('funilVoltar').style.display = 'none';
+    }, 180);
+  };
+
+  window.funilVoltarPasso = function() {
+    _passoAtual = Math.max(1, _passoAtual - 1);
+    _setProgress(_passoAtual);
+    _showStep('funilP' + _passoAtual);
+    document.getElementById('funilVoltar').style.display = _passoAtual > 1 ? 'inline-block' : 'none';
+  };
+})();
 </script>
-<!-- ═══ FIM SURVEY ═══ -->
+<!-- ═══ FIM FUNIL ═══ -->
 
 <div id="ev-footer"></div>
 
