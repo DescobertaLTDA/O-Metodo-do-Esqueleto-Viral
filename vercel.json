@@ -1,1 +1,6 @@
-{}
+{
+  "rewrites": [
+    { "source": "/obrigado",  "destination": "/paginas/obrigado/" },
+    { "source": "/obrigado/", "destination": "/paginas/obrigado/" }
+  ]
+}
