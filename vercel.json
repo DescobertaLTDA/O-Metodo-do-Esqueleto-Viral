@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/wa-count.js": {
+      "runtime": "edge"
+    }
+  }
+}
