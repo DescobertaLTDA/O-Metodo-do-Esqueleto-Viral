@@ -4206,26 +4206,32 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
   .academy-btn-tag {
     background:linear-gradient(90deg,#C9A84C,#FFC478,#C9A84C);
     color:#0a0800;
-    font-size:9px; font-weight:900; letter-spacing:2.5px;
-    text-transform:uppercase; padding:5px 16px;
-    display:block; width:100%; box-sizing:border-box;
+    font-size:9px; font-weight:900; letter-spacing:2px;
+    text-transform:uppercase; padding:6px 14px;
+    display:flex; align-items:center; gap:6px;
+    width:100%; box-sizing:border-box;
   }
+  .academy-tag-svg { width:10px; height:10px; fill:#0a0800; flex-shrink:0; }
   .academy-btn-body {
-    display:flex; align-items:center; gap:14px;
-    padding:14px 18px;
+    display:flex; align-items:center; gap:12px;
+    padding:14px 14px;
   }
-  .academy-btn-icon { font-size:26px; flex-shrink:0; }
-  .academy-btn-text { display:flex; flex-direction:column; gap:3px; }
+  .academy-btn-icon {
+    width:38px; height:38px; flex-shrink:0;
+    background:rgba(255,196,120,0.1); border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .academy-btn-icon svg { width:20px; height:20px; fill:#FFC478; }
+  .academy-btn-text { display:flex; flex-direction:column; gap:4px; flex:1; min-width:0; }
   .academy-btn-headline {
-    font-size:14px; font-weight:900; color:#FFC478;
-    letter-spacing:-.2px; line-height:1.2;
+    font-size:clamp(12px,3.5vw,14px); font-weight:900; color:#FFC478;
+    letter-spacing:-.2px; line-height:1.3;
   }
   .academy-btn-sub {
-    font-size:11px; color:rgba(255,255,255,0.45); font-weight:500;
+    font-size:11px; color:rgba(255,255,255,0.45); font-weight:500; line-height:1.4;
   }
-  .academy-btn-arrow {
-    margin-left:auto; font-size:18px; color:rgba(255,196,120,0.6); flex-shrink:0;
-  }
+  .academy-btn-arrow { margin-left:auto; flex-shrink:0; }
+  .academy-btn-arrow svg { width:18px; height:18px; fill:rgba(255,196,120,0.55); display:block; }
   .survey-btn {
     background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
     border-radius:12px; padding:16px 14px; cursor:pointer;
@@ -4302,14 +4308,24 @@ footer { background:var(--dark2); border-top:1px solid rgba(255,90,0,0.08); padd
         <button class="survey-btn" onclick="funilNext(1,'duvida',this)"><span class="survey-btn-icon">🤔</span><span>Tenho dúvida se funciona pra mim</span></button>
         <button class="survey-btn" onclick="funilNext(1,'pesquisando',this)"><span class="survey-btn-icon">👀</span><span>Ainda quero pesquisar mais</span></button>
         <button class="survey-btn survey-btn-academy" onclick="_irParaAcademy(this)">
-          <span class="academy-btn-tag">💰 Curso em destaque — alternativa recomendada</span>
+          <span class="academy-btn-tag">
+            <!-- star icon -->
+            <svg class="academy-tag-svg" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            Curso em destaque — alternativa recomendada
+          </span>
           <span class="academy-btn-body">
-            <span class="academy-btn-icon">📘</span>
+            <span class="academy-btn-icon">
+              <!-- graduation cap icon -->
+              <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            </span>
             <span class="academy-btn-text">
-              <span class="academy-btn-headline">Faça até R$1.247/mês com o Facebook →</span>
+              <span class="academy-btn-headline">Faça até R$1.247/mês com o Facebook</span>
               <span class="academy-btn-sub">Monetize no Facebook · Método comprovado · Sem aparecer</span>
             </span>
-            <span class="academy-btn-arrow">›</span>
+            <span class="academy-btn-arrow">
+              <!-- chevron right -->
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+            </span>
           </span>
         </button>
       </div>
